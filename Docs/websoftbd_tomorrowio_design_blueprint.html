@@ -1,0 +1,683 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.wrap { font-family: var(--font-sans); }
+
+.top-bar { display: flex; align-items: center; justify-content: space-between; padding: .75rem 0 1rem; border-bottom: 0.5px solid var(--color-border-tertiary); margin-bottom: 1.25rem; }
+.top-bar h2 { font-size: 13px; font-weight: 500; color: var(--color-text-tertiary); letter-spacing: .05em; text-transform: uppercase; }
+.top-bar button { font-size: 12px; color: var(--color-text-info); background: none; border: none; cursor: pointer; padding: 0; }
+
+.tab-row { display: flex; gap: 4px; margin-bottom: 1.25rem; flex-wrap: wrap; }
+.tab-btn { font-size: 12px; padding: 5px 12px; border-radius: 20px; border: 0.5px solid var(--color-border-secondary); background: transparent; color: var(--color-text-secondary); cursor: pointer; transition: all .15s; }
+.tab-btn.on { background: var(--color-text-primary); color: var(--color-background-primary); border-color: var(--color-text-primary); font-weight: 500; }
+
+.panel { display: none; }
+.panel.on { display: block; }
+
+.sec { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: 14px; overflow: hidden; margin-bottom: 10px; }
+.sec-hd { display: flex; align-items: center; gap: 10px; padding: 12px 14px; cursor: pointer; user-select: none; }
+.sec-num { width: 22px; height: 22px; border-radius: 50%; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.sec-title { flex: 1; font-size: 14px; font-weight: 500; color: var(--color-text-primary); }
+.sec-meta { display: flex; align-items: center; gap: 6px; }
+.pill { font-size: 10px; padding: 2px 8px; border-radius: 20px; font-weight: 500; white-space: nowrap; }
+.pill-blue { background: #E6F1FB; color: #0C447C; }
+.pill-green { background: #EAF3DE; color: #27500A; }
+.pill-amber { background: #FAEEDA; color: #633806; }
+.pill-teal { background: #E1F5EE; color: #085041; }
+.chevron { font-size: 13px; color: var(--color-text-tertiary); transition: transform .2s; }
+.chevron.open { transform: rotate(180deg); }
+
+.sec-body { display: none; border-top: 0.5px solid var(--color-border-tertiary); padding: 14px; }
+.sec-body.open { display: block; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.col-dark { background: #1a2b3c; border-radius: 10px; padding: 12px; }
+.col-dark h4 { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: .06em; color: #7aa7cc; margin-bottom: 8px; }
+.col-dark ul { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.col-dark li { font-size: 12px; color: #b8cfe0; padding-left: 14px; position: relative; line-height: 1.5; }
+.col-dark li::before { content: '→'; position: absolute; left: 0; color: #4a90d9; font-size: 10px; top: 1px; }
+
+.col-light { background: #EFF9F5; border-radius: 10px; padding: 12px; }
+.col-light h4 { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: .06em; color: #085041; margin-bottom: 8px; }
+.col-light ul { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.col-light li { font-size: 12px; color: #0F6E56; padding-left: 14px; position: relative; line-height: 1.5; }
+.col-light li::before { content: '✓'; position: absolute; left: 0; color: #1D9E75; font-size: 10px; top: 1px; }
+
+.motion-box { background: var(--color-background-secondary); border-radius: 8px; padding: 10px 12px; margin-bottom: 10px; }
+.motion-box h4 { font-size: 11px; font-weight: 500; color: var(--color-text-tertiary); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 6px; }
+.motion-box p { font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; }
+.motion-box .tech { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 4px; }
+.tech-tag { font-size: 10px; padding: 2px 7px; border-radius: 4px; background: var(--color-background-primary); border: 0.5px solid var(--color-border-secondary); color: var(--color-text-secondary); font-family: var(--font-mono); }
+
+.mockup-wrap { border: 0.5px solid var(--color-border-tertiary); border-radius: 12px; overflow: hidden; margin-bottom: 16px; background: #f0f4f8; }
+.mockup-nav { background: #fff; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 0.5px solid #e5e9ed; }
+.m-logo { display: flex; align-items: center; gap: 6px; }
+.m-logo-mark { width: 22px; height: 22px; border-radius: 5px; background: #0E6E50; display: flex; align-items: center; justify-content: center; }
+.m-logo-mark span { color: #fff; font-size: 10px; font-weight: 700; }
+.m-logo-text { font-size: 12px; font-weight: 600; color: #1a2b3c; }
+.m-navlinks { display: flex; gap: 14px; }
+.m-navlink { font-size: 10px; color: #4a6080; }
+.m-cta { background: #0E6E50; color: #fff; font-size: 9px; font-weight: 600; padding: 5px 12px; border-radius: 20px; letter-spacing: .03em; }
+
+.m-announce { background: #EFF9F5; border-bottom: 0.5px solid #c0e8d8; padding: 6px 16px; text-align: center; font-size: 10px; color: #085041; font-weight: 500; }
+
+.m-hero { background: #f8fbff; padding: 32px 20px 20px; text-align: center; position: relative; overflow: hidden; }
+.m-hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #e8f4ff 0%, #f0fbf5 50%, #fff8f0 100%); opacity: .6; }
+.m-hero-content { position: relative; }
+.m-hero-tag { display: inline-block; background: #E1F5EE; color: #085041; font-size: 9px; font-weight: 600; padding: 3px 10px; border-radius: 20px; margin-bottom: 8px; border: 0.5px solid #9FE1CB; letter-spacing: .04em; }
+.m-hero-h1 { font-size: 18px; font-weight: 700; color: #0d1f35; line-height: 1.25; margin-bottom: 6px; }
+.m-hero-h1 em { color: #0E6E50; font-style: normal; }
+.m-hero-sub { font-size: 10px; color: #4a6080; max-width: 320px; margin: 0 auto 12px; line-height: 1.6; }
+.m-hero-btns { display: flex; gap: 8px; justify-content: center; margin-bottom: 14px; }
+.m-btn-solid { background: #0E6E50; color: #fff; font-size: 9px; font-weight: 600; padding: 6px 14px; border-radius: 6px; }
+.m-btn-outline { background: transparent; color: #0E6E50; font-size: 9px; font-weight: 500; padding: 6px 14px; border-radius: 6px; border: 1px solid #0E6E50; }
+.m-trust-row { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.m-trust-item { font-size: 8px; color: #6a8099; display: flex; align-items: center; gap: 3px; }
+.m-trust-dot { width: 5px; height: 5px; border-radius: 50%; background: #1D9E75; }
+
+.m-hero-visual { margin: 12px 0 0; height: 80px; border-radius: 8px; background: #e0f0ff; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.m-vis-label { font-size: 8px; color: #4a90d9; font-weight: 500; background: rgba(255,255,255,.9); padding: 3px 8px; border-radius: 4px; }
+.m-vis-dots { position: absolute; top: 8px; left: 12px; display: flex; gap: 4px; }
+.m-vis-dot { width: 5px; height: 5px; border-radius: 50%; }
+.m-vis-lines { position: absolute; inset: 0; opacity: .15; }
+
+.m-announce2 { background: #fff; padding: 10px 16px; border-top: 0.5px solid #e5e9ed; }
+.m-trust-label { font-size: 9px; color: #8899aa; text-align: center; margin-bottom: 8px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; }
+.m-logos { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+.m-logo-box { background: #f5f7fa; border: 0.5px solid #e0e5eb; border-radius: 5px; padding: 3px 8px; font-size: 8px; color: #5a7090; font-weight: 500; }
+
+.m-sectors { background: #f8fbff; padding: 16px; }
+.m-sec-head-row { text-align: center; margin-bottom: 12px; }
+.m-sec-eyebrow { font-size: 9px; font-weight: 600; color: #0E6E50; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
+.m-sec-title { font-size: 14px; font-weight: 700; color: #0d1f35; }
+.m-sec-title em { color: #0E6E50; font-style: normal; }
+.m-sec-sub { font-size: 10px; color: #6a8099; margin-top: 3px; }
+.m-sector-tabs { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 12px; }
+.m-sector-tab { font-size: 9px; padding: 4px 10px; border-radius: 6px; border: 0.5px solid #d0dce8; color: #5a7090; background: #fff; }
+.m-sector-tab.active { background: #0E6E50; color: #fff; border-color: #0E6E50; font-weight: 600; }
+.m-sector-content { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.m-sector-left { display: flex; flex-direction: column; gap: 6px; }
+.m-sector-feature { background: #fff; border: 0.5px solid #e0e8f0; border-radius: 7px; padding: 8px; }
+.m-sector-feature.active { border-left: 2px solid #0E6E50; border-radius: 0 7px 7px 0; }
+.m-sf-icon { font-size: 12px; color: #0E6E50; margin-bottom: 3px; }
+.m-sf-title { font-size: 10px; font-weight: 600; color: #1a2b3c; margin-bottom: 2px; }
+.m-sf-desc { font-size: 9px; color: #6a8099; line-height: 1.5; }
+.m-sector-right { background: #e0f0e8; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.m-map-mock { width: 100%; height: 110px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 4px; }
+.m-map-label { font-size: 8px; color: #085041; font-weight: 600; background: rgba(255,255,255,.8); padding: 2px 8px; border-radius: 4px; }
+
+.m-projects { background: #fff; padding: 16px; }
+.m-proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+.m-proj-card { border: 0.5px solid #e0e8f0; border-radius: 8px; overflow: hidden; }
+.m-proj-img { height: 48px; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: 600; letter-spacing: .04em; }
+.m-proj-body { padding: 7px 8px; }
+.m-proj-tag { font-size: 8px; color: #0E6E50; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 2px; }
+.m-proj-name { font-size: 10px; font-weight: 600; color: #1a2b3c; margin-bottom: 2px; }
+.m-proj-stat { font-size: 9px; color: #6a8099; }
+
+.m-stats { background: #0d1f35; padding: 16px; }
+.m-stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-top: 10px; }
+.m-stat { text-align: center; }
+.m-stat-num { font-size: 20px; font-weight: 700; color: #1D9E75; }
+.m-stat-lbl { font-size: 8px; color: rgba(255,255,255,.5); margin-top: 2px; }
+
+.m-case-study { background: #f0f9f5; padding: 16px; border-top: 0.5px solid #c0e8d8; }
+.m-cs-tag { font-size: 9px; font-weight: 600; color: #085041; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 6px; }
+.m-cs-title { font-size: 13px; font-weight: 700; color: #0d1f35; margin-bottom: 8px; }
+.m-cs-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.m-cs-left { display: flex; flex-direction: column; gap: 4px; }
+.m-cs-stat { background: #fff; border: 0.5px solid #9FE1CB; border-radius: 6px; padding: 6px 8px; }
+.m-cs-stat-num { font-size: 16px; font-weight: 700; color: #0E6E50; }
+.m-cs-stat-lbl { font-size: 8px; color: #5a7090; }
+.m-cs-right { background: #e0f0e8; border-radius: 8px; display: flex; align-items: center; justify-content: center; height: 80px; }
+.m-cs-screen { width: 80%; height: 60px; background: #fff; border-radius: 5px; border: 0.5px solid #9FE1CB; display: flex; align-items: center; justify-content: center; font-size: 8px; color: #0E6E50; font-weight: 600; }
+
+.m-services { background: #fff; padding: 16px; }
+.m-svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; margin-top: 10px; }
+.m-svc-card { border: 0.5px solid #e0e8f0; border-radius: 8px; padding: 8px; transition: border-color .2s; }
+.m-svc-icon { width: 26px; height: 26px; border-radius: 6px; background: #EFF9F5; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #0E6E50; margin-bottom: 5px; }
+.m-svc-name { font-size: 10px; font-weight: 600; color: #1a2b3c; margin-bottom: 2px; }
+.m-svc-sector { font-size: 8px; color: #0E6E50; font-weight: 500; }
+
+.m-testimonials { background: #f8fbff; padding: 16px; }
+.m-test-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+.m-test-card { border: 0.5px solid #e0e8f0; border-radius: 8px; padding: 10px; background: #fff; }
+.m-test-org { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+.m-test-logo { width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 7px; font-weight: 700; }
+.m-test-name { font-size: 10px; font-weight: 600; color: #1a2b3c; }
+.m-test-role { font-size: 8px; color: #6a8099; }
+.m-test-quote { font-size: 9px; color: #4a6080; line-height: 1.5; font-style: italic; }
+
+.m-cta { background: #0d1f35; padding: 20px 16px; text-align: center; }
+.m-cta-h { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+.m-cta-sub { font-size: 10px; color: rgba(255,255,255,.6); margin-bottom: 12px; }
+.m-cta-btns { display: flex; gap: 8px; justify-content: center; }
+
+.m-footer { background: #081428; padding: 12px 16px; display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+.m-footer-col h5 { font-size: 9px; font-weight: 600; color: #1D9E75; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .04em; }
+.m-footer-line { height: 4px; background: rgba(255,255,255,.1); border-radius: 1px; margin-bottom: 3px; }
+
+.motion-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.m-motion-card { border: 0.5px solid var(--color-border-tertiary); border-radius: 10px; padding: 12px; background: var(--color-background-primary); }
+.m-motion-icon { font-size: 20px; color: var(--color-text-info); margin-bottom: 6px; }
+.m-motion-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+.m-motion-desc { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; }
+.m-motion-tech { font-size: 10px; color: var(--color-text-tertiary); margin-top: 6px; font-family: var(--font-mono); }
+
+.order-stack { display: flex; flex-direction: column; gap: 6px; }
+.order-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; background: var(--color-background-secondary); border-radius: 8px; }
+.order-n { font-size: 11px; font-weight: 500; color: var(--color-text-tertiary); min-width: 18px; padding-top: 1px; }
+.order-content { flex: 1; }
+.order-label { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 2px; }
+.order-desc { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; }
+.order-badges { display: flex; gap: 4px; margin-top: 4px; flex-wrap: wrap; }
+.ob { font-size: 9px; padding: 1px 6px; border-radius: 10px; }
+</style>
+
+<div class="wrap">
+<h2 class="sr-only">Tomorrow.io design system analysis and WebsoftBD light-theme homepage blueprint</h2>
+
+<div class="top-bar">
+  <h2>tomorrow.io → WebsoftBD · light theme adaptation</h2>
+  <button onclick="sendPrompt('Now build the full HTML code for the WebsoftBD homepage based on this tomorrow.io design blueprint — light theme with teal and navy, all sections with animations')">Build the HTML ↗</button>
+</div>
+
+<div class="tab-row">
+  <div class="tab-btn on" onclick="switchTab('preview')">Live preview</div>
+  <div class="tab-btn" onclick="switchTab('sections')">Section breakdown</div>
+  <div class="tab-btn" onclick="switchTab('motion')">Motion & animations</div>
+  <div class="tab-btn" onclick="switchTab('order')">Final page order</div>
+</div>
+
+<div id="tab-preview" class="panel on">
+  <div style="font-size: 12px; color: var(--color-text-tertiary); margin-bottom: 10px; font-style: italic;">WebsoftBD homepage — light theme mockup inspired by tomorrow.io</div>
+  <div class="mockup-wrap">
+    <div class="m-announce">🌿 WebsoftBD & JICA sign new agreement for Bangladesh flood forecasting system 2026 — <span style="color:#0E6E50; text-decoration:underline; cursor:pointer">Read More</span></div>
+    <div class="mockup-nav">
+      <div class="m-logo">
+        <div class="m-logo-mark"><span>W</span></div>
+        <div class="m-logo-text">Web Soft BD</div>
+      </div>
+      <div class="m-navlinks">
+        <div class="m-navlink">Sectors ∨</div>
+        <div class="m-navlink">Solutions ∨</div>
+        <div class="m-navlink">Projects</div>
+        <div class="m-navlink">Clients</div>
+        <div class="m-navlink">Contact</div>
+      </div>
+      <div class="m-cta">Request Consultation</div>
+    </div>
+    <div class="m-hero">
+      <div class="m-hero-bg"></div>
+      <div class="m-hero-content">
+        <div class="m-hero-tag">ISO 9001:2015 · BASIS · 18 Years</div>
+        <div class="m-hero-h1">Engineering Earth Intelligence<br>for a <em>Resilient Future</em></div>
+        <div class="m-hero-sub">Translating complex environmental, meteorological, and hydrological data into intelligent enterprise platforms.</div>
+        <div class="m-hero-btns">
+          <div class="m-btn-solid">Explore Solutions</div>
+          <div class="m-btn-outline">View Projects</div>
+        </div>
+        <div class="m-trust-row">
+          <div class="m-trust-item"><div class="m-trust-dot"></div>Agro-Meteorology</div>
+          <div class="m-trust-item"><div class="m-trust-dot"></div>AI & Big Data</div>
+          <div class="m-trust-item"><div class="m-trust-dot"></div>Hydrology & Water</div>
+          <div class="m-trust-item"><div class="m-trust-dot"></div>ERP & ICT</div>
+        </div>
+        <div class="m-hero-visual">
+          <div class="m-vis-dots">
+            <div class="m-vis-dot" style="background:#1D9E75"></div>
+            <div class="m-vis-dot" style="background:#378ADD"></div>
+            <div class="m-vis-dot" style="background:#F5A623"></div>
+          </div>
+          <div class="m-vis-label">Bangladesh agro-met live data visualization</div>
+        </div>
+      </div>
+    </div>
+    <div class="m-announce2">
+      <div class="m-trust-label">Trusted by leading organizations</div>
+      <div class="m-logos">
+        <div class="m-logo-box">World Bank</div>
+        <div class="m-logo-box">JICA</div>
+        <div class="m-logo-box">BMD</div>
+        <div class="m-logo-box">BWDB</div>
+        <div class="m-logo-box">DAE</div>
+        <div class="m-logo-box">SAARC</div>
+        <div class="m-logo-box">A2i</div>
+        <div class="m-logo-box">Dhaka Uni</div>
+        <div class="m-logo-box">FFWC</div>
+        <div class="m-logo-box">HDF</div>
+      </div>
+    </div>
+    <div class="m-sectors">
+      <div class="m-sec-head-row">
+        <div class="m-sec-eyebrow">Our Strategic Sectors</div>
+        <div class="m-sec-title"><em>Intelligence</em> for every domain</div>
+        <div class="m-sec-sub">Click a sector to explore solutions</div>
+      </div>
+      <div class="m-sector-tabs">
+        <div class="m-sector-tab active"><i class="ti ti-cloud" style="font-size:9px" aria-hidden="true"></i> Agro-Met</div>
+        <div class="m-sector-tab"><i class="ti ti-droplet" style="font-size:9px" aria-hidden="true"></i> Hydrology</div>
+        <div class="m-sector-tab"><i class="ti ti-chart-bar" style="font-size:9px" aria-hidden="true"></i> Big Data</div>
+        <div class="m-sector-tab"><i class="ti ti-brain" style="font-size:9px" aria-hidden="true"></i> AI</div>
+        <div class="m-sector-tab"><i class="ti ti-world" style="font-size:9px" aria-hidden="true"></i> Web & ERP</div>
+      </div>
+      <div class="m-sector-content">
+        <div class="m-sector-left">
+          <div class="m-sector-feature active">
+            <div class="m-sf-icon"><i class="ti ti-plant" aria-hidden="true"></i></div>
+            <div class="m-sf-title">Crop yield monitoring</div>
+            <div class="m-sf-desc">Real-time agro-meteorological data for food security planning</div>
+          </div>
+          <div class="m-sector-feature">
+            <div class="m-sf-icon"><i class="ti ti-satellite" aria-hidden="true"></i></div>
+            <div class="m-sf-title">Satellite data integration</div>
+            <div class="m-sf-desc">Remote sensing for climate and land use analysis</div>
+          </div>
+          <div class="m-sector-feature">
+            <div class="m-sf-icon"><i class="ti ti-chart-line" aria-hidden="true"></i></div>
+            <div class="m-sf-title">Forecast dissemination</div>
+            <div class="m-sf-desc">Weather advisory to 1.2M+ farmers via BAMIS</div>
+          </div>
+        </div>
+        <div class="m-sector-right">
+          <div class="m-map-mock">
+            <i class="ti ti-map-2" style="font-size:24px; color:#0E6E50; opacity:.4" aria-hidden="true"></i>
+            <div class="m-map-label">BAMIS Dashboard — live</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="m-projects">
+      <div class="m-sec-head-row">
+        <div class="m-sec-eyebrow">Featured Case Studies</div>
+        <div class="m-sec-title">The <em>Projects</em> We Are Known For</div>
+      </div>
+      <div class="m-proj-grid">
+        <div class="m-proj-card">
+          <div class="m-proj-img" style="background:#dff0e8; color:#0E6E50;"><i class="ti ti-cloud-rain" style="font-size:18px" aria-hidden="true"></i></div>
+          <div class="m-proj-body">
+            <div class="m-proj-tag">Agro-Met · AI · Govt</div>
+            <div class="m-proj-name">BAMIS — Bangladesh Agro-Meteorological Information System</div>
+            <div class="m-proj-stat">Serving 1.2M+ farmers · 64 districts</div>
+          </div>
+        </div>
+        <div class="m-proj-card">
+          <div class="m-proj-img" style="background:#dfe8f5; color:#185FA5;"><i class="ti ti-wind" style="font-size:18px" aria-hidden="true"></i></div>
+          <div class="m-proj-body">
+            <div class="m-proj-tag">Meteorology · BMD</div>
+            <div class="m-proj-name">Bangladesh Meteorological Department system</div>
+            <div class="m-proj-stat">National weather data infrastructure</div>
+          </div>
+        </div>
+        <div class="m-proj-card">
+          <div class="m-proj-img" style="background:#f5eedd; color:#854F0B;"><i class="ti ti-plane" style="font-size:18px" aria-hidden="true"></i></div>
+          <div class="m-proj-body">
+            <div class="m-proj-tag">Aviation · Data Sharing</div>
+            <div class="m-proj-name">Aviation observed data sharing system</div>
+            <div class="m-proj-stat">Real-time aviation weather integration</div>
+          </div>
+        </div>
+        <div class="m-proj-card">
+          <div class="m-proj-img" style="background:#e5ddf5; color:#534AB7;"><i class="ti ti-droplet-half" style="font-size:18px" aria-hidden="true"></i></div>
+          <div class="m-proj-body">
+            <div class="m-proj-tag">Water · Hydrology · GIS</div>
+            <div class="m-proj-name">Salinity intrusion model for coastal Bangladesh</div>
+            <div class="m-proj-stat">3D flood risk simulation · BWDB</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="m-stats">
+      <div style="text-align:center; margin-bottom:10px;">
+        <div style="font-size:9px; color:#1D9E75; text-transform:uppercase; letter-spacing:.06em; font-weight:600; margin-bottom:3px;">By the numbers</div>
+        <div style="font-size:13px; font-weight:700; color:#fff;">18 years of building Bangladesh's data infrastructure</div>
+      </div>
+      <div class="m-stats-grid">
+        <div class="m-stat"><div class="m-stat-num">18+</div><div class="m-stat-lbl">Years operating</div></div>
+        <div class="m-stat"><div class="m-stat-num">1000+</div><div class="m-stat-lbl">Projects delivered</div></div>
+        <div class="m-stat"><div class="m-stat-num">956</div><div class="m-stat-lbl">Satisfied clients</div></div>
+        <div class="m-stat"><div class="m-stat-num">ISO</div><div class="m-stat-lbl">9001:2015 certified</div></div>
+      </div>
+    </div>
+    <div class="m-case-study">
+      <div class="m-cs-tag">Case study · BAMIS Dashboard</div>
+      <div class="m-cs-title">Bangladesh Agro-Meteorological Information System</div>
+      <div class="m-cs-cols">
+        <div class="m-cs-left">
+          <div class="m-cs-stat"><div class="m-cs-stat-num">1.2M+</div><div class="m-cs-stat-lbl">Farmers receiving advisories</div></div>
+          <div class="m-cs-stat"><div class="m-cs-stat-num">64</div><div class="m-cs-stat-lbl">Districts covered nationwide</div></div>
+          <div class="m-cs-stat"><div class="m-cs-stat-num">AI</div><div class="m-cs-stat-lbl">National climate adaptation model</div></div>
+        </div>
+        <div class="m-cs-right">
+          <div class="m-cs-screen"><i class="ti ti-device-desktop-analytics" style="font-size:16px; margin-right:4px" aria-hidden="true"></i> BAMIS Dashboard</div>
+        </div>
+      </div>
+    </div>
+    <div class="m-services">
+      <div class="m-sec-head-row">
+        <div class="m-sec-eyebrow">Our Services</div>
+        <div class="m-sec-title">Solutions for every <em>data challenge</em></div>
+      </div>
+      <div class="m-svc-grid">
+        <div class="m-svc-card"><div class="m-svc-icon"><i class="ti ti-cloud-storm" aria-hidden="true"></i></div><div class="m-svc-name">Agro-Met Systems</div><div class="m-svc-sector">BAMIS · BMD · SAARC</div></div>
+        <div class="m-svc-card"><div class="m-svc-icon"><i class="ti ti-brain" aria-hidden="true"></i></div><div class="m-svc-name">AI & Big Data</div><div class="m-svc-sector">Analytics · ML Models</div></div>
+        <div class="m-svc-card"><div class="m-svc-icon"><i class="ti ti-ripple" aria-hidden="true"></i></div><div class="m-svc-name">Hydrology & Water</div><div class="m-svc-sector">BWDB · Flood · Salinity</div></div>
+        <div class="m-svc-card"><div class="m-svc-icon"><i class="ti ti-world" aria-hidden="true"></i></div><div class="m-svc-name">Web Development</div><div class="m-svc-sector">Portals · Dashboards</div></div>
+        <div class="m-svc-card"><div class="m-svc-icon"><i class="ti ti-device-mobile" aria-hidden="true"></i></div><div class="m-svc-name">App Development</div><div class="m-svc-sector">Mobile · API · IoT</div></div>
+        <div class="m-svc-card"><div class="m-svc-icon"><i class="ti ti-server" aria-hidden="true"></i></div><div class="m-svc-name">ERP & Server</div><div class="m-svc-sector">Infrastructure · Cloud</div></div>
+      </div>
+    </div>
+    <div class="m-testimonials">
+      <div class="m-sec-head-row">
+        <div class="m-sec-eyebrow">In their own words</div>
+        <div class="m-sec-title">How leaders use <em>Web Soft BD</em></div>
+      </div>
+      <div class="m-test-grid">
+        <div class="m-test-card">
+          <div class="m-test-org">
+            <div class="m-test-logo" style="background:#dff0e8; color:#0E6E50;">WB</div>
+            <div><div class="m-test-name">World Bank</div><div class="m-test-role">Development Partner</div></div>
+          </div>
+          <div class="m-test-quote">"WebsoftBD delivered a robust agro-met platform that directly supports food security for millions of farmers across Bangladesh."</div>
+        </div>
+        <div class="m-test-card">
+          <div class="m-test-org">
+            <div class="m-test-logo" style="background:#dfe8f5; color:#185FA5;">JI</div>
+            <div><div class="m-test-name">JICA Bangladesh</div><div class="m-test-role">Project Partner</div></div>
+          </div>
+          <div class="m-test-quote">"The flood forecasting system developed by WebsoftBD has significantly improved our disaster preparedness capabilities."</div>
+        </div>
+      </div>
+    </div>
+    <div class="m-cta">
+      <div class="m-cta-h">Ready to transform your data into intelligence?</div>
+      <div class="m-cta-sub">Talk to our specialists about your meteorological, agricultural, or water management challenge.</div>
+      <div class="m-cta-btns">
+        <div class="m-btn-solid">Request Consultation</div>
+        <div style="background:transparent; color:rgba(255,255,255,.7); font-size:9px; padding:6px 14px; border-radius:6px; border:1px solid rgba(255,255,255,.3);">Download Brochure</div>
+      </div>
+    </div>
+    <div class="m-footer">
+      <div class="m-footer-col"><h5>Web Soft BD</h5><div class="m-footer-line"></div><div class="m-footer-line" style="width:70%"></div><div class="m-footer-line" style="width:85%"></div></div>
+      <div class="m-footer-col"><h5>Solutions</h5><div class="m-footer-line"></div><div class="m-footer-line"></div><div class="m-footer-line" style="width:60%"></div></div>
+      <div class="m-footer-col"><h5>Projects</h5><div class="m-footer-line"></div><div class="m-footer-line"></div><div class="m-footer-line" style="width:75%"></div></div>
+      <div class="m-footer-col"><h5>Contact</h5><div class="m-footer-line"></div><div class="m-footer-line"></div><div class="m-footer-line" style="width:80%"></div></div>
+    </div>
+  </div>
+</div>
+
+<div id="tab-sections" class="panel">
+  <div class="sec">
+    <div class="sec-hd" onclick="toggle(this)">
+      <div class="sec-num" style="background:#E6F1FB; color:#0C447C;">1</div>
+      <div class="sec-title">Announcement bar (new from tomorrow.io)</div>
+      <div class="sec-meta"><span class="pill pill-green">Add new</span></div>
+      <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+    </div>
+    <div class="sec-body">
+      <div class="two-col">
+        <div class="col-dark"><h4>Tomorrow.io has</h4><ul><li>Single line dismissable top bar</li><li>Dark background, white text, blue link</li><li>Announces major news (satellite funding $175M)</li><li>X button to close on right</li></ul></div>
+        <div class="col-light"><h4>WebsoftBD adaptation (light)</h4><ul><li>Mint green bar: "WebsoftBD & JICA sign new flood forecasting agreement 2026"</li><li>Light teal bg (#EFF9F5), dark teal text, "Read More" link</li><li>Rotate with latest project win or news item</li><li>X dismiss button on right</li></ul></div>
+      </div>
+      <div class="motion-box"><h4>Motion pattern</h4><p>Slide down on load with 0.3s ease. Dismiss slides up smoothly. Update content every 8s if rotating multiple announcements.</p><div class="tech"><span class="tech-tag">CSS transform</span><span class="tech-tag">opacity transition</span></div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hd" onclick="toggle(this)">
+      <div class="sec-num" style="background:#E6F1FB; color:#0C447C;">2</div>
+      <div class="sec-title">Sticky navbar</div>
+      <div class="sec-meta"><span class="pill pill-blue">Adapt</span></div>
+      <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+    </div>
+    <div class="sec-body">
+      <div class="two-col">
+        <div class="col-dark"><h4>Tomorrow.io has</h4><ul><li>Dark semi-transparent on scroll, transparent on top</li><li>Logo left + wordmark, megamenu dropdowns (Products, Solutions, Developers, Space & Tech, Learn)</li><li>"Log In ›" text link + solid blue "Get Demo" pill button</li><li>Glassmorphism blur effect on scroll</li></ul></div>
+        <div class="col-light"><h4>WebsoftBD adaptation (light)</h4><ul><li>White on scroll, transparent over hero background</li><li>Logo left: W mark + "Web Soft BD"</li><li>Nav: Sectors ∨, Solutions ∨, Projects, Clients, Contact</li><li>Right: "Request Consultation" solid teal pill button</li><li>Mega-dropdown for Sectors (Agro-Met, Hydrology, Big Data, AI, ERP)</li></ul></div>
+      </div>
+      <div class="motion-box"><h4>Motion pattern</h4><p>Scrolled past 60px → white bg fades in with box-shadow in 0.2s. Logo shrinks slightly. Nav links gain opacity. Butter smooth.</p><div class="tech"><span class="tech-tag">IntersectionObserver</span><span class="tech-tag">scroll event</span><span class="tech-tag">CSS transition</span></div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hd" onclick="toggle(this)">
+      <div class="sec-num" style="background:#E6F1FB; color:#0C447C;">3</div>
+      <div class="sec-title">Hero — animated background</div>
+      <div class="sec-meta"><span class="pill pill-amber">Key section</span></div>
+      <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+    </div>
+    <div class="sec-body">
+      <div class="two-col">
+        <div class="col-dark"><h4>Tomorrow.io has</h4><ul><li>Full viewport height dark hero</li><li>Auto-cycling VIDEO background (satellite footage → airplane → racing car → space) crossfade every 5s</li><li>Text centered: ALL-CAPS bold headline, paragraph subtitle</li><li>2 CTA buttons: solid blue "Get Demo" + outlined "Talk To Sales"</li><li>Text loads with fade-up animation on entry</li></ul></div>
+        <div class="col-light"><h4>WebsoftBD adaptation (light theme)</h4><ul><li>Full viewport height LIGHT hero: white → pale mint (#f0fbf7) gradient background</li><li>Animated SVG/Canvas background: scrolling weather radar rings, rippling contour map of Bangladesh, animated rainfall dots</li><li>Badge pill: "ISO 9001:2015 · BASIS · 18 Years"</li><li>Headline: "Engineering Earth Intelligence / for a Resilient Future"</li><li>2 CTAs: "Explore Solutions" (teal solid) + "View Projects" (teal outline)</li><li>4 trust tags below: Agro-Meteorology · AI & Big Data · Hydrology · ERP</li></ul></div>
+      </div>
+      <div class="motion-box"><h4>Animation approach — light theme version</h4><p>Instead of dark video, use an animated Canvas or SVG showing Bangladesh weather patterns: slowly rotating radar rings, animated precipitation dots, animated river flow lines on a topographic map. This is domain-specific and far more impressive than generic geometric shapes. Runs at 60fps with requestAnimationFrame.</p><div class="tech"><span class="tech-tag">Canvas 2D</span><span class="tech-tag">requestAnimationFrame</span><span class="tech-tag">SVG path animation</span><span class="tech-tag">Intersection fade-up</span></div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hd" onclick="toggle(this)">
+      <div class="sec-num" style="background:#E6F1FB; color:#0C447C;">4</div>
+      <div class="sec-title">Client logo grid (trusted by)</div>
+      <div class="sec-meta"><span class="pill pill-blue">Adapt</span></div>
+      <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+    </div>
+    <div class="sec-body">
+      <div class="two-col">
+        <div class="col-dark"><h4>Tomorrow.io has</h4><ul><li>"Trusted by Leading Organizations Worldwide" heading</li><li>50+ logos in a 10-column grid, dark rounded boxes, white logos</li><li>NASA, Ford, Delta, Siemens, Uber, Palantir, DHL, Lufthansa etc.</li><li>Static grid, no scrolling</li></ul></div>
+        <div class="col-light"><h4>WebsoftBD adaptation (light)</h4><ul><li>"Trusted by leading organizations" heading in muted uppercase</li><li>Auto-scrolling marquee: 2 rows moving at different speeds</li><li>White boxes with colored logos (not grayscale — show real logos)</li><li>World Bank, JICA, BMD, BWDB, DAE, SAARC, A2i, Dhaka Uni, FFWC, HDF, ESDO, NocBan etc.</li><li>Hover: logo pauses scroll, slight scale-up</li></ul></div>
+      </div>
+      <div class="motion-box"><h4>Motion pattern</h4><p>CSS infinite marquee animation on two rows. Row 1 scrolls left at 30s loop, Row 2 scrolls right at 40s loop. Hover pauses. Logo boxes have 0.5px border, 8px radius, 8px padding.</p><div class="tech"><span class="tech-tag">@keyframes marquee</span><span class="tech-tag">animation-play-state pause on hover</span></div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hd" onclick="toggle(this)">
+      <div class="sec-num" style="background:#E6F1FB; color:#0C447C;">5</div>
+      <div class="sec-title">Sectors tab section (interactive)</div>
+      <div class="sec-meta"><span class="pill pill-amber">Key section</span></div>
+      <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+    </div>
+    <div class="sec-body">
+      <div class="two-col">
+        <div class="col-dark"><h4>Tomorrow.io has</h4><ul><li>"Agent power for every Industry" title</li><li>Icon tab bar: Insurance, Manufacturing, Aviation, Energy, Rail, Trucking, On Demand, All</li><li>Left: active feature name + accordion expandable sub-features</li><li>Right: live animated dashboard/map showing that sector's data</li><li>Tab switches with fade transition</li></ul></div>
+        <div class="col-light"><h4>WebsoftBD adaptation (light)</h4><ul><li>"Intelligence for every sector" title</li><li>Icon tab bar: Agro-Met, Hydrology, Big Data, AI, Web & ERP</li><li>Left: active project list with expand/collapse accordion</li><li>Right: animated dashboard screenshot or live data mockup for that sector</li><li>Active tab: teal filled, white text. Others: white bg, border</li></ul></div>
+      </div>
+      <div class="motion-box"><h4>Motion pattern</h4><p>Tab click: right panel fades out (0.15s) → new content fades in (0.25s). Left accordion: chevron rotates, content slides down with max-height transition. Scroll into view: entire section fades up with 0.4s delay.</p><div class="tech"><span class="tech-tag">opacity + translateY</span><span class="tech-tag">max-height accordion</span><span class="tech-tag">IntersectionObserver</span></div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hd" onclick="toggle(this)">
+      <div class="sec-num" style="background:#E6F1FB; color:#0C447C;">6</div>
+      <div class="sec-title">Featured case study spotlight</div>
+      <div class="sec-meta"><span class="pill pill-green">Add new</span></div>
+      <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+    </div>
+    <div class="sec-body">
+      <div class="two-col">
+        <div class="col-dark"><h4>Tomorrow.io has</h4><ul><li>Rounded dark card with video background playing drone footage</li><li>Brand name, bold headline, description, "Learn More" button</li><li>Used for their DeepSky satellite product spotlight</li></ul></div>
+        <div class="col-light"><h4>WebsoftBD adaptation (light)</h4><ul><li>Full-width mint/teal card: "Case Study: BAMIS Dashboard"</li><li>Left: 3 impact metric cards (1.2M+ farmers, 64 districts, AI model)</li><li>Right: animated BAMIS dashboard screenshot with data flowing in</li><li>"Read Full Case Study →" CTA link</li><li>Add World Bank logo as client badge</li></ul></div>
+      </div>
+      <div class="motion-box"><h4>Motion pattern</h4><p>Numbers count up on scroll-into-view (0 → 1,200,000+ over 1.5s with easeOut). Dashboard screenshot has a subtle floating animation (translateY ±6px, 4s loop). Section has a light teal (#EFF9F5) background to stand out from white sections.</p><div class="tech"><span class="tech-tag">CountUp.js or custom counter</span><span class="tech-tag">@keyframes float</span><span class="tech-tag">IntersectionObserver trigger</span></div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hd" onclick="toggle(this)">
+      <div class="sec-num" style="background:#E6F1FB; color:#0C447C;">7</div>
+      <div class="sec-title">Stats / impact counter band</div>
+      <div class="sec-meta"><span class="pill pill-blue">Adapt</span></div>
+      <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+    </div>
+    <div class="sec-body">
+      <div class="two-col">
+        <div class="col-dark"><h4>Tomorrow.io has (implied)</h4><ul><li>3-column numbered list under the bold platform headline</li><li>"1. The first commercial weather-sensing constellation…"</li><li>"2. AI powers fusion of satellite and global data…"</li><li>"3. Sector-specific weather intelligence…"</li></ul></div>
+        <div class="col-light"><h4>WebsoftBD adaptation (light)</h4><ul><li>Dark navy band (#0d1f35), 4 stat counters</li><li>18+ Years · 1000+ Projects · 956 Clients · ISO 9001</li><li>Numbers in teal (#1D9E75), labels in faded white</li><li>Below stats: 3-column bold proposition text</li><li>"1. Bangladesh's only ISO-certified agro-met ICT company"</li><li>"2. AI-powered data fusion for weather and agriculture"</li><li>"3. Trusted by World Bank, JICA & Bangladesh Government"</li></ul></div>
+      </div>
+      <div class="motion-box"><h4>Motion pattern</h4><p>Counters animate up when scrolled into view. Stagger delay: 0s, 0.1s, 0.2s, 0.3s. Duration 1.5s easeOut. The 3 proposition columns fade in from bottom with 0.4s stagger.</p><div class="tech"><span class="tech-tag">IntersectionObserver</span><span class="tech-tag">requestAnimationFrame counter</span><span class="tech-tag">stagger delay CSS</span></div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hd" onclick="toggle(this)">
+      <div class="sec-num" style="background:#E6F1FB; color:#0C447C;">8</div>
+      <div class="sec-title">Projects grid</div>
+      <div class="sec-meta"><span class="pill pill-blue">Adapt</span></div>
+      <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+    </div>
+    <div class="sec-body">
+      <div class="two-col">
+        <div class="col-dark"><h4>Tomorrow.io (products section)</h4><ul><li>Not present as a grid — products shown via sectors tab</li></ul></div>
+        <div class="col-light"><h4>WebsoftBD adaptation</h4><ul><li>2×2 or 2×3 project cards grid on white background</li><li>Each card: sector tag (AGRO-MET / HYDROLOGY / AI / WATER), project name, 1-line client + impact stat</li><li>Colored top bar per card (teal for agro-met, blue for hydrology, purple for AI)</li><li>Hover: card lifts 4px, border turns teal, "View Project →" arrow appears</li></ul></div>
+      </div>
+      <div class="motion-box"><h4>Motion pattern</h4><p>Cards fade up in staggered sequence on scroll-into-view (4 cards × 0.1s delay each). Hover: transform translateY(-4px) + border-color change, 0.2s ease. Smooth and satisfying.</p><div class="tech"><span class="tech-tag">CSS card hover</span><span class="tech-tag">IntersectionObserver stagger</span></div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hd" onclick="toggle(this)">
+      <div class="sec-num" style="background:#E6F1FB; color:#0C447C;">9</div>
+      <div class="sec-title">Testimonials / client stories</div>
+      <div class="sec-meta"><span class="pill pill-amber">Key section</span></div>
+      <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+    </div>
+    <div class="sec-body">
+      <div class="two-col">
+        <div class="col-dark"><h4>Tomorrow.io has</h4><ul><li>"In Their Own Words: How Leaders Use Tomorrow.io"</li><li>Horizontal scrollable carousel of video testimonial cards</li><li>Each card: real photo/video thumbnail, play button, client company logo, person name + title</li><li>Lufthansa, Shipt, Uber, Fox Sports</li></ul></div>
+        <div class="col-light"><h4>WebsoftBD adaptation (light)</h4><ul><li>"In their own words — how leaders use Web Soft BD"</li><li>2-column quote cards (no video — use photo of project dashboard instead)</li><li>Card: client logo badge + person name + title + quote text</li><li>World Bank, JICA, BMD officials (with permission)</li><li>Light blue/mint card backgrounds, no dark colors</li></ul></div>
+      </div>
+      <div class="motion-box"><h4>Motion pattern</h4><p>Cards slide in from right on scroll-into-view with 0.4s stagger. Quote text fades in 0.2s after card. If using a carousel, arrows fade in on hover. Auto-advance every 6s with smooth crossfade.</p><div class="tech"><span class="tech-tag">CSS transform + opacity</span><span class="tech-tag">IntersectionObserver</span><span class="tech-tag">optional: Swiper.js carousel</span></div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hd" onclick="toggle(this)">
+      <div class="sec-num" style="background:#E6F1FB; color:#0C447C;">10</div>
+      <div class="sec-title">Services grid</div>
+      <div class="sec-meta"><span class="pill pill-blue">Adapt</span></div>
+      <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+    </div>
+    <div class="sec-body">
+      <div class="two-col">
+        <div class="col-dark"><h4>Tomorrow.io (products nav)</h4><ul><li>Services accessed via "Products" megamenu, not homepage section</li></ul></div>
+        <div class="col-light"><h4>WebsoftBD — add on homepage</h4><ul><li>3×2 card grid on light gray (#f8fbff) background</li><li>Cards: icon + service name + 1-line sector context</li><li>Services: Agro-Met Systems, AI & Big Data, Hydrology & Water, Web Development, App Development, ERP & Server</li><li>Hover: card border turns teal, icon bg turns teal, icon turns white</li></ul></div>
+      </div>
+      <div class="motion-box"><h4>Motion pattern</h4><p>All 6 cards fade in simultaneously with a 60ms stagger. Hover: smooth border-color + background-color transition on icon container, 0.2s ease. No heavy animations here — keep it clean.</p><div class="tech"><span class="tech-tag">CSS hover transitions</span><span class="tech-tag">IntersectionObserver fade</span></div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hd" onclick="toggle(this)">
+      <div class="sec-num" style="background:#E6F1FB; color:#0C447C;">11</div>
+      <div class="sec-title">CTA band + footer</div>
+      <div class="sec-meta"><span class="pill pill-blue">Adapt</span></div>
+      <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+    </div>
+    <div class="sec-body">
+      <div class="two-col">
+        <div class="col-dark"><h4>Tomorrow.io has</h4><ul><li>No explicit bottom CTA band visible — direct to footer</li><li>Footer: dark, multi-column with social links, legal, newsletter</li></ul></div>
+        <div class="col-light"><h4>WebsoftBD adaptation</h4><ul><li>Dark navy CTA band: "Ready to transform your data into intelligence?"</li><li>2 buttons: "Request Consultation" (teal solid) + "Download Brochure" (ghost)</li><li>Dark navy footer: 4 columns — Brand+certs, Solutions, Projects, Contact</li><li>Certification logos: BASIS, ISO, CMMI, QRO, APN icons in a row</li><li>Useful links bar: World Bank, JICA, BAMIS, BMD, FFWC, BWDB</li></ul></div>
+      </div>
+      <div class="motion-box"><h4>Motion pattern</h4><p>CTA band: headline fades in from below on scroll. Buttons scale from 0.95 to 1.0 with 0.3s delay. Footer links have hover underline slide-in from left. Certification logos have grayscale filter, full-color on hover.</p><div class="tech"><span class="tech-tag">CSS filter grayscale</span><span class="tech-tag">underline animation</span><span class="tech-tag">scroll fade-up</span></div></div>
+    </div>
+  </div>
+</div>
+
+<div id="tab-motion" class="panel">
+  <div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 12px;">Key motion patterns from tomorrow.io — adapted for WebsoftBD light theme</div>
+  <div class="motion-grid">
+    <div class="m-motion-card">
+      <div class="m-motion-icon"><i class="ti ti-player-play" aria-hidden="true"></i></div>
+      <div class="m-motion-title">Hero animated background</div>
+      <div class="m-motion-desc">Tomorrow.io: dark cycling video. WebsoftBD light: animated SVG/Canvas showing Bangladesh weather radar rings, animated rainfall grid, river flow paths. Same visual impact, domain-relevant.</div>
+      <div class="m-motion-tech">canvas + requestAnimationFrame</div>
+    </div>
+    <div class="m-motion-card">
+      <div class="m-motion-icon"><i class="ti ti-arrows-move" aria-hidden="true"></i></div>
+      <div class="m-motion-title">Scroll-triggered fade-ups</div>
+      <div class="m-motion-desc">Every section fades up 20px when it enters viewport. Stagger within sections: each child delays 80ms. Used across ALL sections. The single highest-impact animation.</div>
+      <div class="m-motion-tech">IntersectionObserver + CSS classes</div>
+    </div>
+    <div class="m-motion-card">
+      <div class="m-motion-icon"><i class="ti ti-chart-bar" aria-hidden="true"></i></div>
+      <div class="m-motion-title">Animated counter numbers</div>
+      <div class="m-motion-desc">18+ Years, 1000+ Projects, 956 Clients all count up from 0 when scrolled into view. 1.5s duration, easeOut curve. Triggers once per page load.</div>
+      <div class="m-motion-tech">requestAnimationFrame counter + easing</div>
+    </div>
+    <div class="m-motion-card">
+      <div class="m-motion-icon"><i class="ti ti-arrows-right-left" aria-hidden="true"></i></div>
+      <div class="m-motion-title">Client logo marquee</div>
+      <div class="m-motion-desc">2 rows of client logos scrolling in opposite directions infinitely. Row 1 left at 35s loop, Row 2 right at 45s loop. Pauses on hover. Gives impression of scale.</div>
+      <div class="m-motion-tech">@keyframes marquee + hover pause</div>
+    </div>
+    <div class="m-motion-card">
+      <div class="m-motion-icon"><i class="ti ti-layout-columns" aria-hidden="true"></i></div>
+      <div class="m-motion-title">Sector tab transitions</div>
+      <div class="m-motion-desc">Like tomorrow.io's industry tabs. Click a sector tab → right panel content fades out 0.15s, new content fades in 0.25s. Left accordion slides with max-height. Feels native.</div>
+      <div class="m-motion-tech">opacity transition + max-height accordion</div>
+    </div>
+    <div class="m-motion-card">
+      <div class="m-motion-icon"><i class="ti ti-device-desktop" aria-hidden="true"></i></div>
+      <div class="m-motion-title">Dashboard floating visual</div>
+      <div class="m-motion-desc">BAMIS dashboard screenshot gently floats up and down (translateY ±8px, 4s ease-in-out infinite loop). Drop shadow pulses subtly. Like a product demo floating in air.</div>
+      <div class="m-motion-tech">@keyframes float + box-shadow pulse</div>
+    </div>
+    <div class="m-motion-card">
+      <div class="m-motion-icon"><i class="ti ti-sticky" aria-hidden="true"></i></div>
+      <div class="m-motion-title">Sticky nav on scroll</div>
+      <div class="m-motion-desc">Nav starts transparent over hero. After 80px scroll → white bg fades in, box-shadow appears, logo slightly compresses. Smooth 0.3s transition. Standard but essential.</div>
+      <div class="m-motion-tech">scroll event + CSS transition</div>
+    </div>
+    <div class="m-motion-card">
+      <div class="m-motion-icon"><i class="ti ti-cards" aria-hidden="true"></i></div>
+      <div class="m-motion-title">Card hover lift</div>
+      <div class="m-motion-desc">Project and service cards: hover → translateY(-4px) + border-color teal + icon bg change. 0.2s ease. Applied to all cards. Micro-interaction that makes the UI feel responsive.</div>
+      <div class="m-motion-tech">CSS hover transform + transition</div>
+    </div>
+  </div>
+  <div style="margin-top: 14px; background: var(--color-background-secondary); border-radius: 10px; padding: 12px;">
+    <div style="font-size: 12px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 6px;">Key difference: light theme motion philosophy</div>
+    <div style="font-size: 12px; color: var(--color-text-secondary); line-height: 1.6;">Tomorrow.io uses dark backgrounds where motion is dramatic (glowing planet, dark video). In your <strong style="font-weight:500">light theme</strong>, motion should feel calm and data-driven — think gentle fades, precise number counters, and geographic data animations. The hero background should evoke a weather map, not a spacecraft. Color for animation: use teal pulses (#1D9E75), not blue glows.</div>
+  </div>
+</div>
+
+<div id="tab-order" class="panel">
+  <div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 12px;">Exact page section order for new websoftbd.net — tomorrow.io pattern, light theme, WebsoftBD content</div>
+  <div class="order-stack">
+    <div class="order-item"><div class="order-n">1</div><div class="order-content"><div class="order-label">Announcement bar</div><div class="order-desc">Latest news: JICA agreement, new project launch, or award. Dismissable. Mint green bg.</div><div class="order-badges"><span class="ob pill-green">New</span><span class="ob pill-blue">Motion: slide-down</span></div></div></div>
+    <div class="order-item"><div class="order-n">2</div><div class="order-content"><div class="order-label">Sticky transparent navbar</div><div class="order-desc">Logo · Sectors∨ · Solutions∨ · Projects · Clients · Contact · [Request Consultation] button</div><div class="order-badges"><span class="ob pill-blue">Adapt</span><span class="ob pill-blue">Motion: scroll white-in</span></div></div></div>
+    <div class="order-item"><div class="order-n">3</div><div class="order-content"><div class="order-label">Full-viewport hero</div><div class="order-desc">Animated weather-map background · ISO badge pill · Bold headline · 2 CTAs · 4 domain tags</div><div class="order-badges"><span class="ob pill-amber">Key</span><span class="ob pill-blue">Motion: canvas animation + fade-up</span></div></div></div>
+    <div class="order-item"><div class="order-n">4</div><div class="order-content"><div class="order-label">Client logo marquee</div><div class="order-desc">"Trusted by leading organizations" · 2-row scrolling logos · World Bank, JICA, BMD, BWDB…</div><div class="order-badges"><span class="ob pill-amber">Key</span><span class="ob pill-blue">Motion: infinite marquee</span></div></div></div>
+    <div class="order-item"><div class="order-n">5</div><div class="order-content"><div class="order-label">Sectors tab section</div><div class="order-desc">Agro-Met · Hydrology · Big Data · AI · ERP — click to explore features + animated dashboard</div><div class="order-badges"><span class="ob pill-amber">Key</span><span class="ob pill-blue">Motion: tab fade + accordion</span></div></div></div>
+    <div class="order-item"><div class="order-n">6</div><div class="order-content"><div class="order-label">BAMIS case study spotlight</div><div class="order-desc">Mint bg card · 3 animated metric counters · Floating dashboard screenshot · "Read Case Study"</div><div class="order-badges"><span class="ob pill-green">New</span><span class="ob pill-blue">Motion: counter + float</span></div></div></div>
+    <div class="order-item"><div class="order-n">7</div><div class="order-content"><div class="order-label">Stats + value proposition band</div><div class="order-desc">Dark navy · 4 animated counters · 3-column bold propositions below</div><div class="order-badges"><span class="ob pill-blue">Adapt</span><span class="ob pill-blue">Motion: count-up on scroll</span></div></div></div>
+    <div class="order-item"><div class="order-n">8</div><div class="order-content"><div class="order-label">Projects grid</div><div class="order-desc">BAMIS · BMD · Aviation · Salinity · AI · HDF — sector tag + client + impact stat per card</div><div class="order-badges"><span class="ob pill-blue">Adapt</span><span class="ob pill-blue">Motion: stagger fade-up + hover lift</span></div></div></div>
+    <div class="order-item"><div class="order-n">9</div><div class="order-content"><div class="order-label">Services grid</div><div class="order-desc">6 cards: Agro-Met · AI · Hydrology · Web · App · ERP · icon + name + sector tag</div><div class="order-badges"><span class="ob pill-blue">Adapt</span><span class="ob pill-blue">Motion: fade-in + hover color</span></div></div></div>
+    <div class="order-item"><div class="order-n">10</div><div class="order-content"><div class="order-label">Client testimonials</div><div class="order-desc">"In their own words" · 2-col quote cards · World Bank, JICA officials</div><div class="order-badges"><span class="ob pill-green">New</span><span class="ob pill-blue">Motion: slide-in from right</span></div></div></div>
+    <div class="order-item"><div class="order-n">11</div><div class="order-content"><div class="order-label">CTA band</div><div class="order-desc">Dark navy · "Ready to transform your data?" · Request Consultation + Download Brochure</div><div class="order-badges"><span class="ob pill-blue">Adapt</span><span class="ob pill-blue">Motion: fade-up + button scale</span></div></div></div>
+    <div class="order-item"><div class="order-n">12</div><div class="order-content"><div class="order-label">4-column footer</div><div class="order-desc">Brand+certs · Solutions · Projects · Contact · Certification logos · Useful partner links</div><div class="order-badges"><span class="ob pill-blue">Adapt</span><span class="ob pill-blue">Motion: logo hover color</span></div></div></div>
+  </div>
+  <div style="margin-top: 12px; background: var(--color-background-info); border-radius: 10px; padding: 12px;">
+    <div style="font-size: 12px; font-weight: 500; color: var(--color-text-info); margin-bottom: 4px;">Ready to build?</div>
+    <div style="font-size: 12px; color: var(--color-text-info); line-height: 1.6; margin-bottom: 8px;">This blueprint is complete. The next step is building the actual HTML/CSS/JS file for the homepage. Should I generate it now?</div>
+    <button style="font-size: 12px; color: var(--color-text-info); background: var(--color-background-primary); border: 0.5px solid var(--color-border-info); border-radius: 6px; padding: 5px 12px; cursor: pointer;" onclick="sendPrompt('Now build the complete HTML file for the WebsoftBD homepage — tomorrow.io design concept, light theme (white + teal #0E6E50 + navy #0d1f35), all 12 sections with scroll animations, canvas hero background, marquee logos, sector tabs, animated counters, floating dashboard, and everything from the blueprint')">Build the full HTML now ↗</button>
+  </div>
+</div>
+
+</div>
+<script>
+function switchTab(id) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('on'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('on'));
+  document.getElementById('tab-' + id).classList.add('on');
+  event.target.classList.add('on');
+}
+function toggle(hd) {
+  const body = hd.nextElementSibling;
+  const ch = hd.querySelector('.chevron');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  ch.classList.toggle('open', !isOpen);
+}
+</script>

@@ -1,0 +1,633 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Industries We Serve</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;display=swap" rel="stylesheet">
+
+  <style>
+    .animate-on-scroll-hidden { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+    .animate-on-scroll-visible { opacity: 1; transform: translateY(0); }
+    
+    /* Custom Slider Styles */
+    .bg-image-fade {
+      transition: opacity 0.6s ease-in-out;
+    }
+  </style>
+   
+<style type="text/tailwindcss">@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .industry-card:hover .industry-details {
+    @apply block opacity-100 max-h-[500px] mt-4;
+  }
+  .industry-card .industry-details {
+    @apply hidden opacity-0 max-h-0 overflow-hidden transition-all duration-500 ease-in-out;
+  }
+  .industry-card:hover .explore-btn {
+    @apply inline-flex opacity-100 mt-6;
+  }
+  .industry-card .explore-btn {
+    @apply hidden opacity-0 transition-all duration-500 ease-in-out;
+  }
+}</style><script src="https://cdn.tailwindcss.com"></script><script>tailwind.config = {
+  important: '#app-root',
+  theme: {
+    extend: {
+      colors: {
+        'brand-orange': '#F57E20',
+        'brand-blue': '#007AB9',
+        'neutral-background': 'rgb(255, 255, 255)',
+        'text-primary': 'rgb(33, 37, 41)',
+      },
+      fontFamily: {
+        'primary': ['Montserrat', 'sans-serif'],
+        'secondary': ['Montserrat', 'sans-serif'],
+      },
+      spacing: {
+        'header-left': '8%',
+      },
+      transitionProperty: {
+        'height': 'height',
+        'spacing': 'margin, padding',
+      }
+    }
+  }
+}</script></head>
+
+<body id="app-root">
+  <div class="font-primary bg-white overflow-x-hidden min-h-screen flex flex-col w-full relative">
+    <main class="flex-grow"><section id="industries-impact" class="relative w-full h-[600px] overflow-hidden group" data-animation-on-scroll="">
+  
+  <!-- Background Images Container -->
+  <div class="absolute inset-0 w-full h-full">
+    <img id="bg-0" src="https://www.rmsi.com/wp-content/uploads/2025/12/utility_banner_HP_01-1.jpg" alt="Energy &amp; Utilities" class="bg-image-fade absolute inset-0 w-full h-full object-cover opacity-100 z-0">
+    <img id="bg-1" src="https://www.rmsi.com/wp-content/uploads/2025/11/telecom-hero.jpg" alt="Telecommunications" class="bg-image-fade absolute inset-0 w-full h-full object-cover opacity-0 z-0">
+    <img id="bg-2" src="https://www.rmsi.com/wp-content/uploads/2025/11/technology-hero.jpg" alt="Navigation" class="bg-image-fade absolute inset-0 w-full h-full object-cover opacity-0 z-0">
+    <img id="bg-3" src="https://www.rmsi.com/wp-content/uploads/2025/11/cs-hero.jpg" alt="Corporate Sustainability" class="bg-image-fade absolute inset-0 w-full h-full object-cover opacity-0 z-0">
+    <img id="bg-4" src="https://www.rmsi.com/wp-content/uploads/2026/01/PUBLIC-SECTOR.png" alt="Public Sector" class="bg-image-fade absolute inset-0 w-full h-full object-cover opacity-0 z-0">
+  </div>
+
+  <!-- Heading Overlay -->
+  <div class="absolute top-[80px] left-[8%] z-30 pointer-events-none">
+    <h2 class="text-white text-4xl md:text-[50px] font-bold leading-tight md:leading-[60px]">
+      Where We Make<br>an Impact
+    </h2>
+  </div>
+
+  <!-- Cards Container -->
+  <div class="absolute inset-0 flex z-20">
+    
+    <!-- Energy & Utilities -->
+    <div class="industry-card flex-1 flex flex-col justify-end p-8 md:p-10 lg:pl-[68px] bg-black/20 hover:bg-black/50 border-r border-white/10 transition-all duration-300 cursor-pointer" data-target="0">
+      <div class="max-w-[320px]">
+        <h3 class="text-white text-2xl font-bold capitalize mb-2">Energy &amp; Utilities</h3>
+        <p class="industry-details text-white text-base leading-6">
+          Utilities are transforming for a smarter, more resilient future, achieving 30% gains in reliability, 52% lower compliance risks, and unmatched efficiency.
+        </p>
+        <a href="#" class="explore-btn items-center px-10 py-2.5 bg-brand-orange border border-brand-orange text-white rounded-full font-medium hover:bg-brand-blue hover:border-brand-blue transition-colors duration-300">
+          Explore
+        </a>
+      </div>
+    </div>
+
+    <!-- Telecommunications -->
+    <div class="industry-card flex-1 flex flex-col justify-end p-8 md:p-10 lg:pl-[68px] bg-black/20 hover:bg-black/50 border-r border-white/10 transition-all duration-300 cursor-pointer" data-target="1">
+      <div class="max-w-[320px]">
+        <h3 class="text-white text-2xl font-bold capitalize mb-2">Telecommunications</h3>
+        <p class="industry-details text-white text-base leading-6">
+          The telecom industry is driving rapid network growth and digital reinvention cutting churn by 30%, accelerating service rollout by up to 30%, and lifting satisfaction by 15+ NPS points.
+        </p>
+        <a href="#" class="explore-btn items-center px-10 py-2.5 bg-brand-orange border border-brand-orange text-white rounded-full font-medium hover:bg-brand-blue hover:border-brand-blue transition-colors duration-300">
+          Explore
+        </a>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="industry-card flex-1 flex flex-col justify-end p-8 md:p-10 lg:pl-[68px] bg-black/20 hover:bg-black/50 border-r border-white/10 transition-all duration-300 cursor-pointer" data-target="2">
+      <div class="max-w-[320px]">
+        <h3 class="text-white text-2xl font-bold capitalize mb-2">Navigation</h3>
+        <p class="industry-details text-white text-base leading-6">
+          The navigation sector stands at the intersection of rapid innovation and operational scalability demanding faster rollouts, sharper data strategies, and resilient supply chains.
+        </p>
+        <a href="#" class="explore-btn items-center px-10 py-2.5 bg-brand-orange border border-brand-orange text-white rounded-full font-medium hover:bg-brand-blue hover:border-brand-blue transition-colors duration-300">
+          Explore
+        </a>
+      </div>
+    </div>
+
+    <!-- Corporate Sustainability -->
+    <div class="industry-card flex-1 flex flex-col justify-end p-8 md:p-10 lg:pl-[68px] bg-black/20 hover:bg-black/50 border-r border-white/10 transition-all duration-300 cursor-pointer" data-target="3">
+      <div class="max-w-[320px]">
+        <h3 class="text-white text-2xl font-bold capitalize mb-2">Corporate Sustainability</h3>
+        <p class="industry-details text-white text-base leading-6">
+          Sustainability is no longer just about reputation it’s about enterprise value and business continuity. Climate risks threaten trillions in global enterprise value, while strong ESG performers enjoy up to 15% lower capital costs.
+        </p>
+        <a href="#" class="explore-btn items-center px-10 py-2.5 bg-brand-orange border border-brand-orange text-white rounded-full font-medium hover:bg-brand-blue hover:border-brand-blue transition-colors duration-300">
+          Explore
+        </a>
+      </div>
+    </div>
+
+    <!-- Public Sector -->
+    <div class="industry-card flex-1 flex flex-col justify-end p-8 md:p-10 lg:pl-[68px] bg-black/20 hover:bg-black/50 transition-all duration-300 cursor-pointer" data-target="4">
+      <div class="max-w-[320px]">
+        <h3 class="text-white text-2xl font-bold capitalize mb-2">Public Sector</h3>
+        <p class="industry-details text-white text-base leading-6">
+          Governments worldwide are navigating evolving climate, sustainability, and infrastructure challenges that demand data-driven, long-term planning.
+        </p>
+        <a href="#" class="explore-btn items-center px-10 py-2.5 bg-brand-orange border border-brand-orange text-white rounded-full font-medium hover:bg-brand-blue hover:border-brand-blue transition-colors duration-300">
+          Explore
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Navigation Arrows (Desktop Visual Only as per original) -->
+  <button class="absolute left-10 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white bg-black/30 text-white z-40 hidden lg:flex items-center justify-center hover:bg-brand-orange transition-colors">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"></path></svg>
+  </button>
+  <button class="absolute right-10 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white bg-black/30 text-white z-40 hidden lg:flex items-center justify-center hover:bg-brand-orange transition-colors">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path></svg>
+  </button>
+
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.industry-card');
+  const bgImages = document.querySelectorAll('.bg-image-fade');
+
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      const index = card.getAttribute('data-target');
+      
+      // Update background images
+      bgImages.forEach((img, i) => {
+        if (i == index) {
+          img.style.opacity = '1';
+          img.style.zIndex = '1';
+        } else {
+          img.style.opacity = '0';
+          img.style.zIndex = '0';
+        }
+      });
+    });
+  });
+});
+</script></main>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-on-scroll-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.05 });
+
+      document.querySelectorAll('[data-animation-on-scroll]').forEach(el => {
+        el.classList.add('animate-on-scroll-hidden');
+        observer.observe(el);
+      });
+    });
+  </script>
+
+
+    <script id="lh-website-form-handler" data-lh-form-handler="true">
+    (function() {
+      if (window.__lhWebsiteFormHandlerInitialized) return;
+      window.__lhWebsiteFormHandlerInitialized = true;
+
+      var PROJECT_ID = "pZLJWURoItd1yBIX8q1d";
+      var DEFAULT_SUCCESS_MESSAGE = 'Thanks. Your message has been sent.';
+      var DEFAULT_ERROR_MESSAGE = 'Could not submit the form. Please try again.';
+
+      function isLocalHostname(hostname) {
+        var normalized = String(hostname || '').trim().toLowerCase();
+        return normalized === 'localhost' || normalized === '127.0.0.1';
+      }
+
+      function readHostnameFromUrl(url) {
+        if (!url) return '';
+
+        try {
+          return String(new URL(url).hostname || '').trim().toLowerCase();
+        } catch (_) {
+          return '';
+        }
+      }
+
+      function detectApiBaseUrl() {
+        try {
+          var hostname = window.location.hostname || '';
+          if (isLocalHostname(hostname)) {
+            return 'http://localhost:8080/api';
+          }
+        } catch (_) {}
+
+        try {
+          var baseHostname = readHostnameFromUrl(document.baseURI || '');
+          if (isLocalHostname(baseHostname)) {
+            return 'http://localhost:8080/api';
+          }
+        } catch (_) {}
+
+        try {
+          var parentHostname =
+            window.parent && window.parent !== window && window.parent.location
+              ? String(window.parent.location.hostname || '').trim().toLowerCase()
+              : '';
+          if (isLocalHostname(parentHostname)) {
+            return 'http://localhost:8080/api';
+          }
+        } catch (_) {}
+
+        return 'https://api.landinghero.ai/api';
+      }
+
+      var API_BASE_URL = detectApiBaseUrl();
+
+      function getFeedbackNode(form) {
+        var feedback = form.nextElementSibling;
+        if (
+          feedback &&
+          feedback.nodeType === 1 &&
+          feedback.getAttribute('data-lh-form-feedback') === 'true'
+        ) {
+          return feedback;
+        }
+
+        feedback = document.createElement('div');
+        feedback.setAttribute('data-lh-form-feedback', 'true');
+        feedback.setAttribute('aria-live', 'polite');
+        feedback.style.marginTop = '12px';
+        feedback.style.padding = '12px 14px';
+        feedback.style.borderRadius = '10px';
+        feedback.style.fontSize = '14px';
+        feedback.style.lineHeight = '1.5';
+        feedback.style.display = 'none';
+        form.insertAdjacentElement('afterend', feedback);
+        return feedback;
+      }
+
+      function setFeedback(form, kind, message) {
+        var feedback = getFeedbackNode(form);
+        feedback.textContent = message || '';
+        feedback.style.display = message ? 'block' : 'none';
+        feedback.style.border = kind === 'success'
+          ? '1px solid rgba(16, 185, 129, 0.25)'
+          : '1px solid rgba(239, 68, 68, 0.25)';
+        feedback.style.background = kind === 'success'
+          ? 'rgba(16, 185, 129, 0.08)'
+          : 'rgba(239, 68, 68, 0.08)';
+        feedback.style.color = kind === 'success' ? '#065f46' : '#991b1b';
+      }
+
+      function isElementVisible(element) {
+        if (!element) return false;
+        if (element.type === 'hidden') return false;
+
+        try {
+          var style = window.getComputedStyle(element);
+          if (
+            style.display === 'none' ||
+            style.visibility === 'hidden' ||
+            Number(style.opacity || '1') === 0
+          ) {
+            return false;
+          }
+        } catch (_) {}
+
+        if (typeof element.getClientRects === 'function') {
+          return element.getClientRects().length > 0;
+        }
+
+        return true;
+      }
+
+      function getFieldLabel(form, element) {
+        var ariaLabel = String(element.getAttribute('aria-label') || '').trim();
+        if (ariaLabel) return ariaLabel;
+
+        var labels = element.labels;
+        if (labels && labels.length > 0) {
+          var joined = Array.prototype.map.call(labels, function(label) {
+            return String(label.textContent || '').trim();
+          }).filter(Boolean).join(' ');
+          if (joined) return joined;
+        }
+
+        var id = String(element.id || '').trim();
+        if (id) {
+          try {
+            var escapedId =
+              typeof CSS !== 'undefined' && typeof CSS.escape === 'function'
+                ? CSS.escape(id)
+                : id.replace(/"/g, '\"');
+            var explicitLabel = form.querySelector('label[for="' + escapedId + '"]');
+            if (explicitLabel) {
+              var explicitText = String(explicitLabel.textContent || '').trim();
+              if (explicitText) return explicitText;
+            }
+          } catch (_) {}
+        }
+
+        var parentLabel = typeof element.closest === 'function'
+          ? element.closest('label')
+          : null;
+        if (parentLabel) {
+          var parentText = String(parentLabel.textContent || '').trim();
+          if (parentText) return parentText;
+        }
+
+        var parentElement = element.parentElement;
+        if (parentElement) {
+          var siblingLabel = parentElement.querySelector('label');
+          if (siblingLabel) {
+            var siblingLabelText = String(siblingLabel.textContent || '').trim();
+            if (siblingLabelText) return siblingLabelText;
+          }
+        }
+
+        var previousSibling = element.previousElementSibling;
+        while (previousSibling) {
+          if (String(previousSibling.tagName || '').toLowerCase() === 'label') {
+            var previousSiblingText = String(previousSibling.textContent || '').trim();
+            if (previousSiblingText) return previousSiblingText;
+          }
+          previousSibling = previousSibling.previousElementSibling;
+        }
+
+        var placeholder = String(element.getAttribute('placeholder') || '').trim();
+        if (placeholder) return placeholder;
+
+        return String(element.name || element.id || element.type || 'field').trim();
+      }
+
+      function addDataValue(data, name, value) {
+        if (!name) return;
+
+        if (Object.prototype.hasOwnProperty.call(data, name)) {
+          if (Array.isArray(data[name])) {
+            data[name].push(value);
+          } else {
+            data[name] = [data[name], value];
+          }
+          return;
+        }
+
+        data[name] = value;
+      }
+
+      function normalizeFieldType(element) {
+        var tagName = String(element.tagName || '').toLowerCase();
+        if (tagName === 'textarea') return 'textarea';
+        if (tagName === 'select') return 'select';
+        return String(element.type || tagName || 'text').toLowerCase();
+      }
+
+      function getFieldValue(element) {
+        var type = normalizeFieldType(element);
+
+        if (type === 'checkbox' || type === 'radio') {
+          return element.checked ? 'true' : '';
+        }
+
+        if (type === 'file') {
+          if (!element.files || !element.files.length) return '';
+          return Array.prototype.map.call(element.files, function(file) {
+            return file && file.name ? file.name : '';
+          }).filter(Boolean).join(', ');
+        }
+
+        if (element.tagName && String(element.tagName).toLowerCase() === 'select' && element.multiple) {
+          return Array.prototype.map.call(element.selectedOptions || [], function(option) {
+            return option && option.value ? option.value : '';
+          }).filter(Boolean).join(', ');
+        }
+
+        return String(element.value || '').trim();
+      }
+
+      function collectFormPayload(form) {
+        var fields = [];
+        var data = {};
+        var elements = form.querySelectorAll('input, textarea, select');
+
+        Array.prototype.forEach.call(elements, function(element, index) {
+          if (!element || element.disabled) return;
+          if (!isElementVisible(element)) return;
+
+          var type = normalizeFieldType(element);
+          if (
+            type === 'submit' ||
+            type === 'button' ||
+            type === 'reset' ||
+            type === 'image'
+          ) {
+            return;
+          }
+
+          if ((type === 'checkbox' || type === 'radio') && !element.checked) {
+            return;
+          }
+
+          var value = getFieldValue(element);
+          if (!value) return;
+
+          var name = String(element.name || element.id || ('field_' + index)).trim();
+          if (!name) return;
+
+          fields.push({
+            name: name,
+            label: getFieldLabel(form, element),
+            type: type,
+            value: value
+          });
+          addDataValue(data, name, value);
+        });
+
+        return { fields: fields, data: data };
+      }
+
+      function getPageUrl() {
+        try {
+          if (window.location.href && window.location.href !== 'about:srcdoc') {
+            return window.location.href;
+          }
+        } catch (_) {}
+
+        try {
+          return String(document.baseURI || '').trim();
+        } catch (_) {
+          return '';
+        }
+      }
+
+      function setSubmittingState(form, isSubmitting) {
+        var submitControls = form.querySelectorAll(
+          'button[type="submit"], input[type="submit"], input[type="image"], [data-pixel-form-submit="true"]'
+        );
+
+        Array.prototype.forEach.call(submitControls, function(control) {
+          if (!(control instanceof HTMLElement)) return;
+
+          if (isSubmitting) {
+            if (!control.hasAttribute('data-lh-original-disabled')) {
+              control.setAttribute(
+                'data-lh-original-disabled',
+                control.hasAttribute('disabled') ? 'true' : 'false'
+              );
+            }
+            control.setAttribute('disabled', 'disabled');
+          } else if (control.getAttribute('data-lh-original-disabled') === 'false') {
+            control.removeAttribute('disabled');
+          }
+
+          if (control.tagName.toLowerCase() === 'button') {
+            if (isSubmitting) {
+              if (!control.hasAttribute('data-lh-original-label')) {
+                control.setAttribute(
+                  'data-lh-original-label',
+                  String(control.textContent || '')
+                );
+              }
+              control.textContent = 'Sending...';
+            } else if (control.hasAttribute('data-lh-original-label')) {
+              control.textContent = control.getAttribute('data-lh-original-label') || '';
+              control.removeAttribute('data-lh-original-label');
+            }
+          } else if (control.tagName.toLowerCase() === 'input') {
+            if (isSubmitting) {
+              if (!control.hasAttribute('data-lh-original-label')) {
+                control.setAttribute(
+                  'data-lh-original-label',
+                  String(control.getAttribute('value') || '')
+                );
+              }
+              control.setAttribute('value', 'Sending...');
+            } else if (control.hasAttribute('data-lh-original-label')) {
+              control.setAttribute(
+                'value',
+                control.getAttribute('data-lh-original-label') || ''
+              );
+              control.removeAttribute('data-lh-original-label');
+            }
+          }
+
+          if (!isSubmitting) {
+            control.removeAttribute('data-lh-original-disabled');
+          }
+        });
+      }
+
+      async function handleLandingHeroSubmit(payload) {
+        return fetch(API_BASE_URL + '/projects/forms/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+      }
+
+      async function handleWebhookSubmit(url, payload) {
+        return fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+      }
+
+      document.addEventListener('submit', async function(event) {
+        var form = event.target;
+        if (!(form instanceof HTMLFormElement)) return;
+        if (!PROJECT_ID) return;
+        if (form.__lhFormSubmitting) return;
+
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+
+        var payload = collectFormPayload(form);
+        if (!payload.fields.length) {
+          setFeedback(form, 'error', 'Please complete the form before submitting.');
+          return;
+        }
+
+        form.__lhFormSubmitting = true;
+        setSubmittingState(form, true);
+        setFeedback(form, 'success', '');
+
+        var mode = String(form.getAttribute('data-lh-form-mode') || 'landinghero')
+          .trim()
+          .toLowerCase() === 'webhook'
+          ? 'webhook'
+          : 'landinghero';
+
+        var requestPayload = {
+          project_id: PROJECT_ID,
+          projectId: PROJECT_ID,
+          submittedAt: new Date().toISOString(),
+          pageUrl: getPageUrl(),
+          form: {
+            pixelId: String(form.getAttribute('data-pixel-id') || '').trim()
+          },
+          fields: payload.fields,
+          data: payload.data
+        };
+
+        try {
+          var response;
+
+          if (mode === 'webhook') {
+            var webhookUrl = String(form.getAttribute('data-lh-form-webhook-url') || '').trim();
+            if (!webhookUrl) {
+              throw new Error('Webhook URL is not configured for this form.');
+            }
+            response = await handleWebhookSubmit(webhookUrl, requestPayload);
+          } else {
+            requestPayload.recipientEmail = String(
+              form.getAttribute('data-lh-form-recipient-email') || ''
+            ).trim();
+            response = await handleLandingHeroSubmit(requestPayload);
+          }
+
+          if (!response.ok) {
+            var errorMessage = DEFAULT_ERROR_MESSAGE;
+            try {
+              var errorBody = await response.json();
+              if (errorBody && errorBody.error) {
+                errorMessage = String(errorBody.error);
+              }
+            } catch (_) {}
+            throw new Error(errorMessage);
+          }
+
+          setFeedback(form, 'success', DEFAULT_SUCCESS_MESSAGE);
+          form.reset();
+        } catch (error) {
+          setFeedback(
+            form,
+            'error',
+            error && error.message ? error.message : DEFAULT_ERROR_MESSAGE
+          );
+        } finally {
+          form.__lhFormSubmitting = false;
+          setSubmittingState(form, false);
+        }
+      }, true);
+    })();
+  </script>
+</body></html>

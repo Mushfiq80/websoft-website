@@ -1,19 +1,1032 @@
+"use client"
+
+import * as React from "react"
 import { Button } from "@workspace/ui/components/button"
+import { Cloud, Droplet, BarChart3, Brain, Globe, Server, Smartphone, ArrowRight, X, Menu, ChevronDown, Leaf, Satellite, TrendingUp, Map, CloudRain, Wind, Plane, Navigation, Play, Quote, Check, Zap, Waves } from "lucide-react"
+
+// ============================================
+// DATA & CONTENT
+// ============================================
+
+const ANNOUNCEMENTS = [
+  {
+    id: 1,
+    text: "WebsoftBD & JICA sign new agreement for Bangladesh flood forecasting system 2026",
+    link: "Read More"
+  }
+]
+
+const CLIENTS = [
+  { name: "World Bank", abbr: "WB" },
+  { name: "JICA", abbr: "JI" },
+  { name: "BMD", abbr: "BM" },
+  { name: "BWDB", abbr: "BW" },
+  { name: "DAE", abbr: "DA" },
+  { name: "SAARC", abbr: "SA" },
+  { name: "A2i", abbr: "A2" },
+  { name: "Dhaka University", abbr: "DU" },
+  { name: "FFWC", abbr: "FF" },
+  { name: "HDF", abbr: "HD" },
+]
+
+const SECTORS = [
+  {
+    id: "agro-met",
+    name: "Agro-Met",
+    icon: Leaf,
+    color: "rgb(var(--primary))",
+    features: [
+      { title: "Crop yield monitoring", desc: "Real-time agro-meteorological data for food security planning", icon: Leaf },
+      { title: "Satellite data integration", desc: "Remote sensing for climate and land use analysis", icon: Satellite },
+      { title: "Forecast dissemination", desc: "Weather advisory to 1.2M+ farmers via BAMIS", icon: TrendingUp },
+    ],
+    visual: { label: "BAMIS Dashboard — live", icon: Map }
+  },
+  {
+    id: "hydrology",
+    name: "Hydrology",
+    icon: Droplet,
+    color: "rgb(var(--primary))",
+    features: [
+      { title: "Flood forecasting", desc: "Real-time flood prediction and early warning systems", icon: Droplet },
+      { title: "Salinity modeling", desc: "Coastal water salinity intrusion simulation", icon: Waves },
+      { title: "River flow analysis", desc: "3D flood risk mapping and simulation", icon: Waves },
+    ],
+    visual: { label: "Flood Forecasting System", icon: Waves }
+  },
+  {
+    id: "bigdata",
+    name: "Big Data",
+    icon: BarChart3,
+    color: "rgb(var(--primary))",
+    features: [
+      { title: "Climate analytics", desc: "Big data processing for climate adaptation", icon: BarChart3 },
+      { title: "AI-powered insights", desc: "Machine learning for pattern recognition", icon: Brain },
+      { title: "Data visualization", desc: "Interactive dashboards for decision makers", icon: TrendingUp },
+    ],
+    visual: { label: "Climate Analytics Platform", icon: BarChart3 }
+  },
+  {
+    id: "ai",
+    name: "AI",
+    icon: Brain,
+    color: "rgb(var(--primary))",
+    features: [
+      { title: "ML models", desc: "Custom machine learning for environmental data", icon: Brain },
+      { title: "Predictive analytics", desc: "Weather and crop yield prediction", icon: TrendingUp },
+      { title: "Neural networks", desc: "Deep learning for pattern detection", icon: Zap },
+    ],
+    visual: { label: "AI Prediction Engine", icon: Brain }
+  },
+  {
+    id: "web",
+    name: "Web & ERP",
+    icon: Globe,
+    color: "rgb(var(--primary))",
+    features: [
+      { title: "Web portals", desc: "Government and enterprise web applications", icon: Globe },
+      { title: "Mobile apps", desc: "iOS and Android applications", icon: Smartphone },
+      { title: "ERP solutions", desc: "Enterprise resource planning systems", icon: Server },
+    ],
+    visual: { label: "Enterprise Portal", icon: Globe }
+  },
+]
+
+const PROJECTS = [
+  {
+    id: 1,
+    tag: "Agro-Met · AI · Govt",
+    name: "BAMIS — Bangladesh Agro-Meteorological Information System",
+    stat: "Serving 1.2M+ farmers · 64 districts",
+    icon: CloudRain,
+    color: "rgb(var(--success))",
+    bgColor: "rgb(var(--success-light))",
+  },
+  {
+    id: 2,
+    tag: "Meteorology · BMD",
+    name: "Bangladesh Meteorological Department system",
+    stat: "National weather data infrastructure",
+    icon: Wind,
+    color: "rgb(24, 95, 165)",
+    bgColor: "rgb(223, 232, 245)",
+  },
+  {
+    id: 3,
+    tag: "Aviation · Data Sharing",
+    name: "Aviation observed data sharing system",
+    stat: "Real-time aviation weather integration",
+    icon: Plane,
+    color: "rgb(133, 79, 11)",
+    bgColor: "rgb(245, 238, 221)",
+  },
+  {
+    id: 4,
+    tag: "Water · Hydrology · GIS",
+    name: "Salinity intrusion model for coastal Bangladesh",
+    stat: "3D flood risk simulation · BWDB",
+    icon: Waves,
+    color: "rgb(83, 74, 183)",
+    bgColor: "rgb(229, 221, 245)",
+  },
+]
+
+const SERVICES = [
+  { name: "Agro-Met Systems", sector: "BAMIS · BMD · SAARC", icon: Cloud },
+  { name: "AI & Big Data", sector: "Analytics · ML Models", icon: Brain },
+  { name: "Hydrology & Water", sector: "BWDB · Flood · Salinity", icon: Droplet },
+  { name: "Web Development", sector: "Portals · Dashboards", icon: Globe },
+  { name: "App Development", sector: "Mobile · API · IoT", icon: Smartphone },
+  { name: "ERP & Server", sector: "Infrastructure · Cloud", icon: Server },
+]
+
+const TESTIMONIALS = [
+  {
+    id: 1,
+    org: "World Bank",
+    role: "Development Partner",
+    logo: "WB",
+    quote: "WebsoftBD delivered a robust agro-met platform that directly supports food security for millions of farmers across Bangladesh.",
+  },
+  {
+    id: 2,
+    org: "JICA Bangladesh",
+    role: "Project Partner",
+    logo: "JI",
+    quote: "The flood forecasting system developed by WebsoftBD has significantly improved our disaster preparedness capabilities.",
+  },
+]
+
+const STATS = [
+  { num: "18+", label: "Years operating" },
+  { num: "1000+", label: "Projects delivered" },
+  { num: "956", label: "Satisfied clients" },
+  { num: "ISO", label: "9001:2015 certified" },
+]
+
+const PROPOSITIONS = [
+  "Bangladesh's only ISO-certified agro-met ICT company",
+  "AI-powered data fusion for weather and agriculture",
+  "Trusted by World Bank, JICA & Bangladesh Government",
+]
+
+// ============================================
+// UTILITY HOOKS
+// ============================================
+
+function useInView<T extends HTMLElement>(threshold = 0.1) {
+  const ref = React.useRef<T>(null)
+  const [isInView, setIsInView] = React.useState(false)
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0]
+        if (entry?.isIntersecting) {
+          setIsInView(true)
+        }
+      },
+      { threshold }
+    )
+
+    const current = ref.current
+    if (current) {
+      observer.observe(current)
+    }
+
+    return () => {
+      if (current) {
+        observer.unobserve(current)
+      }
+    }
+  }, [threshold])
+
+  return { ref, isInView }
+}
+
+function useCounter(end: number, duration = 1500, start = 0) {
+  const [count, setCount] = React.useState(start)
+  const { ref, isInView } = useInView<HTMLDivElement>(0.5)
+  const [hasCounted, setHasCounted] = React.useState(false)
+
+  React.useEffect(() => {
+    if (isInView && !hasCounted) {
+      setHasCounted(true)
+      const startTime = performance.now()
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime
+        const progress = Math.min(elapsed / duration, 1)
+        const easeOut = 1 - Math.pow(1 - progress, 3)
+        setCount(Math.floor(start + (end - start) * easeOut))
+
+        if (progress < 1) {
+          requestAnimationFrame(animate)
+        }
+      }
+      requestAnimationFrame(animate)
+    }
+  }, [isInView, hasCounted, end, duration, start])
+
+  return { ref, count }
+}
+
+// ============================================
+// SECTION COMPONENTS
+// ============================================
+
+function AnnouncementBar() {
+  const [dismissed, setDismissed] = React.useState(false)
+  const announcement = ANNOUNCEMENTS[0]
+
+  if (dismissed || !announcement) return null
+
+  return (
+    <div className="bg-[rgb(var(--success-light))] border-b border-[rgb(var(--success))] py-2 px-4 md:px-8 text-center">
+      <div className="flex items-center justify-center gap-2 text-sm">
+        <span className="text-[rgb(var(--success))]">{announcement.text}</span>
+        <a href="#" className="text-[rgb(var(--success))] font-medium underline underline-offset-2">
+          {announcement.link}
+        </a>
+        <button
+          onClick={() => setDismissed(true)}
+          className="ml-4 text-[rgb(var(--success))] hover:opacity-70 transition-opacity"
+          aria-label="Dismiss announcement"
+        >
+          <X size={16} />
+        </button>
+      </div>
+    </div>
+  )
+}
+
+function Navbar() {
+  const [scrolled, setScrolled] = React.useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
+
+  React.useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 60)
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  return (
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-white shadow-md" : "bg-white"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo */}
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-lg bg-[rgb(var(--primary))] flex items-center justify-center">
+              <span className="text-white font-bold text-lg">W</span>
+            </div>
+            <span className="font-semibold text-lg text-[rgb(var(--text-primary))]">
+              Web Soft BD
+            </span>
+          </div>
+
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-8">
+            {["Sectors", "Solutions", "Projects", "Clients", "Contact"].map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="text-sm font-medium flex items-center gap-1 text-[rgb(var(--text-muted))] hover:text-[rgb(var(--primary))] transition-colors"
+              >
+                {item}
+                {(item === "Sectors" || item === "Solutions") && <ChevronDown size={14} />}
+              </a>
+            ))}
+          </nav>
+
+          {/* CTA Button */}
+          <div className="hidden md:block">
+            <Button className="bg-[rgb(var(--primary))] hover:bg-[rgb(var(--primary-dark))] text-white rounded-full">
+              Request Consultation
+            </Button>
+          </div>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            className="md:hidden p-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          >
+            {mobileMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white border-t shadow-lg">
+          <nav className="flex flex-col p-4 gap-4">
+            {["Sectors", "Solutions", "Projects", "Clients", "Contact"].map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="text-sm font-medium text-[rgb(var(--text-muted))] hover:text-[rgb(var(--primary))]"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item}
+              </a>
+            ))}
+            <Button className="bg-[rgb(var(--primary))] text-white rounded-full w-full">
+              Request Consultation
+            </Button>
+          </nav>
+        </div>
+      )}
+    </header>
+  )
+}
+
+function Hero() {
+  const heroRef = React.useRef<HTMLElement>(null)
+  const canvasRef = React.useRef<HTMLCanvasElement>(null)
+
+  React.useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+
+    const ctx = canvas.getContext("2d")
+    if (!ctx) return
+
+    const resizeCanvas = () => {
+      if (canvas && heroRef.current) {
+        canvas.width = heroRef.current.offsetWidth
+        canvas.height = heroRef.current.offsetHeight
+      }
+    }
+
+    resizeCanvas()
+    window.addEventListener("resize", resizeCanvas)
+
+    // Animated radar rings
+    let animationFrame: number
+    const rings = [
+      { x: 0.3, y: 0.5, radius: 0, maxRadius: 150, speed: 0.3, opacity: 1 },
+      { x: 0.7, y: 0.4, radius: 0, maxRadius: 120, speed: 0.4, opacity: 0.8 },
+      { x: 0.5, y: 0.6, radius: 0, maxRadius: 100, speed: 0.5, opacity: 0.6 },
+    ]
+
+    const animate = (timestamp: number) => {
+      if (!ctx || !canvas) return
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+      rings.forEach((ring) => {
+        ring.radius += ring.speed
+        if (ring.radius > ring.maxRadius) {
+          ring.radius = 0
+        }
+
+        const x = canvas.width * ring.x
+        const y = canvas.height * ring.y
+        const opacity = ring.opacity * (1 - ring.radius / ring.maxRadius)
+
+        ctx.beginPath()
+        ctx.arc(x, y, ring.radius, 0, Math.PI * 2)
+        ctx.strokeStyle = `rgba(115, 112, 216, ${opacity})`
+        ctx.lineWidth = 2
+        ctx.stroke()
+      })
+
+      // Animated dots (rainfall)
+      for (let i = 0; i < 20; i++) {
+        const x = (timestamp / 50 + i * 50) % canvas.width
+        const y = (timestamp / 30 + i * 30) % canvas.height
+        ctx.beginPath()
+        ctx.arc(x, y, 2, 0, Math.PI * 2)
+        ctx.fillStyle = "rgba(29, 158, 117, 0.5)"
+        ctx.fill()
+      }
+
+      animationFrame = requestAnimationFrame(animate)
+    }
+
+    animationFrame = requestAnimationFrame(animate)
+
+    return () => {
+      window.removeEventListener("resize", resizeCanvas)
+      cancelAnimationFrame(animationFrame)
+    }
+  }, [])
+
+  return (
+    <section
+      ref={heroRef}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{
+        background: "linear-gradient(135deg, rgb(255, 255, 255) 0%, rgb(243, 242, 253) 50%, rgb(240, 251, 247) 100%)",
+      }}
+    >
+      {/* Animated Background Canvas */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full opacity-30"
+        aria-hidden="true"
+      />
+
+      {/* Content */}
+      <div className="relative z-10 max-w-5xl mx-auto px-4 md:px-8 text-center">
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 bg-[rgb(var(--primary-pale))] text-[rgb(var(--primary))] px-4 py-2 rounded-full text-sm font-semibold mb-6 animate-fade-up">
+          <span>ISO 9001:2015 · BASIS · 18 Years</span>
+        </div>
+
+        {/* Headline */}
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[rgb(var(--text-primary))] leading-tight mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
+          Engineering Earth Intelligence
+          <br />
+          for a <span className="text-[rgb(var(--primary))]">Resilient Future</span>
+        </h1>
+
+        {/* Subtitle */}
+        <p className="text-lg md:text-xl text-[rgb(var(--text-muted))] max-w-3xl mx-auto mb-8 animate-fade-up" style={{ animationDelay: "0.2s" }}>
+          Translating complex environmental, meteorological, and hydrological data into intelligent
+          enterprise platforms.
+        </p>
+
+        {/* CTAs */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-up" style={{ animationDelay: "0.3s" }}>
+          <Button className="bg-[rgb(var(--primary))] hover:bg-[rgb(var(--primary-dark))] text-white rounded-full px-8">
+            Explore Solutions
+          </Button>
+          <Button variant="outline" className="border-[rgb(var(--primary))] text-[rgb(var(--primary))] hover:bg-[rgb(var(--primary-pale))] rounded-full px-8">
+            View Projects
+          </Button>
+        </div>
+
+        {/* Trust Tags */}
+        <div className="flex flex-wrap gap-6 justify-center animate-fade-up" style={{ animationDelay: "0.4s" }}>
+          {["Agro-Meteorology", "AI & Big Data", "Hydrology & Water", "ERP & ICT"].map((tag) => (
+            <div key={tag} className="flex items-center gap-2 text-sm text-[rgb(var(--text-muted))]">
+              <div className="w-2 h-2 rounded-full bg-[rgb(var(--success))]" />
+              {tag}
+            </div>
+          ))}
+        </div>
+
+        {/* Visual Mockup */}
+        <div className="mt-12 rounded-xl overflow-hidden shadow-lg animate-fade-up" style={{ animationDelay: "0.5s" }}>
+          <div className="bg-gradient-to-br from-[rgb(232, 244, 255)] to-[rgb(240, 251, 246))] p-8 h-64 md:h-80 flex items-center justify-center relative">
+            <div className="absolute top-4 left-4 flex gap-2">
+              <div className="w-3 h-3 rounded-full bg-[rgb(var(--success))]" />
+              <div className="w-3 h-3 rounded-full bg-[rgb(55, 138, 221))]" />
+              <div className="w-3 h-3 rounded-full bg-[rgb(245, 166, 35))]" />
+            </div>
+            <div className="text-center">
+              <Map size={48} className="text-[rgb(var(--primary))] mx-auto mb-2 opacity-50" />
+              <p className="text-sm font-medium text-[rgb(var(--primary))] bg-white/80 px-4 py-2 rounded-lg">
+                Bangladesh agro-met live data visualization
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function ClientMarquee() {
+  const { ref, isInView } = useInView(0.2)
+
+  return (
+    <section ref={ref} className="py-16 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 mb-8 text-center">
+        <p className="text-xs md:text-sm font-semibold text-[rgb(var(--text-subtle))] uppercase tracking-wider">
+          Trusted by leading organizations
+        </p>
+      </div>
+
+      {/* Marquee Rows */}
+      <div className="relative">
+        {[1, 2].map((row) => (
+          <div
+            key={row}
+            className={`flex ${row === 1 ? "" : "justify-end"} mb-4 animate-marquee`}
+            style={{
+              animationDirection: row === 1 ? "normal" : "reverse",
+              animationDuration: row === 1 ? "35s" : "45s",
+            }}
+          >
+            {[...CLIENTS, ...CLIENTS].map((client, i) => (
+              <div
+                key={`${row}-${i}`}
+                className="flex-shrink-0 mx-3 px-6 py-3 bg-white border border-[rgb(var(--border-default))] rounded-lg hover:border-[rgb(var(--primary))] hover:shadow-md transition-all duration-300 hover:scale-105 cursor-pointer group"
+              >
+                <span className="text-sm font-medium text-[rgb(var(--text-muted))] group-hover:text-[rgb(var(--primary))]">
+                  {client.name}
+                </span>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function SectorsSection() {
+  const [activeSector, setActiveSector] = React.useState<typeof SECTORS[0] | undefined>(SECTORS[0])
+  const { ref, isInView } = useInView(0.2)
+  const [activeFeature, setActiveFeature] = React.useState(0)
+
+  const sector = activeSector
+
+  if (!sector) return null
+
+  return (
+    <section id="sectors" ref={ref} className="py-20 bg-[rgb(var(--surface))]">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <p className="text-xs md:text-sm font-semibold text-[rgb(var(--primary))] uppercase tracking-wider mb-2">
+            Our Strategic Sectors
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-4">
+            Intelligence for <span className="text-[rgb(var(--primary))]">every domain</span>
+          </h2>
+          <p className="text-[rgb(var(--text-muted))]">Click a sector to explore solutions</p>
+        </div>
+
+        {/* Tabs */}
+        <div className="flex flex-wrap gap-3 justify-center mb-12">
+          {SECTORS.map((s) => {
+            const Icon = s.icon
+            return (
+              <button
+                key={s.id}
+                onClick={() => {
+                  setActiveSector(s)
+                  setActiveFeature(0)
+                }}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                  activeSector?.id === s.id
+                    ? "bg-[rgb(var(--primary))] text-white shadow-md"
+                    : "bg-white text-[rgb(var(--text-muted))] border border-[rgb(var(--border-default))]"
+                }`}
+              >
+                <Icon size={16} />
+                {s.name}
+              </button>
+            )
+          })}
+        </div>
+
+        {/* Content */}
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Features List */}
+          <div className="space-y-3">
+            {sector.features?.map((feature, i) => {
+              const FeatureIcon = feature.icon
+              return (
+                <button
+                  key={i}
+                  onClick={() => setActiveFeature(i)}
+                  className={`w-full text-left p-5 rounded-lg border transition-all ${
+                    activeFeature === i
+                      ? "border-l-4 border-l-[rgb(var(--primary))] bg-white shadow-md"
+                      : "border-[rgb(var(--border-subtle))] hover:border-[rgb(var(--primary))]"
+                  }`}
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[rgb(var(--primary-pale))] flex items-center justify-center">
+                      <FeatureIcon size={20} className="text-[rgb(var(--primary))]" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-[rgb(var(--text-primary))] mb-1">
+                        {feature.title}
+                      </h4>
+                      <p className="text-sm text-[rgb(var(--text-muted))]">{feature.desc}</p>
+                    </div>
+                  </div>
+                </button>
+              )
+            })}
+          </div>
+
+          {/* Visual */}
+          <div className="bg-[rgb(var(--primary-pale))] rounded-xl p-8 flex items-center justify-center min-h-[300px]">
+            <div className="text-center">
+              {sector.visual?.icon && <sector.visual.icon size={64} className="text-[rgb(var(--primary))] mx-auto mb-4 opacity-30" />}
+              <p className="text-sm font-medium text-[rgb(var(--primary))] bg-white px-4 py-2 rounded-lg inline-block">
+                {sector.visual?.label || "Dashboard"}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function ProjectsSection() {
+  const { ref, isInView } = useInView(0.1)
+
+  return (
+    <section id="projects" ref={ref} className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <p className="text-xs md:text-sm font-semibold text-[rgb(var(--primary))] uppercase tracking-wider mb-2">
+            Featured Case Studies
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-4">
+            The <span className="text-[rgb(var(--primary))]">Projects</span> We Are Known For
+          </h2>
+        </div>
+
+        {/* Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {PROJECTS.map((project, i) => (
+            <div
+              key={project.id}
+              className="group bg-white rounded-xl overflow-hidden border border-[rgb(var(--border-subtle))] hover:border-[rgb(var(--primary))] hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              style={{ animationDelay: `${i * 0.1}s` }}
+            >
+              {/* Image */}
+              <div
+                className="h-32 flex items-center justify-center"
+                style={{ backgroundColor: project.bgColor }}
+              >
+                <project.icon size={36} style={{ color: project.color }} />
+              </div>
+
+              {/* Body */}
+              <div className="p-5">
+                <p className="text-xs font-semibold text-[rgb(var(--primary))] uppercase tracking-wider mb-2">
+                  {project.tag}
+                </p>
+                <h3 className="font-semibold text-[rgb(var(--text-primary))] mb-2 line-clamp-2">
+                  {project.name}
+                </h3>
+                <p className="text-sm text-[rgb(var(--text-muted))]">{project.stat}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function StatsSection() {
+  const { ref, isInView } = useInView(0.2)
+
+  return (
+    <section ref={ref} className="py-16 bg-[rgb(var(--navy))]">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        {/* Header */}
+        <div className="text-center mb-10">
+          <p className="text-xs md:text-sm font-semibold text-[rgb(var(--success))] uppercase tracking-wider mb-2">
+            By the numbers
+          </p>
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            18 years of building Bangladesh's data infrastructure
+          </h2>
+        </div>
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+          {STATS.map((stat, i) => {
+            const numValue = parseInt(stat.num.replace(/\D/g, "")) || 0
+            const { ref, count } = useCounter(numValue, 1500)
+            return (
+              <div key={i} className="text-center" ref={ref}>
+                <div className="text-3xl md:text-4xl font-bold text-[rgb(var(--success))]">
+                  {stat.num.replace(/[0-9]/g, "")}
+                  {count}
+                  {stat.num.includes("+") && "+"}
+                </div>
+                <div className="text-xs md:text-sm text-white/60 mt-2">{stat.label}</div>
+              </div>
+            )
+          })}
+        </div>
+
+        {/* Propositions */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {PROPOSITIONS.map((prop, i) => (
+            <div
+              key={i}
+              className="flex items-start gap-3 p-4 bg-white/5 rounded-lg backdrop-blur-sm border border-white/10"
+            >
+              <Check className="text-[rgb(var(--success))] flex-shrink-0 mt-0.5" size={18} />
+              <p className="text-sm text-white/80">{prop}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function CaseStudySection() {
+  const { ref, isInView } = useInView(0.2)
+
+  const metrics = [
+    { num: 1200000, suffix: "+", label: "Farmers receiving advisories" },
+    { num: 64, label: "Districts covered nationwide" },
+  ]
+
+  return (
+    <section ref={ref} className="py-16 bg-[rgb(var(--success-light))]">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        <p className="text-xs md:text-sm font-semibold text-[rgb(var(--success))] uppercase tracking-wider mb-2">
+          Case study · BAMIS Dashboard
+        </p>
+        <h2 className="text-2xl md:text-3xl font-bold text-[rgb(var(--text-primary))] mb-8">
+          Bangladesh Agro-Meteorological Information System
+        </h2>
+
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          {/* Metrics */}
+          <div className="space-y-4">
+            {metrics.map((metric, i) => {
+              const { ref, count } = useCounter(metric.num, 1500)
+              return (
+                <div key={i} className="bg-white rounded-lg p-5 border border-[rgb(var(--success))]">
+                  <div ref={ref} className="text-2xl md:text-3xl font-bold text-[rgb(var(--primary))]">
+                    {count.toLocaleString()} {metric.suffix}
+                  </div>
+                  <div className="text-sm text-[rgb(var(--text-muted))] mt-1">{metric.label}</div>
+                </div>
+              )
+            })}
+            <div className="bg-white rounded-lg p-5 border border-[rgb(var(--success))]">
+              <div className="text-2xl md:text-3xl font-bold text-[rgb(var(--primary))]">AI</div>
+              <div className="text-sm text-[rgb(var(--text-muted))] mt-1">
+                National climate adaptation model
+              </div>
+            </div>
+          </div>
+
+          {/* Visual */}
+          <div className="bg-[rgb(var(--primary-pale))] rounded-xl p-8 flex items-center justify-center min-h-[250px]">
+            <div className="text-center">
+              <Navigation size={48} className="text-[rgb(var(--primary))] mx-auto mb-3 opacity-30" />
+              <p className="text-sm font-medium text-[rgb(var(--primary))] bg-white px-4 py-2 rounded-lg inline-block">
+                BAMIS Dashboard
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div className="mt-8 text-center">
+          <a href="#" className="inline-flex items-center gap-2 text-[rgb(var(--primary))] font-semibold hover:gap-3 transition-all">
+            Read Full Case Study <ArrowRight size={18} />
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function ServicesSection() {
+  const { ref, isInView } = useInView(0.1)
+
+  return (
+    <section ref={ref} className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <p className="text-xs md:text-sm font-semibold text-[rgb(var(--primary))] uppercase tracking-wider mb-2">
+            Our Services
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-4">
+            Solutions for every <span className="text-[rgb(var(--primary))]">data challenge</span>
+          </h2>
+        </div>
+
+        {/* Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {SERVICES.map((service, i) => {
+            const Icon = service.icon
+            return (
+              <div
+                key={i}
+                className="p-6 rounded-xl border border-[rgb(var(--border-subtle))] hover:border-[rgb(var(--primary))] hover:shadow-md transition-all duration-300 group"
+              >
+                <div className="w-12 h-12 rounded-lg bg-[rgb(var(--success-light))] flex items-center justify-center mb-4 group-hover:bg-[rgb(var(--primary-pale))] transition-colors">
+                  <Icon size={24} className="text-[rgb(var(--success))] group-hover:text-[rgb(var(--primary))]" />
+                </div>
+                <h3 className="font-semibold text-[rgb(var(--text-primary))] mb-1">{service.name}</h3>
+                <p className="text-sm text-[rgb(var(--primary))]">{service.sector}</p>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function TestimonialsSection() {
+  const { ref, isInView } = useInView(0.1)
+
+  return (
+    <section ref={ref} className="py-20 bg-[rgb(var(--surface))]">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <p className="text-xs md:text-sm font-semibold text-[rgb(var(--primary))] uppercase tracking-wider mb-2">
+            In their own words
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-4">
+            How leaders use <span className="text-[rgb(var(--primary))]">Web Soft BD</span>
+          </h2>
+        </div>
+
+        {/* Grid */}
+        <div className="grid md:grid-cols-2 gap-6">
+          {TESTIMONIALS.map((testimonial) => (
+            <div
+              key={testimonial.id}
+              className="bg-white rounded-xl p-6 border border-[rgb(var(--border-subtle))] shadow-sm"
+            >
+              {/* Organization */}
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 rounded-lg bg-[rgb(var(--success-light))] flex items-center justify-center">
+                  <span className="text-sm font-bold text-[rgb(var(--success))]">{testimonial.logo}</span>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-[rgb(var(--text-primary))]">{testimonial.org}</h4>
+                  <p className="text-sm text-[rgb(var(--text-muted))]">{testimonial.role}</p>
+                </div>
+              </div>
+
+              {/* Quote */}
+              <div className="relative">
+                <Quote className="text-[rgb(var(--primary))] opacity-20 mb-2" size={24} />
+                <p className="text-[rgb(var(--text-muted))] italic leading-relaxed">
+                  {testimonial.quote}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function CTASection() {
+  const { ref, isInView } = useInView(0.2)
+
+  return (
+    <section ref={ref} className="py-20 bg-[rgb(var(--navy))]">
+      <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
+        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+          Ready to transform your data into intelligence?
+        </h2>
+        <p className="text-white/70 mb-8 max-w-2xl mx-auto">
+          Talk to our specialists about your meteorological, agricultural, or water management
+          challenge.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button className="bg-[rgb(var(--primary))] hover:bg-[rgb(var(--primary-dark))] text-white rounded-full px-8">
+            Request Consultation
+          </Button>
+          <Button
+            variant="outline"
+            className="border-white/30 text-white hover:bg-white/10 rounded-full px-8"
+          >
+            Download Brochure
+          </Button>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function Footer() {
+  return (
+    <footer className="bg-[rgb(8, 20, 40))] py-12">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        <div className="grid md:grid-cols-4 gap-8 mb-8">
+          {/* Brand */}
+          <div>
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-8 h-8 rounded-lg bg-[rgb(var(--primary))] flex items-center justify-center">
+                <span className="text-white font-bold text-lg">W</span>
+              </div>
+              <span className="font-semibold text-white">Web Soft BD</span>
+            </div>
+            <p className="text-sm text-white/60 mb-4">
+              Engineering Earth Intelligence for a Resilient Future
+            </p>
+            {/* Certifications */}
+            <div className="flex flex-wrap gap-2">
+              {["ISO 9001:2015", "BASIS", "CMMI"].map((cert) => (
+                <span
+                  key={cert}
+                  className="text-xs bg-white/10 text-white/70 px-2 py-1 rounded hover:bg-white/20 transition-colors cursor-pointer"
+                >
+                  {cert}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Solutions */}
+          <div>
+            <h5 className="text-sm font-semibold text-[rgb(var(--success))] uppercase tracking-wider mb-4">
+              Solutions
+            </h5>
+            <ul className="space-y-2">
+              {["Agro-Met Systems", "AI & Big Data", "Hydrology & Water", "Web Development"].map(
+                (item) => (
+                  <li key={item}>
+                    <a
+                      href="#"
+                      className="text-sm text-white/60 hover:text-[rgb(var(--primary))] transition-colors"
+                    >
+                      {item}
+                    </a>
+                  </li>
+                )
+              )}
+            </ul>
+          </div>
+
+          {/* Projects */}
+          <div>
+            <h5 className="text-sm font-semibold text-[rgb(var(--success))] uppercase tracking-wider mb-4">
+              Projects
+            </h5>
+            <ul className="space-y-2">
+              {["BAMIS", "BMD Systems", "Flood Forecasting", "Aviation Data"].map((item) => (
+                <li key={item}>
+                  <a
+                    href="#"
+                    className="text-sm text-white/60 hover:text-[rgb(var(--primary))] transition-colors"
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h5 className="text-sm font-semibold text-[rgb(var(--success))] uppercase tracking-wider mb-4">
+              Contact
+            </h5>
+            <ul className="space-y-2 text-sm text-white/60">
+              <li>info@websoftbd.net</li>
+              <li>+8801716983511</li>
+              <li>Dhaka, Bangladesh</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom */}
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-xs text-white/40">
+            © {new Date().getFullYear()} Web Soft BD. All rights reserved.
+          </p>
+          <div className="flex gap-4">
+            {["Privacy", "Terms", "Sitemap"].map((link) => (
+              <a
+                key={link}
+                href="#"
+                className="text-xs text-white/40 hover:text-white/60 transition-colors"
+              >
+                {link}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}
+
+// ============================================
+// MAIN PAGE
+// ============================================
 
 export default function Page() {
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
-        </div>
-        <div className="text-muted-foreground font-mono text-xs">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
-      </div>
-    </div>
+    <main className="min-h-screen">
+      <AnnouncementBar />
+      <Navbar />
+      <Hero />
+      <ClientMarquee />
+      <SectorsSection />
+      <ProjectsSection />
+      <StatsSection />
+      <CaseStudySection />
+      <ServicesSection />
+      <TestimonialsSection />
+      <CTASection />
+      <Footer />
+    </main>
   )
 }

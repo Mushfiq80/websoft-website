@@ -51,72 +51,91 @@
 }
 
 :root {
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.145 0 0);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
-    --primary-foreground: oklch(0.985 0 0);
-    --secondary: oklch(0.97 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
-    --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
-    --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
-    --destructive: oklch(0.577 0.245 27.325);
-    --border: oklch(0.922 0 0);
-    --input: oklch(0.922 0 0);
-    --ring: oklch(0.708 0 0);
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
+    /* WebsoftBD Brand Colors */
+    --background: 255 255 255;
+    --foreground: 26 26 46;
+    --card: 255 255 255;
+    --card-foreground: 26 26 46;
+    --popover: 255 255 255;
+    --popover-foreground: 26 26 46;
+
+    /* Primary - Purple Violet #7370D8 */
+    --primary: 115 112 216;
+    --primary-foreground: 255 255 255;
+
+    /* Primary variants */
+    --primary-dark: 88 85 196;
+    --primary-darker: 61 58 175;
+    --primary-light: 152 150 226;
+    --primary-pale: 238 237 249;
+    --primary-faint: 245 244 252;
+
+    /* Dark / Neutral */
+    --navy: 13 31 53;
+    --text-primary: 26 26 46;
+    --text-muted: 74 85 104;
+    --text-subtle: 113 128 150;
+    --border-default: 226 232 240;
+    --border-subtle: 240 240 248;
+
+    /* Semantic */
+    --success: 29 158 117;
+    --success-light: 239 249 245;
+
+    /* Surfaces */
+    --surface: 248 249 255;
+    --hero-end: 243 242 253;
+
+    /* Tailwind compatible values */
+    --secondary: 248 249 255;
+    --secondary-foreground: 26 26 46;
+    --muted: 248 249 255;
+    --muted-foreground: 113 128 150;
+    --accent: 238 237 249;
+    --accent-foreground: 115 112 216;
+    --destructive: 229 62 62;
+    --border: 226 232 240;
+    --input: 226 232 240;
+    --ring: 115 112 216;
     --radius: 0.625rem;
-    --sidebar: oklch(0.985 0 0);
-    --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: oklch(0.205 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.708 0 0);
+    --sidebar: 248 249 255;
+    --sidebar-foreground: 26 26 46;
+    --sidebar-primary: 115 112 216;
+    --sidebar-primary-foreground: 255 255 255;
+    --sidebar-accent: 238 237 249;
+    --sidebar-accent-foreground: 115 112 216;
+    --sidebar-border: 226 232 240;
+    --sidebar-ring: 115 112 216;
 }
 
 .dark {
-    --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
-    --card: oklch(0.205 0 0);
-    --card-foreground: oklch(0.985 0 0);
-    --popover: oklch(0.205 0 0);
-    --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.922 0 0);
-    --primary-foreground: oklch(0.205 0 0);
-    --secondary: oklch(0.269 0 0);
-    --secondary-foreground: oklch(0.985 0 0);
-    --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
-    --accent: oklch(0.269 0 0);
-    --accent-foreground: oklch(0.985 0 0);
-    --destructive: oklch(0.704 0.191 22.216);
-    --border: oklch(1 0 0 / 10%);
-    --input: oklch(1 0 0 / 15%);
-    --ring: oklch(0.556 0 0);
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
-    --sidebar: oklch(0.205 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.269 0 0);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.556 0 0);
+    /* WebsoftBD Dark Theme */
+    --background: 13 31 53;
+    --foreground: 255 255 255;
+    --card: 26 43 60;
+    --card-foreground: 255 255 255;
+    --popover: 26 43 60;
+    --popover-foreground: 255 255 255;
+    --primary: 152 150 226;
+    --primary-foreground: 26 26 46;
+    --secondary: 61 58 175;
+    --secondary-foreground: 255 255 255;
+    --muted: 61 58 175;
+    --muted-foreground: 184 207 224;
+    --accent: 61 58 175;
+    --accent-foreground: 255 255 255;
+    --destructive: 229 62 62;
+    --border: 255 255 255 / 10%;
+    --input: 255 255 255 / 15%;
+    --ring: 152 150 226;
+    --sidebar: 26 43 60;
+    --sidebar-foreground: 255 255 255;
+    --sidebar-primary: 152 150 226;
+    --sidebar-primary-foreground: 26 26 46;
+    --sidebar-accent: 61 58 175;
+    --sidebar-accent-foreground: 255 255 255;
+    --sidebar-border: 255 255 255 / 10%;
+    --sidebar-ring: 152 150 226;
 }
 
 @layer base {
@@ -126,4 +145,110 @@
   body {
     @apply bg-background text-foreground;
     }
+}
+
+/* WebsoftBD Custom Properties */
+:root {
+  --color-primary: rgb(var(--primary));
+  --color-primary-dark: rgb(var(--primary-dark));
+  --color-primary-darker: rgb(var(--primary-darker));
+  --color-primary-light: rgb(var(--primary-light));
+  --color-primary-pale: rgb(var(--primary-pale));
+  --color-primary-faint: rgb(var(--primary-faint));
+
+  --color-navy: rgb(var(--navy));
+  --color-text-primary: rgb(var(--text-primary));
+  --color-text-muted: rgb(var(--text-muted));
+  --color-text-subtle: rgb(var(--text-subtle));
+  --color-border-default: rgb(var(--border-default));
+  --color-border-subtle: rgb(var(--border-subtle));
+
+  --color-surface: rgb(var(--surface));
+  --color-hero-end: rgb(var(--hero-end));
+
+  --color-success: rgb(var(--success));
+  --color-success-light: rgb(var(--success-light));
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* Border radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-2xl: 24px;
+}
+
+/* WebsoftBD Animations */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-marquee {
+  animation: marquee linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Line Clamp Utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
