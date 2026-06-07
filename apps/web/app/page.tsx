@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
+import Image from "next/image"
 import { Button } from "@workspace/ui/components/button"
-import { Cloud, Droplet, BarChart3, Brain, Globe, Server, Smartphone, ArrowRight, X, Menu, ChevronDown, Leaf, Satellite, TrendingUp, Map, CloudRain, Wind, Plane, Navigation, Play, Quote, Check, Zap, Waves } from "lucide-react"
+import { Cloud, Droplet, BarChart3, Brain, Globe, Server, Smartphone, ArrowRight, X, Menu, ChevronDown, Leaf, Satellite, TrendingUp, Map, CloudRain, Wind, Plane, Navigation, Play, Quote, Check, Zap, Waves, MapPin, Phone, Mail } from "lucide-react"
 
 // ============================================
 // DATA & CONTENT
@@ -17,16 +18,46 @@ const ANNOUNCEMENTS = [
 ]
 
 const CLIENTS = [
-  { name: "World Bank", abbr: "WB" },
-  { name: "JICA", abbr: "JI" },
-  { name: "BMD", abbr: "BM" },
-  { name: "BWDB", abbr: "BW" },
-  { name: "DAE", abbr: "DA" },
-  { name: "SAARC", abbr: "SA" },
-  { name: "A2i", abbr: "A2" },
-  { name: "Dhaka University", abbr: "DU" },
-  { name: "FFWC", abbr: "FF" },
-  { name: "HDF", abbr: "HD" },
+  { name: "World Bank", logo: "/images/clients/world_bank-logo.png", abbr: "WB" },
+  { name: "JICA", logo: "/images/clients/jica.png", abbr: "JI" },
+  { name: "BMD", logo: "/images/clients/bd.gov.png", abbr: "BM" },
+  { name: "BWDB", logo: "/images/clients/bd-water.png", abbr: "BW" },
+  { name: "DAE", logo: "/images/clients/dae.png", abbr: "DA" },
+  { name: "SAARC", logo: "/images/clients/saarc.png", abbr: "SA" },
+  { name: "A2i", logo: "/images/clients/a2i_logo_2021.png", abbr: "A2" },
+  { name: "Dhaka University", logo: "/images/clients/DU-logo.jpg", abbr: "DU" },
+  { name: "FFWC", logo: "/images/clients/bd-water.png", abbr: "FF" },
+  { name: "HDF", logo: "/images/clients/hdf-LOGO-WEB.gif", abbr: "HD" },
+  { name: "NocBan", logo: "/images/clients/nocban-logo.png", abbr: "NB" },
+  { name: "ESDO", logo: "/images/clients/esdo.png", abbr: "ES" },
+  { name: "DMGI", logo: "/images/clients/DMGI-LOGO.png", abbr: "DM" },
+  { name: "Farming Future", logo: "/images/clients/farming-future.png", abbr: "FF" },
+  { name: "Sundharban Agro", logo: "/images/clients/sundharban-agro.png", abbr: "SA" },
+  { name: "Aesthetic International", logo: "/images/clients/aesthetic-international-logo.png", abbr: "AI" },
+  { name: "Lead Infosys", logo: "/images/clients/lead-infosys-logo.png", abbr: "LI" },
+  { name: "Poly Cables", logo: "/images/clients/poly-cables-logo_name.jpg", abbr: "PC" },
+  { name: "Softel", logo: "/images/clients/softel.jpeg", abbr: "SF" },
+  { name: "Karim Karim", logo: "/images/clients/karim-karim.png", abbr: "KK" },
+  { name: "Euro India", logo: "/images/clients/euro-india.jpeg", abbr: "EI" },
+  { name: "Sunlife Onetech", logo: "/images/clients/sunlife-onetech_logo.gif", abbr: "SO" },
+  { name: "Esteps", logo: "/images/clients/esteps-logo.jpg", abbr: "ET" },
+  { name: "Environment", logo: "/images/clients/environment.jpeg", abbr: "EN" },
+  { name: "Protirokkha", logo: "/images/clients/protirokkha.png", abbr: "PR" },
+  { name: "Archery", logo: "/images/clients/archery.png", abbr: "AC" },
+  { name: "UW", logo: "/images/clients/uw.jpg", abbr: "UW" },
+  { name: "VT", logo: "/images/clients/vt.jpeg", abbr: "VT" },
+  { name: "Shark", logo: "/images/clients/shark.jpeg", abbr: "SH" },
+]
+
+const CERTIFICATIONS = [
+  { name: "ISO 9001:2015", logo: "/images/certifications/iso.jpg", short: "ISO" },
+  { name: "BASIS Member", logo: "/images/certifications/basis_japan.png", short: "BASIS" },
+  { name: "CMMI", logo: "/images/certifications/cmmi.png", short: "CMMI" },
+  { name: "QMS", logo: "/images/certifications/qms.png", short: "QMS" },
+  { name: "QRO", logo: "/images/certifications/qro.png", short: "QRO" },
+  { name: "BCS Member", logo: "/images/certifications/bcs_member.png", short: "BCS" },
+  { name: "IAF", logo: "/images/certifications/iaf.png", short: "IAF" },
+  { name: "Government Seal", logo: "/images/certifications/Government_Seal_of_Bangladesh.png", short: "Govt" },
 ]
 
 const SECTORS = [
@@ -132,12 +163,66 @@ const PROJECTS = [
 ]
 
 const SERVICES = [
-  { name: "Agro-Met Systems", sector: "BAMIS · BMD · SAARC", icon: Cloud },
-  { name: "AI & Big Data", sector: "Analytics · ML Models", icon: Brain },
-  { name: "Hydrology & Water", sector: "BWDB · Flood · Salinity", icon: Droplet },
-  { name: "Web Development", sector: "Portals · Dashboards", icon: Globe },
-  { name: "App Development", sector: "Mobile · API · IoT", icon: Smartphone },
-  { name: "ERP & Server", sector: "Infrastructure · Cloud", icon: Server },
+  {
+    id: "agro-met",
+    name: "Agro-Met Systems",
+    shortName: "Agro-Met",
+    description: "Real-time crop advisory and weather intelligence platforms for farmers and food security planning.",
+    details: "BAMIS · Satellite Data · Climate Models",
+    icon: CloudRain,
+    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80",
+    gradient: "from-emerald-600/80 to-green-800/80"
+  },
+  {
+    id: "ai-bigdata",
+    name: "AI & Big Data",
+    shortName: "AI & Data",
+    description: "Machine learning models and large-scale data pipelines for environmental intelligence.",
+    details: "ML Models · Analytics · Data Fusion",
+    icon: Brain,
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    gradient: "from-purple-600/80 to-indigo-800/80"
+  },
+  {
+    id: "hydrology",
+    name: "Hydrology & Water",
+    shortName: "Hydrology",
+    description: "Flood forecasting, salinity modeling, and water resource management systems.",
+    details: "Flood Forecasting · Salinity · River Flow",
+    icon: Waves,
+    image: "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=800&q=80",
+    gradient: "from-blue-600/80 to-cyan-800/80"
+  },
+  {
+    id: "web-dev",
+    name: "Web Development",
+    shortName: "Web Dev",
+    description: "Custom government portals, data dashboards, and public-facing web platforms.",
+    details: "Portals · Dashboards · Web Apps",
+    icon: Globe,
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+    gradient: "from-violet-600/80 to-purple-800/80"
+  },
+  {
+    id: "app-dev",
+    name: "App Development",
+    shortName: "App Dev",
+    description: "Mobile applications for iOS and Android with API integrations and IoT connectivity.",
+    details: "Mobile Apps · APIs · IoT Solutions",
+    icon: Smartphone,
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
+    gradient: "from-rose-600/80 to-pink-800/80"
+  },
+  {
+    id: "erp-server",
+    name: "ERP & Server",
+    shortName: "ERP",
+    description: "Enterprise resource planning systems and server infrastructure management.",
+    details: "Infrastructure · Cloud · Server Solutions",
+    icon: Server,
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
+    gradient: "from-slate-600/80 to-gray-800/80"
+  },
 ]
 
 const TESTIMONIALS = [
@@ -145,15 +230,22 @@ const TESTIMONIALS = [
     id: 1,
     org: "World Bank",
     role: "Development Partner",
-    logo: "WB",
+    logo: "/images/clients/world_bank-logo.png",
     quote: "WebsoftBD delivered a robust agro-met platform that directly supports food security for millions of farmers across Bangladesh.",
   },
   {
     id: 2,
     org: "JICA Bangladesh",
     role: "Project Partner",
-    logo: "JI",
+    logo: "/images/clients/jica.png",
     quote: "The flood forecasting system developed by WebsoftBD has significantly improved our disaster preparedness capabilities.",
+  },
+  {
+    id: 3,
+    org: "DAE",
+    role: "Government Partner",
+    logo: "/images/clients/dae.png",
+    quote: "The BAMIS platform has revolutionized how we disseminate agro-meteorological information to farmers across Bangladesh.",
   },
 ]
 
@@ -278,10 +370,14 @@ function Navbar() {
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-[rgb(var(--primary))] flex items-center justify-center">
-              <span className="text-white font-bold text-lg">W</span>
-            </div>
+          <div className="flex items-center gap-3">
+            <Image
+              src="/images/logo/web-soft-logo.png"
+              alt="Web Soft BD"
+              width={40}
+              height={40}
+              className="h-10 w-auto"
+            />
             <span className="font-semibold text-lg text-[rgb(var(--text-primary))]">
               Web Soft BD
             </span>
@@ -494,6 +590,10 @@ function Hero() {
 function ClientMarquee() {
   const { ref, isInView } = useInView(0.2)
 
+  // Split clients into two rows for better visual balance
+  const row1Clients = CLIENTS.slice(0, 15)
+  const row2Clients = CLIENTS.slice(15)
+
   return (
     <section ref={ref} className="py-16 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-8 mb-8 text-center">
@@ -504,27 +604,37 @@ function ClientMarquee() {
 
       {/* Marquee Rows */}
       <div className="relative">
-        {[1, 2].map((row) => (
-          <div
-            key={row}
-            className={`flex ${row === 1 ? "" : "justify-end"} mb-4 animate-marquee`}
-            style={{
-              animationDirection: row === 1 ? "normal" : "reverse",
-              animationDuration: row === 1 ? "35s" : "45s",
-            }}
-          >
-            {[...CLIENTS, ...CLIENTS].map((client, i) => (
-              <div
-                key={`${row}-${i}`}
-                className="flex-shrink-0 mx-3 px-6 py-3 bg-white border border-[rgb(var(--border-default))] rounded-lg hover:border-[rgb(var(--primary))] hover:shadow-md transition-all duration-300 hover:scale-105 cursor-pointer group"
-              >
-                <span className="text-sm font-medium text-[rgb(var(--text-muted))] group-hover:text-[rgb(var(--primary))]">
-                  {client.name}
-                </span>
-              </div>
-            ))}
-          </div>
-        ))}
+        {[1, 2].map((row) => {
+          const clients = row === 1 ? row1Clients : row2Clients
+          const direction = row === 1 ? "normal" : "reverse"
+          const duration = row === 1 ? "40s" : "50s"
+
+          return (
+            <div
+              key={row}
+              className={`flex mb-4 animate-marquee ${row === 1 ? "" : "justify-end"}`}
+              style={{
+                animationDirection: direction,
+                animationDuration: duration,
+              }}
+            >
+              {[...clients, ...clients].map((client, i) => (
+                <div
+                  key={`${row}-${i}`}
+                  className="flex-shrink-0 mx-4 px-6 py-4 bg-white border border-[rgb(var(--border-subtle))] rounded-lg hover:border-[rgb(var(--primary))] hover:shadow-md transition-all duration-300 hover:scale-105 cursor-pointer group flex items-center justify-center min-w-[140px] h-[70px]"
+                >
+                  <Image
+                    src={client.logo}
+                    alt={client.name}
+                    width={120}
+                    height={40}
+                    className="max-h-[40px] w-auto object-contain transition-all duration-300"
+                  />
+                </div>
+              ))}
+            </div>
+          )
+        })}
       </div>
     </section>
   )
@@ -678,7 +788,7 @@ function StatsSection() {
   const { ref, isInView } = useInView(0.2)
 
   return (
-    <section ref={ref} className="py-16 bg-[rgb(var(--navy))]">
+    <section ref={ref} className="py-16 bg-[#0d1f35]">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         {/* Header */}
         <div className="text-center mb-10">
@@ -789,12 +899,13 @@ function CaseStudySection() {
 
 function ServicesSection() {
   const { ref, isInView } = useInView(0.1)
+  const [activeIndex, setActiveIndex] = React.useState(0)
 
   return (
-    <section ref={ref} className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
+    <section ref={ref} className="py-20 bg-white" id="services">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 mb-8">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center">
           <p className="text-xs md:text-sm font-semibold text-[rgb(var(--primary))] uppercase tracking-wider mb-2">
             Our Services
           </p>
@@ -802,25 +913,102 @@ function ServicesSection() {
             Solutions for every <span className="text-[rgb(var(--primary))]">data challenge</span>
           </h2>
         </div>
+      </div>
 
-        {/* Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {SERVICES.map((service, i) => {
-            const Icon = service.icon
-            return (
-              <div
-                key={i}
-                className="p-6 rounded-xl border border-[rgb(var(--border-subtle))] hover:border-[rgb(var(--primary))] hover:shadow-md transition-all duration-300 group"
-              >
-                <div className="w-12 h-12 rounded-lg bg-[rgb(var(--success-light))] flex items-center justify-center mb-4 group-hover:bg-[rgb(var(--primary-pale))] transition-colors">
-                  <Icon size={24} className="text-[rgb(var(--success))] group-hover:text-[rgb(var(--primary))]" />
+      {/* Services Accordion */}
+      <div className="relative h-[500px] md:h-[600px] flex gap-2 px-4 md:px-8">
+        {SERVICES.map((service, index) => {
+          const Icon = service.icon
+          const isActive = activeIndex === index
+          const isCollapsed = !isActive
+
+          return (
+            <div
+              key={service.id}
+              className="service-panel group relative h-full overflow-hidden rounded-2xl cursor-pointer transition-all duration-700 ease-out"
+              style={{
+                width: isActive ? 'calc(100% / 6 * 3.5)' : 'calc(100% / 6 * 0.5)',
+                flexShrink: 0,
+              }}
+              onMouseEnter={() => setActiveIndex(index)}
+            >
+              {/* Background Image */}
+              <Image
+                src={service.image}
+                alt={service.name}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                priority={index === 0}
+              />
+
+              {/* Overlay Gradient */}
+              <div className={`absolute inset-0 bg-gradient-to-t ${service.gradient} transition-opacity duration-500`}
+                style={{ opacity: isActive ? 0.3 : 0.5 }}
+              />
+
+              {/* Dark overlay for collapsed panels */}
+              {isCollapsed && (
+                <div className="absolute inset-0 bg-black/40 transition-opacity duration-500" />
+              )}
+
+              {/* Content */}
+              <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+                {/* Icon - Always visible, positioned differently based on state */}
+                <div className={`transition-all duration-500 ${isActive ? 'mb-6' : 'mb-auto'}`}>
+                  <div className={`
+                    w-12 h-12 md:w-16 md:h-16 rounded-xl bg-white/20 backdrop-blur-sm
+                    flex items-center justify-center transition-all duration-500
+                    ${isActive ? 'bg-white/30' : 'bg-white/10'}
+                  `}>
+                    <Icon
+                      size={isActive ? 32 : 24}
+                      className="text-white transition-all duration-500"
+                    />
+                  </div>
                 </div>
-                <h3 className="font-semibold text-[rgb(var(--text-primary))] mb-1">{service.name}</h3>
-                <p className="text-sm text-[rgb(var(--primary))]">{service.sector}</p>
+
+                {/* Title - Rotated when collapsed */}
+                <div className={`
+                  transition-all duration-500 origin-left
+                  ${isCollapsed ? '-rotate-90 translate-y-8 opacity-80' : 'opacity-100'}
+                `}>
+                  <h3 className="text-white font-bold text-lg md:text-xl whitespace-nowrap">
+                    {service.shortName}
+                  </h3>
+                </div>
+
+                {/* Expanded Content */}
+                <div className={`
+                  space-y-4 transition-all duration-500 overflow-hidden
+                  ${isActive ? 'max-h-[300px] opacity-100 mt-4' : 'max-h-0 opacity-0'}
+                `}>
+                  <h3 className="text-white font-bold text-xl md:text-2xl">
+                    {service.name}
+                  </h3>
+                  <p className="text-white/90 text-sm md:text-base leading-relaxed max-w-md">
+                    {service.description}
+                  </p>
+                  <div className="flex items-center gap-2 text-white/80 text-sm">
+                    <span className="px-3 py-1 bg-white/20 rounded-full backdrop-blur-sm">
+                      {service.details}
+                    </span>
+                  </div>
+                  <button className="flex items-center gap-2 text-white font-semibold mt-2 group/btn">
+                    Learn More
+                    <ArrowRight size={18} className="transition-transform group-hover/btn:translate-x-1" />
+                  </button>
+                </div>
               </div>
-            )
-          })}
-        </div>
+
+              {/* Border highlight on active */}
+              <div className={`
+                absolute inset-0 rounded-2xl border-2 border-[rgb(var(--primary))]
+                transition-opacity duration-300 pointer-events-none
+                ${isActive ? 'opacity-100' : 'opacity-0'}
+              `} />
+            </div>
+          )
+        })}
       </div>
     </section>
   )
@@ -843,16 +1031,22 @@ function TestimonialsSection() {
         </div>
 
         {/* Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {TESTIMONIALS.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="bg-white rounded-xl p-6 border border-[rgb(var(--border-subtle))] shadow-sm"
+              className="bg-white rounded-xl p-6 border border-[rgb(var(--border-subtle))] shadow-sm hover:shadow-md transition-shadow"
             >
               {/* Organization */}
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-lg bg-[rgb(var(--success-light))] flex items-center justify-center">
-                  <span className="text-sm font-bold text-[rgb(var(--success))]">{testimonial.logo}</span>
+                <div className="w-14 h-14 rounded-lg bg-white border border-[rgb(var(--border-subtle))] flex items-center justify-center p-2">
+                  <Image
+                    src={testimonial.logo}
+                    alt={testimonial.org}
+                    width={60}
+                    height={40}
+                    className="max-h-[40px] w-auto object-contain"
+                  />
                 </div>
                 <div>
                   <h4 className="font-semibold text-[rgb(var(--text-primary))]">{testimonial.org}</h4>
@@ -867,6 +1061,56 @@ function TestimonialsSection() {
                   {testimonial.quote}
                 </p>
               </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function CertificationsSection() {
+  const { ref, isInView } = useInView(0.1)
+
+  return (
+    <section ref={ref} className="py-16 bg-[rgb(var(--surface))]" id="certifications">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <p className="text-xs md:text-sm font-semibold text-[rgb(var(--primary))] uppercase tracking-widest mb-2">
+            Global Recognition
+          </p>
+          <h2 className="text-2xl md:text-3xl font-bold text-[rgb(var(--text-primary))]">
+            Certified Excellence & Strategic Partnerships
+          </h2>
+          <p className="text-sm text-[rgb(var(--text-muted))] mt-3 max-w-2xl mx-auto">
+            Our commitment to quality standards and international partnerships enables us to deliver
+            world-class solutions.
+          </p>
+        </div>
+
+        {/* Certifications Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+          {CERTIFICATIONS.map((cert) => (
+            <div
+              key={cert.name}
+              className="group relative flex flex-col items-center"
+            >
+              {/* Logo container */}
+              <div className="relative bg-white rounded-xl p-6 border border-[rgb(var(--border-subtle))] hover:border-[rgb(var(--primary))]/30 hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1">
+                <Image
+                  src={cert.logo}
+                  alt={cert.name}
+                  width={100}
+                  height={60}
+                  className="h-16 w-auto object-contain"
+                />
+              </div>
+
+              {/* Label */}
+              <span className="text-xs text-[rgb(var(--text-muted))] mt-3 font-medium">
+                {cert.short}
+              </span>
             </div>
           ))}
         </div>
@@ -906,31 +1150,26 @@ function CTASection() {
 
 function Footer() {
   return (
-    <footer className="bg-[rgb(8, 20, 40))] py-12">
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+    <footer className="bg-[#081428]">
+      {/* Main Footer Content */}
+      <div className="max-w-7xl mx-auto px-4 md:px-8 py-12">
+        <div className="grid md:grid-cols-4 gap-8">
           {/* Brand */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-[rgb(var(--primary))] flex items-center justify-center">
-                <span className="text-white font-bold text-lg">W</span>
-              </div>
-              <span className="font-semibold text-white">Web Soft BD</span>
+          <div className="md:col-span-2">
+            <div className="flex items-center gap-3 mb-4">
+              <Image
+                src="/images/logo/web-soft-logo.png"
+                alt="Web Soft BD"
+                width={40}
+                height={40}
+                className="h-10 w-auto"
+              />
+              <span className="font-semibold text-white text-lg">Web Soft BD</span>
             </div>
-            <p className="text-sm text-white/60 mb-4">
-              Engineering Earth Intelligence for a Resilient Future
+            <p className="text-sm text-white/60 mb-6 max-w-sm">
+              Engineering Earth Intelligence for a Resilient Future. Translating complex environmental,
+              meteorological, and hydrological data into intelligent enterprise platforms.
             </p>
-            {/* Certifications */}
-            <div className="flex flex-wrap gap-2">
-              {["ISO 9001:2015", "BASIS", "CMMI"].map((cert) => (
-                <span
-                  key={cert}
-                  className="text-xs bg-white/10 text-white/70 px-2 py-1 rounded hover:bg-white/20 transition-colors cursor-pointer"
-                >
-                  {cert}
-                </span>
-              ))}
-            </div>
           </div>
 
           {/* Solutions */}
@@ -939,7 +1178,7 @@ function Footer() {
               Solutions
             </h5>
             <ul className="space-y-2">
-              {["Agro-Met Systems", "AI & Big Data", "Hydrology & Water", "Web Development"].map(
+              {["Agro-Met Systems", "AI & Big Data", "Hydrology & Water", "Web Development", "App Development", "ERP & Server"].map(
                 (item) => (
                   <li key={item}>
                     <a
@@ -957,10 +1196,10 @@ function Footer() {
           {/* Projects */}
           <div>
             <h5 className="text-sm font-semibold text-[rgb(var(--success))] uppercase tracking-wider mb-4">
-              Projects
+              Featured Projects
             </h5>
             <ul className="space-y-2">
-              {["BAMIS", "BMD Systems", "Flood Forecasting", "Aviation Data"].map((item) => (
+              {["BAMIS", "BMD Systems", "Flood Forecasting", "Aviation Data", "Salinity Model", "AI Development"].map((item) => (
                 <li key={item}>
                   <a
                     href="#"
@@ -979,17 +1218,44 @@ function Footer() {
               Contact
             </h5>
             <ul className="space-y-2 text-sm text-white/60">
-              <li>info@websoftbd.net</li>
-              <li>+8801716983511</li>
-              <li>Dhaka, Bangladesh</li>
+              <li className="flex items-start gap-2">
+                <MapPin size={16} className="flex-shrink-0 mt-0.5" />
+                <span>10th Floor, Shah Ali Tower, 33 Kawran Bazar, Dhaka-1215</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Phone size={16} className="flex-shrink-0" />
+                <span>+8801716983511</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Mail size={16} className="flex-shrink-0" />
+                <span>info@websoftbd.net</span>
+              </li>
             </ul>
           </div>
         </div>
 
+        {/* Useful Links */}
+        <div className="py-6 border-t border-white/10 mb-6">
+          <h6 className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-3">
+            Useful Links
+          </h6>
+          <div className="flex flex-wrap gap-4 text-xs">
+            {["World Bank", "JICA", "BAMIS", "BMD", "FFWC", "BWDB", "SAFOAM", "INSAM"].map((link) => (
+              <a
+                key={link}
+                href="#"
+                className="text-white/40 hover:text-[rgb(var(--primary))] transition-colors"
+              >
+                {link}
+              </a>
+            ))}
+          </div>
+        </div>
+
         {/* Bottom */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-white/40">
-            © {new Date().getFullYear()} Web Soft BD. All rights reserved.
+            © {new Date().getFullYear()} Web Soft BD. All Rights Reserved.
           </p>
           <div className="flex gap-4">
             {["Privacy", "Terms", "Sitemap"].map((link) => (
@@ -1025,6 +1291,7 @@ export default function Page() {
       <CaseStudySection />
       <ServicesSection />
       <TestimonialsSection />
+      <CertificationsSection />
       <CTASection />
       <Footer />
     </main>
