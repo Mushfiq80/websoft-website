@@ -221,6 +221,15 @@
   }
 }
 
+@keyframes scroll-vertical {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
 .animate-fade-up {
   animation: fade-up 0.6s ease-out forwards;
   opacity: 0;
@@ -236,6 +245,16 @@
 
 .animate-float {
   animation: float 4s ease-in-out infinite;
+}
+
+/* Project Image Scroll Animation */
+.animate-scroll-vertical {
+  animation: scroll-vertical 8s linear infinite;
+  animation-play-state: paused;
+}
+
+.group:hover .animate-scroll-vertical {
+  animation-play-state: running;
 }
 
 /* Line Clamp Utilities */

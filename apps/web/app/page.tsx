@@ -125,40 +125,76 @@ const SECTORS = [
 
 const PROJECTS = [
   {
-    id: 1,
+    id: "bamis",
+    name: "BAMIS — Agro-Meteorological Information System",
+    shortName: "BAMIS",
     tag: "Agro-Met · AI · Govt",
-    name: "BAMIS — Bangladesh Agro-Meteorological Information System",
     stat: "Serving 1.2M+ farmers · 64 districts",
-    icon: CloudRain,
+    image: "/images/projects/BAMIS_web.png",
     color: "rgb(var(--success))",
-    bgColor: "rgb(var(--success-light))",
   },
   {
-    id: 2,
-    tag: "Meteorology · BMD",
-    name: "Bangladesh Meteorological Department system",
+    id: "bmd",
+    name: "Bangladesh Meteorological Department System",
+    shortName: "BMD System",
+    tag: "Meteorology · Govt",
     stat: "National weather data infrastructure",
-    icon: Wind,
+    image: "/images/projects/bmd-web.png",
     color: "rgb(24, 95, 165)",
-    bgColor: "rgb(223, 232, 245)",
   },
   {
-    id: 3,
+    id: "aviation",
+    name: "Aviation Observed Data Sharing System",
+    shortName: "Aviation Data",
     tag: "Aviation · Data Sharing",
-    name: "Aviation observed data sharing system",
     stat: "Real-time aviation weather integration",
-    icon: Plane,
+    image: "/images/projects/phone-bmd.png",
     color: "rgb(133, 79, 11)",
-    bgColor: "rgb(245, 238, 221)",
   },
   {
-    id: 4,
-    tag: "Water · Hydrology · GIS",
-    name: "Salinity intrusion model for coastal Bangladesh",
-    stat: "3D flood risk simulation · BWDB",
-    icon: Waves,
+    id: "salinity",
+    name: "Salinity Intrusion Model",
+    shortName: "Salinity Model",
+    tag: "Hydrology · BWDB",
+    stat: "Coastal Bangladesh protection",
+    image: "/images/projects/isoil-web.png",
     color: "rgb(83, 74, 183)",
-    bgColor: "rgb(229, 221, 245)",
+  },
+  {
+    id: "flood-risk",
+    name: "3D Flood Risk Mapping Simulation",
+    shortName: "Flood Risk Map",
+    tag: "GIS · Hydrology · BWDB",
+    stat: "3D simulation · Disaster preparedness",
+    image: "/images/projects/rri-web.png",
+    color: "rgb(24, 95, 165)",
+  },
+  {
+    id: "ai-bamis",
+    name: "AI Development for BAMIS",
+    shortName: "AI for BAMIS",
+    tag: "AI · Big Data · ML",
+    stat: "Climate adaptation model",
+    image: "/images/projects/mushroom-market-web.png",
+    color: "rgb(83, 74, 183)",
+  },
+  {
+    id: "met-inventory",
+    name: "Meteorology Inventory Software",
+    shortName: "Met Inventory",
+    tag: "Meteorology · Asset Mgmt",
+    stat: "Equipment management system",
+    image: "/images/projects/hdfd-web.png",
+    color: "rgb(133, 79, 11)",
+  },
+  {
+    id: "hdf",
+    name: "Human Development Foundation System",
+    shortName: "HDF System",
+    tag: "NGO · Web · Social",
+    stat: "Social impact management",
+    image: "/images/projects/mushroom-web.png",
+    color: "rgb(var(--success))",
   },
 ]
 
@@ -604,37 +640,35 @@ function ClientMarquee() {
 
       {/* Marquee Rows */}
       <div className="relative">
-        {[1, 2].map((row) => {
-          const clients = row === 1 ? row1Clients : row2Clients
-          const direction = row === 1 ? "normal" : "reverse"
-          const duration = row === 1 ? "40s" : "50s"
-
-          return (
-            <div
-              key={row}
-              className={`flex mb-4 animate-marquee ${row === 1 ? "" : "justify-end"}`}
-              style={{
-                animationDirection: direction,
-                animationDuration: duration,
-              }}
-            >
-              {[...clients, ...clients].map((client, i) => (
-                <div
-                  key={`${row}-${i}`}
-                  className="flex-shrink-0 mx-4 px-6 py-4 bg-white border border-[rgb(var(--border-subtle))] rounded-lg hover:border-[rgb(var(--primary))] hover:shadow-md transition-all duration-300 hover:scale-105 cursor-pointer group flex items-center justify-center min-w-[140px] h-[70px]"
-                >
-                  <Image
-                    src={client.logo}
-                    alt={client.name}
-                    width={120}
-                    height={40}
-                    className="max-h-[40px] w-auto object-contain transition-all duration-300"
-                  />
-                </div>
-              ))}
-            </div>
-          )
-        })}
+        {[
+          { clients: row1Clients, direction: "normal", duration: "25s", startOffset: "0%" },
+          { clients: row2Clients, direction: "reverse", duration: "35s", startOffset: "25%" }
+        ].map((rowConfig, rowIndex) => (
+          <div
+            key={rowIndex}
+            className="flex mb-4 animate-marquee"
+            style={{
+              animationDirection: rowConfig.direction,
+              animationDuration: rowConfig.duration,
+              transform: `translateX(${rowConfig.direction === "reverse" ? rowConfig.startOffset : "-" + rowConfig.startOffset})`,
+            }}
+          >
+            {[...rowConfig.clients, ...rowConfig.clients, ...rowConfig.clients].map((client, i) => (
+              <div
+                key={`${rowIndex}-${i}`}
+                className="flex-shrink-0 mx-4 px-6 py-4 bg-white border border-[rgb(var(--border-subtle))] rounded-lg hover:border-[rgb(var(--primary))] hover:shadow-md transition-all duration-300 hover:scale-105 cursor-pointer group flex items-center justify-center min-w-[140px] h-[70px]"
+              >
+                <Image
+                  src={client.logo}
+                  alt={client.name}
+                  width={120}
+                  height={40}
+                  className="max-h-[40px] w-auto object-contain transition-all duration-300"
+                />
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
     </section>
   )
@@ -734,6 +768,31 @@ function SectorsSection() {
   )
 }
 
+function ProjectImageScroll({ image, alt }: { image: string; alt: string }) {
+  return (
+    <div className="relative h-48 overflow-hidden rounded-t-sm bg-gray-100">
+      <div className="absolute inset-0 flex flex-col animate-scroll-vertical">
+        <Image
+          src={image}
+          alt={alt}
+          fill
+          className="h-full w-full object-cover"
+          sizes="(max-width: 768px) 50vw, 25vw"
+        />
+        <Image
+          src={image}
+          alt={alt}
+          fill
+          className="h-full w-full object-cover"
+          sizes="(max-width: 768px) 50vw, 25vw"
+        />
+      </div>
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
+    </div>
+  )
+}
+
 function ProjectsSection() {
   const { ref, isInView } = useInView(0.1)
 
@@ -750,34 +809,40 @@ function ProjectsSection() {
           </h2>
         </div>
 
-        {/* Grid */}
+        {/* Grid - 8 cards in 4×2 layout */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {PROJECTS.map((project, i) => (
             <div
               key={project.id}
-              className="group bg-white rounded-xl overflow-hidden border border-[rgb(var(--border-subtle))] hover:border-[rgb(var(--primary))] hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              className="group bg-white rounded-sm overflow-hidden border border-[rgb(var(--border-subtle))] hover:border-[rgb(var(--primary))] hover:shadow-xl transition-all duration-400 hover:-translate-y-1 cursor-pointer"
               style={{ animationDelay: `${i * 0.1}s` }}
             >
-              {/* Image */}
-              <div
-                className="h-32 flex items-center justify-center"
-                style={{ backgroundColor: project.bgColor }}
-              >
-                <project.icon size={36} style={{ color: project.color }} />
-              </div>
+              {/* Scrolling Image */}
+              <ProjectImageScroll image={project.image} alt={project.name} />
 
-              {/* Body */}
+              {/* Content */}
               <div className="p-5">
-                <p className="text-xs font-semibold text-[rgb(var(--primary))] uppercase tracking-wider mb-2">
+                <p className="text-xs font-semibold text-[rgb(var(--primary))] uppercase tracking-wider mb-2 line-clamp-1">
                   {project.tag}
                 </p>
-                <h3 className="font-semibold text-[rgb(var(--text-primary))] mb-2 line-clamp-2">
+                <h3 className="font-semibold text-[rgb(var(--text-primary))] mb-2 line-clamp-2 leading-tight">
                   {project.name}
                 </h3>
-                <p className="text-sm text-[rgb(var(--text-muted))]">{project.stat}</p>
+                <p className="text-sm text-[rgb(var(--text-muted))] line-clamp-1">{project.stat}</p>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* See More Button */}
+        <div className="text-center mt-12">
+          <Button
+            variant="outline"
+            className="border-[rgb(var(--primary))] text-[rgb(var(--primary))] hover:bg-[rgb(var(--primary-pale))] rounded-full px-8"
+          >
+            See More Projects
+            <ArrowRight size={16} className="ml-2 inline-block" />
+          </Button>
         </div>
       </div>
     </section>
