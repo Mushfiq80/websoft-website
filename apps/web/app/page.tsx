@@ -770,25 +770,31 @@ function SectorsSection() {
 
 function ProjectImageScroll({ image, alt }: { image: string; alt: string }) {
   return (
-    <div className="relative h-48 overflow-hidden rounded-t-sm bg-gray-100">
+    <div className="relative h-[600px] overflow-hidden rounded-t-sm bg-gray-100">
       <div className="absolute inset-0 flex flex-col animate-scroll-vertical">
-        <Image
-          src={image}
-          alt={alt}
-          fill
-          className="h-full w-full object-cover"
-          sizes="(max-width: 768px) 50vw, 25vw"
-        />
-        <Image
-          src={image}
-          alt={alt}
-          fill
-          className="h-full w-full object-cover"
-          sizes="(max-width: 768px) 50vw, 25vw"
-        />
+        {/* First image - starts at top */}
+        <div className="relative w-full flex-shrink-0 h-[1200px]">
+          <Image
+            src={image}
+            alt={alt}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 50vw, 25vw"
+          />
+        </div>
+        {/* Second image - duplicate for seamless loop */}
+        <div className="relative w-full flex-shrink-0 h-[1200px]">
+          <Image
+            src={image}
+            alt={alt}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 50vw, 25vw"
+          />
+        </div>
       </div>
-      {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
+      {/* Subtle gradient overlay at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
     </div>
   )
 }
