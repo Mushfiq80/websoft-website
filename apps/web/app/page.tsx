@@ -51,7 +51,7 @@ const CLIENTS = [
 
 const CERTIFICATIONS = [
   { name: "ISO 9001:2015", logo: "/images/certifications/iso.jpg", short: "ISO" },
-  { name: "BASIS Member", logo: "/images/certifications/basis_japan.png", short: "BASIS" },
+  // { name: "BASIS Member", logo: "/images/certifications/basis_japan.png", short: "BASIS" }, // Add basis_japan.png file
   { name: "CMMI", logo: "/images/certifications/cmmi.png", short: "CMMI" },
   { name: "QMS", logo: "/images/certifications/qms.png", short: "QMS" },
   { name: "QRO", logo: "/images/certifications/qro.png", short: "QRO" },
@@ -392,80 +392,114 @@ function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
 
   React.useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60)
+    const handleScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white shadow-md" : "bg-white"
+      className={`sticky top-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-[rgb(var(--border-subtle))]"
+          : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
+      <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center gap-3">
-            <Image
-              src="/images/logo/web-soft-logo.png"
-              alt="Web Soft BD"
-              width={40}
-              height={40}
-              className="h-10 w-auto"
-            />
-            <span className="font-semibold text-lg text-[rgb(var(--text-primary))]">
-              Web Soft BD
-            </span>
-          </div>
+          <a href="#" className="flex items-center gap-3 group">
+            <div className="relative h-20 w-20">
+              <Image
+                src="/images/logo/web-soft-logo.png"
+                alt="Web Soft BD"
+                fill
+                className={`object-contain transition-all duration-300 ${
+                  scrolled ? "opacity-100" : "opacity-90 group-hover:opacity-100"
+                }`}
+                sizes="80px"
+                priority
+              />
+            </div>
+          </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-1">
             {["Sectors", "Solutions", "Projects", "Clients", "Contact"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-sm font-medium flex items-center gap-1 text-[rgb(var(--text-muted))] hover:text-[rgb(var(--primary))] transition-colors"
+                className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg ${
+                  scrolled
+                    ? "text-[rgb(var(--text-muted))] hover:text-[rgb(var(--primary))] hover:bg-[rgb(var(--primary-faint))]"
+                    : "text-[rgb(var(--text-muted))] hover:text-[rgb(var(--primary))] hover:bg-[rgb(var(--primary-faint))]"
+                }`}
               >
                 {item}
-                {(item === "Sectors" || item === "Solutions") && <ChevronDown size={14} />}
+                {(item === "Sectors" || item === "Solutions") && (
+                  <ChevronDown size={12} className="inline-block ml-1 opacity-60" />
+                )}
               </a>
             ))}
           </nav>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
-            <Button className="bg-[rgb(var(--primary))] hover:bg-[rgb(var(--primary-dark))] text-white rounded-full">
+          <div className="hidden md:flex items-center gap-4">
+            <Button
+              className={`transition-all duration-300 rounded-full px-6 font-medium ${
+                scrolled
+                  ? "bg-[rgb(var(--primary))] hover:bg-[rgb(var(--primary-dark))] text-white shadow-md hover:shadow-lg"
+                  : "bg-[rgb(var(--primary))] hover:bg-[rgb(var(--primary-dark))] text-white shadow-md hover:shadow-lg"
+              }`}
+            >
               Request Consultation
             </Button>
           </div>
 
           {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden p-2"
+            className={`md:hidden p-2.5 rounded-lg transition-all duration-300 ${
+              scrolled
+                ? "text-[rgb(var(--text-primary))] hover:bg-[rgb(var(--primary-faint))]"
+                : "text-[rgb(var(--text-primary))] hover:bg-[rgb(var(--primary-faint))]"
+            }`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
-            {mobileMenuOpen ? <X /> : <Menu />}
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-t shadow-lg">
-          <nav className="flex flex-col p-4 gap-4">
+        <div
+          className={`md:hidden border-t backdrop-blur-xl ${
+            scrolled ? "bg-white/95" : "bg-black/90"
+          }`}
+        >
+          <nav className="flex flex-col p-6 gap-2">
             {["Sectors", "Solutions", "Projects", "Clients", "Contact"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-sm font-medium text-[rgb(var(--text-muted))] hover:text-[rgb(var(--primary))]"
+                className={`text-sm font-medium py-3 px-4 rounded-lg transition-colors ${
+                  scrolled
+                    ? "text-[rgb(var(--text-muted))] hover:text-[rgb(var(--primary))] hover:bg-[rgb(var(--primary-faint))]"
+                    : "text-white/80 hover:text-white hover:bg-white/10"
+                }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item}
               </a>
             ))}
-            <Button className="bg-[rgb(var(--primary))] text-white rounded-full w-full">
+            <Button
+              className={`mt-4 rounded-full w-full ${
+                scrolled
+                  ? "bg-[rgb(var(--primary))] text-white"
+                  : "bg-white text-[rgb(var(--primary))]"
+              }`}
+            >
               Request Consultation
             </Button>
           </nav>
@@ -477,107 +511,42 @@ function Navbar() {
 
 function Hero() {
   const heroRef = React.useRef<HTMLElement>(null)
-  const canvasRef = React.useRef<HTMLCanvasElement>(null)
-
-  React.useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return
-
-    const resizeCanvas = () => {
-      if (canvas && heroRef.current) {
-        canvas.width = heroRef.current.offsetWidth
-        canvas.height = heroRef.current.offsetHeight
-      }
-    }
-
-    resizeCanvas()
-    window.addEventListener("resize", resizeCanvas)
-
-    // Animated radar rings
-    let animationFrame: number
-    const rings = [
-      { x: 0.3, y: 0.5, radius: 0, maxRadius: 150, speed: 0.3, opacity: 1 },
-      { x: 0.7, y: 0.4, radius: 0, maxRadius: 120, speed: 0.4, opacity: 0.8 },
-      { x: 0.5, y: 0.6, radius: 0, maxRadius: 100, speed: 0.5, opacity: 0.6 },
-    ]
-
-    const animate = (timestamp: number) => {
-      if (!ctx || !canvas) return
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-      rings.forEach((ring) => {
-        ring.radius += ring.speed
-        if (ring.radius > ring.maxRadius) {
-          ring.radius = 0
-        }
-
-        const x = canvas.width * ring.x
-        const y = canvas.height * ring.y
-        const opacity = ring.opacity * (1 - ring.radius / ring.maxRadius)
-
-        ctx.beginPath()
-        ctx.arc(x, y, ring.radius, 0, Math.PI * 2)
-        ctx.strokeStyle = `rgba(115, 112, 216, ${opacity})`
-        ctx.lineWidth = 2
-        ctx.stroke()
-      })
-
-      // Animated dots (rainfall)
-      for (let i = 0; i < 20; i++) {
-        const x = (timestamp / 50 + i * 50) % canvas.width
-        const y = (timestamp / 30 + i * 30) % canvas.height
-        ctx.beginPath()
-        ctx.arc(x, y, 2, 0, Math.PI * 2)
-        ctx.fillStyle = "rgba(29, 158, 117, 0.5)"
-        ctx.fill()
-      }
-
-      animationFrame = requestAnimationFrame(animate)
-    }
-
-    animationFrame = requestAnimationFrame(animate)
-
-    return () => {
-      window.removeEventListener("resize", resizeCanvas)
-      cancelAnimationFrame(animationFrame)
-    }
-  }, [])
 
   return (
     <section
       ref={heroRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{
-        background: "linear-gradient(135deg, rgb(255, 255, 255) 0%, rgb(243, 242, 253) 50%, rgb(240, 251, 247) 100%)",
-      }}
     >
-      {/* Animated Background Canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 w-full h-full opacity-30"
-        aria-hidden="true"
-      />
+      {/* Video Background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source src="/assets/0620.mp4" type="video/mp4" />
+      </video>
+
+      {/* Gradient Overlay - 15% black */}
+      <div className="absolute inset-0 bg-black/15 z-10" />
 
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 md:px-8 text-center">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 bg-[rgb(var(--primary-pale))] text-[rgb(var(--primary))] px-4 py-2 rounded-full text-sm font-semibold mb-6 animate-fade-up">
+        <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold mb-6 animate-fade-up border border-white/30">
           <span>ISO 9001:2015 · BASIS · 18 Years</span>
         </div>
 
         {/* Headline */}
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[rgb(var(--text-primary))] leading-tight mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
           Engineering Earth Intelligence
           <br />
           for a <span className="text-[rgb(var(--primary))]">Resilient Future</span>
         </h1>
 
         {/* Subtitle */}
-        <p className="text-lg md:text-xl text-[rgb(var(--text-muted))] max-w-3xl mx-auto mb-8 animate-fade-up" style={{ animationDelay: "0.2s" }}>
+        <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-8 animate-fade-up" style={{ animationDelay: "0.2s" }}>
           Translating complex environmental, meteorological, and hydrological data into intelligent
           enterprise platforms.
         </p>
@@ -595,29 +564,13 @@ function Hero() {
         {/* Trust Tags */}
         <div className="flex flex-wrap gap-6 justify-center animate-fade-up" style={{ animationDelay: "0.4s" }}>
           {["Agro-Meteorology", "AI & Big Data", "Hydrology & Water", "ERP & ICT"].map((tag) => (
-            <div key={tag} className="flex items-center gap-2 text-sm text-[rgb(var(--text-muted))]">
-              <div className="w-2 h-2 rounded-full bg-[rgb(var(--success))]" />
+            <div key={tag} className="flex items-center gap-2 text-sm text-white/80">
+              <div className="w-2 h-2 rounded-full bg-[rgb(var(--primary))]" />
               {tag}
             </div>
           ))}
         </div>
 
-        {/* Visual Mockup */}
-        <div className="mt-12 rounded-xl overflow-hidden shadow-lg animate-fade-up" style={{ animationDelay: "0.5s" }}>
-          <div className="bg-gradient-to-br from-[rgb(232, 244, 255)] to-[rgb(240, 251, 246))] p-8 h-64 md:h-80 flex items-center justify-center relative">
-            <div className="absolute top-4 left-4 flex gap-2">
-              <div className="w-3 h-3 rounded-full bg-[rgb(var(--success))]" />
-              <div className="w-3 h-3 rounded-full bg-[rgb(55, 138, 221))]" />
-              <div className="w-3 h-3 rounded-full bg-[rgb(245, 166, 35))]" />
-            </div>
-            <div className="text-center">
-              <Map size={48} className="text-[rgb(var(--primary))] mx-auto mb-2 opacity-50" />
-              <p className="text-sm font-medium text-[rgb(var(--primary))] bg-white/80 px-4 py-2 rounded-lg">
-                Bangladesh agro-met live data visualization
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   )
@@ -1167,14 +1120,14 @@ function CertificationsSection() {
               key={cert.name}
               className="group relative flex flex-col items-center"
             >
-              {/* Logo container */}
-              <div className="relative bg-white rounded-xl p-6 border border-[rgb(var(--border-subtle))] hover:border-[rgb(var(--primary))]/30 hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1">
+              {/* Logo container - no background */}
+              <div className="relative h-20 w-full">
                 <Image
                   src={cert.logo}
                   alt={cert.name}
-                  width={100}
-                  height={60}
-                  className="h-16 w-auto object-contain"
+                  fill
+                  className="object-contain hover:scale-110 transition-transform duration-300"
+                  sizes="(max-width: 768px) 50vw, 25vw"
                 />
               </div>
 
@@ -1228,13 +1181,15 @@ function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <Image
-                src="/images/logo/web-soft-logo.png"
-                alt="Web Soft BD"
-                width={40}
-                height={40}
-                className="h-10 w-auto"
-              />
+              <div className="relative h-10 w-10">
+                <Image
+                  src="/images/logo/web-soft-logo.png"
+                  alt="Web Soft BD"
+                  fill
+                  className="object-contain"
+                  sizes="40px"
+                />
+              </div>
               <span className="font-semibold text-white text-lg">Web Soft BD</span>
             </div>
             <p className="text-sm text-white/60 mb-6 max-w-sm">
