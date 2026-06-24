@@ -1,14 +1,39 @@
-import { Geist_Mono, Inter } from "next/font/google"
-
+import { Inter } from "next/font/google"
 import "@workspace/ui/globals.css"
-import { cn } from "@workspace/ui/lib/utils";
+import { Header } from "@/components/shared/Header"
+import { Footer } from "@/components/shared/Footer"
+import { AnnouncementBar } from "@/components/shared/AnnouncementBar"
+import { SITE_CONFIG } from "@/data/site"
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'})
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
-const fontMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-})
+export const metadata = {
+  title: SITE_CONFIG.seo.title,
+  description: SITE_CONFIG.seo.description,
+  keywords: SITE_CONFIG.seo.keywords,
+  authors: [{ name: SITE_CONFIG.company.name }],
+  creator: SITE_CONFIG.company.name,
+  publisher: SITE_CONFIG.company.name,
+  metadataBase: new URL("https://www.websoftbd.net"),
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://www.websoftbd.net",
+    title: SITE_CONFIG.seo.title,
+    description: SITE_CONFIG.seo.description,
+    siteName: SITE_CONFIG.company.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_CONFIG.seo.title,
+    description: SITE_CONFIG.seo.description,
+    creator: "@websoftbd",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+}
 
 export default function RootLayout({
   children,
@@ -16,12 +41,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html
-      lang="en"
-      className={cn("antialiased", fontMono.variable, "font-sans", inter.variable)}
-    >
+    <html lang="en" className={`${inter.variable} font-sans antialiased`}>
       <body suppressHydrationWarning>
-        {children}
+        <AnnouncementBar />
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   )
