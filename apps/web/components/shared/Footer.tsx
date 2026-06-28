@@ -241,32 +241,7 @@ export function Footer() {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Certifications Bar */}
-        <div className="mt-12 border-t border-white/10 pt-8">
-          <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-            {CERTIFICATIONS.slice(0, 6).map((cert) => (
-              <div
-                key={cert.name}
-                className="flex items-center gap-2 text-xs text-white/60 transition-colors hover:text-white"
-              >
-                <div className="relative h-6 w-6">
-                  <Image
-                    src={cert.logo}
-                    alt={cert.name}
-                    fill
-                    className="object-contain"
-                    sizes="24px"
-                  />
-                </div>
-                <span className="hidden sm:inline">
-                  {cert.short || cert.name}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
+        </div>    
 
         {/* Bottom Bar */}
         <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 md:flex-row">

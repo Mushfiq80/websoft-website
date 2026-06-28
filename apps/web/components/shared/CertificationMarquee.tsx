@@ -3,6 +3,7 @@
 import * as React from "react"
 import Image from "next/image"
 import { Marquee } from "@workspace/ui/components/marquee"
+import { HyperText } from "@workspace/ui/components/hyper-text"
 import {
   Tooltip,
   TooltipContent,
@@ -42,7 +43,9 @@ export function CertificationMarquee() {
     <div className="relative w-full overflow-hidden bg-white py-12">
       <div className="max-w-7xl mx-auto px-4 md:px-8 mb-8">
         <h2 className="text-2xl md:text-3xl font-bold text-center text-[rgb(var(--text-primary))]">
-          Certifications & <span className="text-[rgb(var(--primary))]">Accreditations</span>
+          <HyperText className="!text-2xl !md:text-3xl !font-bold !text-[rgb(var(--text-primary))]">
+            Certifications & Accreditations
+          </HyperText>
         </h2>
         <p className="text-center text-[rgb(var(--text-muted))] mt-2">
           Internationally recognized quality standards and professional memberships
@@ -51,14 +54,14 @@ export function CertificationMarquee() {
 
       <TooltipProvider>
         {/* First marquee - left to right */}
-        <Marquee pauseOnHover className="[--duration:40s]">
+        <Marquee pauseOnHover className="[--duration:80s]">
           {marqueeContent.map((cert, index) => (
             <CertificationCard key={`left-${index}`} certification={cert} />
           ))}
         </Marquee>
 
         {/* Second marquee - right to left (reversed) */}
-        <Marquee reverse pauseOnHover className="[--duration:45s]">
+        <Marquee reverse pauseOnHover className="[--duration:90s]">
           {marqueeContent.map((cert, index) => (
             <CertificationCard key={`right-${index}`} certification={cert} />
           ))}

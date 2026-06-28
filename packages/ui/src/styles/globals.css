@@ -50,22 +50,33 @@
     --font-sans: var(--font-sans);
     --animate-marquee: marquee var(--duration) infinite linear;
     --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
-  @keyframes marquee {
+}
+
+@keyframes marquee {
   from {
     transform: translateX(0);
-        }
+  }
   to {
     transform: translateX(calc(-100% - var(--gap)));
-        }
-    }
-  @keyframes marquee-vertical {
+  }
+}
+
+@keyframes marquee-vertical {
   from {
     transform: translateY(0);
-        }
+  }
   to {
     transform: translateY(calc(-100% - var(--gap)));
-        }
-    }
+  }
+}
+
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 :root {
@@ -221,15 +232,6 @@
   }
 }
 
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
 @keyframes float {
   0%, 100% {
     transform: translateY(0);
@@ -254,10 +256,18 @@
 }
 
 .animate-marquee {
-  animation: marquee linear infinite;
+  animation: marquee var(--duration, 40s) linear infinite;
 }
 
 .animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse var(--duration, 40s) linear infinite;
+}
+
+.animate-marquee-reverse:hover {
   animation-play-state: paused;
 }
 

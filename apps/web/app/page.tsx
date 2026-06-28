@@ -6,6 +6,9 @@ import Link from "next/link"
 import { Button } from "@workspace/ui/components/button"
 import { motion, useMotionValue, useTransform, useSpring } from "motion/react"
 import { CertificationMarquee } from "@/components/shared/CertificationMarquee"
+import { ClientMarquee } from "@/components/shared/ClientMarquee"
+import { WordRotate } from "@workspace/ui/components/word-rotate"
+import { HyperText } from "@workspace/ui/components/hyper-text"
 import { Cloud, Droplet, BarChart3, Brain, Globe, Server, Smartphone, ArrowRight, Leaf, Satellite, TrendingUp, CloudRain, Wind, Navigation, Quote, Check, Zap, Waves, Building, Cpu, Network, Wrench, HardDrive, Database, Phone, Shield, Mail, Users, FileText, Map, AlertTriangle } from "lucide-react"
 
 // ============================================
@@ -533,15 +536,34 @@ function Hero() {
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 md:px-8 text-center">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold mb-6 animate-fade-up border border-white/30">
-          <span>ISO 9001:2015 · BASIS · 18 Years</span>
+        <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold mb-6 animate-fade-up border border-white/30 h-10">
+          <WordRotate
+            className="text-sm font-semibold text-white"
+            words={[
+              "ISO 9001:2015 · BASIS · 18 Years",
+              "CMMI Certified · QRO · Quality Assured",
+              "World Bank Partner · JICA · Govt Approved"
+            ]}
+            duration={3000}
+          />
         </div>
 
         {/* Headline */}
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
           Engineering Earth Intelligence
           <br />
-          for a <span className="text-[rgb(var(--primary))]">Resilient Future</span>
+          for a{' '}
+          <span className="text-[rgb(var(--primary))] inline-block align-middle">
+            <WordRotate
+              className="text-4xl md:text-6xl lg:text-7xl font-bold text-[rgb(var(--primary))]"
+              words={[
+                "Resilient Future",
+                "Climate Security",
+                "Sustainable World"
+              ]}
+              duration={3000}
+            />
+          </span>
         </h1>
 
         {/* Subtitle */}
@@ -575,53 +597,18 @@ function Hero() {
   )
 }
 
-function ClientMarquee() {
+function ClientsMarqueeSection() {
   const { ref, isInView } = useInView(0.2)
 
-  // Split clients into two rows for better visual balance
-  const row1Clients = CLIENTS.slice(0, 15)
-  const row2Clients = CLIENTS.slice(15)
-
   return (
-    <section ref={ref} className="py-16 bg-white overflow-hidden">
+    <section ref={ref} className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 md:px-8 mb-8 text-center">
         <p className="text-xs md:text-sm font-semibold text-[rgb(var(--text-subtle))] uppercase tracking-wider">
           Trusted by leading organizations
         </p>
       </div>
 
-      {/* Marquee Rows */}
-      <div className="relative">
-        {[
-          { clients: row1Clients, direction: "normal", duration: "25s", startOffset: "0%" },
-          { clients: row2Clients, direction: "reverse", duration: "35s", startOffset: "25%" }
-        ].map((rowConfig, rowIndex) => (
-          <div
-            key={rowIndex}
-            className="flex mb-4 animate-marquee"
-            style={{
-              animationDirection: rowConfig.direction,
-              animationDuration: rowConfig.duration,
-              transform: `translateX(${rowConfig.direction === "reverse" ? rowConfig.startOffset : "-" + rowConfig.startOffset})`,
-            }}
-          >
-            {[...rowConfig.clients, ...rowConfig.clients, ...rowConfig.clients].map((client, i) => (
-              <div
-                key={`${rowIndex}-${i}`}
-                className="flex-shrink-0 mx-4 px-6 py-4 bg-white border border-[rgb(var(--border-subtle))] rounded-lg hover:border-[rgb(var(--primary))] hover:shadow-md transition-all duration-300 hover:scale-105 cursor-pointer group flex items-center justify-center min-w-[140px] h-[70px]"
-              >
-                <Image
-                  src={client.logo}
-                  alt={client.name}
-                  width={120}
-                  height={40}
-                  className="max-h-[40px] w-auto object-contain transition-all duration-300"
-                />
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
+      <ClientMarquee clients={CLIENTS} />
     </section>
   )
 }
@@ -644,7 +631,9 @@ function SectorsSection() {
             Our Core Expertise
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-4">
-            Intelligence for <span className="text-[rgb(var(--primary))]">every domain</span>
+            <HyperText className="!text-3xl !md:text-4xl !font-bold !text-[rgb(var(--text-primary))]">
+              Intelligence for every domain
+            </HyperText>
           </h2>
           <p className="text-[rgb(var(--text-muted))]">Click an expertise area to explore solutions</p>
         </div>
@@ -830,7 +819,9 @@ function ProjectsSection() {
             Featured Projects
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-4">
-            The <span className="text-[rgb(var(--primary))]">Projects</span> We Are Known For
+            <HyperText className="!text-3xl !md:text-4xl !font-bold !text-[rgb(var(--text-primary))]">
+              The Projects We Are Known For
+            </HyperText>
           </h2>
           <p className="text-[rgb(var(--text-muted))] max-w-2xl mx-auto">
             Explore our portfolio of impactful projects across agro-meteorology, hydrology, AI, and enterprise solutions.
@@ -938,7 +929,9 @@ function CaseStudySection() {
             Featured Case Studies
           </p>
           <h2 className="text-2xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-4">
-            Transforming Ideas into <span className="text-[rgb(var(--primary))]">Impact</span>
+            <HyperText className="!text-2xl !md:text-4xl !font-bold !text-[rgb(var(--text-primary))]">
+              Transforming Ideas into Impact
+            </HyperText>
           </h2>
           <p className="text-[rgb(var(--text-muted))] max-w-2xl mx-auto">
             Real projects. Real clients. Real results across Bangladesh's critical sectors.
@@ -1124,7 +1117,9 @@ function ServicesSection() {
             Our Services
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-4">
-            Solutions for every <span className="text-[rgb(var(--primary))]">data challenge</span>
+            <HyperText className="!text-3xl !md:text-4xl !font-bold !text-[rgb(var(--text-primary))]">
+              Solutions for every data challenge
+            </HyperText>
           </h2>
         </div>
       </div>
@@ -1240,7 +1235,9 @@ function TestimonialsSection() {
             In their own words
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-4">
-            How leaders use <span className="text-[rgb(var(--primary))]">Web Soft BD</span>
+            <HyperText className="!text-3xl !md:text-4xl !font-bold !text-[rgb(var(--text-primary))]">
+              How leaders use Web Soft BD
+            </HyperText>
           </h2>
         </div>
 
@@ -1328,7 +1325,7 @@ export default function Page() {
   return (
     <>
       <Hero />
-      <ClientMarquee />
+      <ClientsMarqueeSection />
       <SectorsSection />
       <ProjectsSection />
       <StatsSection />
