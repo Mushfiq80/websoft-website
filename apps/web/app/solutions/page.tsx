@@ -12,7 +12,7 @@ export default function SolutionsPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 bg-gradient-to-b from-[rgb(var(--primary-faint))] to-white">
+      <section className="relative py-20 md:py-28 bg-gradient-to-b from-[rgb(var(--primary-faint))] to-white">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="max-w-3xl">
             <Badge className="mb-4 bg-[rgb(var(--primary))] text-white">Our Solutions</Badge>
@@ -32,7 +32,7 @@ export default function SolutionsPage() {
       {SOLUTION_CLUSTERS.map((cluster, clusterIndex) => (
         <section
           key={cluster.id}
-          className={`py-16 md:py-24 ${clusterIndex % 2 === 1 ? "bg-[rgb(var(--surface))]" : ""}`}
+          className={`py-12 md:py-16 ${clusterIndex % 2 === 1 ? "bg-[rgb(var(--surface))]" : ""}`}
         >
           <div className="max-w-7xl mx-auto px-4 md:px-8">
             {/* Cluster Header */}
@@ -108,7 +108,7 @@ export default function SolutionsPage() {
       ))}
 
       {/* All Solutions Overview */}
-      <section className="py-16 md:py-24 bg-[rgb(var(--navy))]">
+      <section className="py-12 md:py-16 bg-[rgb(var(--navy))]">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">

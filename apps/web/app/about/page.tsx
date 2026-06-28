@@ -4,40 +4,14 @@ import Image from "next/image"
 import Link from "next/link"
 import { SITE_CONFIG } from "@/data/site"
 import { CertificationMarquee } from "@/components/shared/CertificationMarquee"
-import { MapPin, Phone, Mail, Globe, Award, Users, Target, Zap, CheckCircle2, Calendar, TrendingUp } from "lucide-react"
+import { Phone, Mail, Globe, Quote, MapPin } from "lucide-react"
 
 export default function AboutPage() {
-  const milestones = [
-    { year: "2008", title: "Founded", description: "Web Soft BD established with a vision to deliver quality IT solutions" },
-    { year: "2012", title: "First Major Project", description: "BAMIS platform development with World Bank funding" },
-    { year: "2015", title: "ISO 9001:2015", description: "Achieved international quality management certification" },
-    { year: "2018", title: "1000+ Projects", description: "Crossed milestone of 1000+ successful project deliveries" },
-    { year: "2020", title: "AI & Big Data", description: "Expanded into AI-powered solutions and data analytics" },
-    { year: "2024", title: "2000+ Projects", description: "Celebrating delivery of 2000+ projects across sectors" },
-  ]
-
-  const values = [
-    { icon: Target, title: "Mission-Driven", description: "Focused on solving real-world challenges in climate, agriculture, and water management" },
-    { icon: Users, title: "Domain Expertise", description: "Deep specialist knowledge in agro-met, hydrology, and climate science" },
-    { icon: Award, title: "Quality First", description: "ISO-certified processes ensuring reliable, scalable solutions" },
-    { icon: Zap, title: "Innovation", description: "AI-powered platforms and cutting-edge data analytics" },
-  ]
-
-  const capabilities = [
-    "Agro-Meteorological Systems",
-    "Meteorological Data Platforms",
-    "Hydrology & Water Management",
-    "AI & Big Data Analytics",
-    "Web & Mobile Development",
-    "Enterprise ERP Solutions",
-    "Server & Data Center Infrastructure",
-    "Government Portal Development",
-  ]
 
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-[rgb(var(--primary-faint))] to-white">
+      <section className="relative py-20 md:py-28 bg-gradient-to-b from-[rgb(var(--primary-faint))] to-white">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="max-w-3xl">
             <Badge className="mb-4 bg-[rgb(var(--primary))] text-white">About Us</Badge>
@@ -68,158 +42,174 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Story */}
-      <section className="py-16 md:py-24">
+      {/* CEO Message Section */}
+      <section className="py-12 md:py-16 bg-[rgb(var(--primary-faint))]">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-6">
-                Our Story
-              </h2>
-              <p className="text-[rgb(var(--text-muted))] leading-relaxed mb-6">
-                Web Soft BD began its journey with a clear mission: to bridge the gap between complex environmental data
-                and actionable intelligence. Over the years, we've evolved from a promising IT startup into Bangladesh's
-                leading specialist in agro-meteorological, hydrological, and climate technology solutions.
-              </p>
-              <p className="text-[rgb(var(--text-muted))] leading-relaxed mb-6">
-                Our expertise spans across government mission-critical systems, research platforms, and enterprise solutions.
-                We've had the privilege of working with prestigious organizations including the World Bank, JICA, Bangladesh
-                Meteorological Department, and numerous government agencies.
-              </p>
-              <p className="text-[rgb(var(--text-muted))] leading-relaxed">
-                What sets us apart is our deep domain expertise. We don't just build software—we understand the science,
-                the challenges, and the real-world impact of the solutions we deliver.
-              </p>
-            </div>
-            <div className="relative">
-              <div className="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-[rgb(var(--primary))] to-[rgb(var(--primary-dark))] p-8">
-                <div className="grid grid-cols-2 gap-4 h-full">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                    <Calendar className="w-16 h-16 text-white" />
-                  </div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                    <Users className="w-16 h-16 text-white" />
-                  </div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                    <TrendingUp className="w-16 h-16 text-white" />
-                  </div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center">
-                    <Award className="w-16 h-16 text-white" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Values */}
-      <section className="py-16 md:py-24 bg-[rgb(var(--surface))]">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-10">
+            <Badge className="mb-4 bg-[rgb(var(--primary))] text-white">Leadership</Badge>
             <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-4">
-              Our Values
+              Message from Our <span className="text-[rgb(var(--primary))]">CEO</span>
             </h2>
-            <p className="text-[rgb(var(--text-muted))] max-w-2xl mx-auto">
-              The principles that guide everything we do
-            </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => {
-              const Icon = value.icon
-              return (
-                <div key={index} className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="w-12 h-12 rounded-xl bg-[rgb(var(--primary-pale))] flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-[rgb(var(--primary))]" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-[rgb(var(--text-primary))] mb-2">{value.title}</h3>
-                  <p className="text-sm text-[rgb(var(--text-muted))]">{value.description}</p>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
 
-      {/* Capabilities */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-6">
-                Our Capabilities
-              </h2>
-              <p className="text-[rgb(var(--text-muted))] leading-relaxed mb-8">
-                We deliver end-to-end solutions across the entire technology stack—from data collection and IoT sensors
-                to cloud infrastructure, AI analytics, and user-facing applications.
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {capabilities.map((capability, index) => (
-                  <div key={index} className="flex items-center gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-[rgb(var(--primary))] flex-shrink-0" />
-                    <span className="text-sm text-[rgb(var(--text-muted))]">{capability}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="bg-[rgb(var(--surface))] rounded-2xl p-8">
-              <h3 className="text-xl font-semibold text-[rgb(var(--text-primary))] mb-6">
-                Quick Facts
-              </h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <Building className="w-5 h-5 text-[rgb(var(--primary))] mt-1" />
-                  <div>
-                    <div className="font-medium text-[rgb(var(--text-primary))]">Type of Company</div>
-                    <div className="text-sm text-[rgb(var(--text-muted))]">Proprietorship Firm</div>
-                  </div>
+          <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 items-start">
+            {/* CEO Image */}
+            <div className="lg:col-span-1 flex justify-center lg:justify-start">
+              <div className="relative">
+                <div className="w-64 h-64 md:w-72 md:h-72 rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                  <Image
+                    src="/images/team/ceo_web.png"
+                    alt="Kazi Fakrul Latif - CEO and Founder of Web Soft BD"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
                 </div>
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-[rgb(var(--primary))] mt-1" />
-                  <div>
-                    <div className="font-medium text-[rgb(var(--text-primary))]">Headquarters</div>
-                    <div className="text-sm text-[rgb(var(--text-muted))]">Dhaka, Bangladesh</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Globe className="w-5 h-5 text-[rgb(var(--primary))] mt-1" />
-                  <div>
-                    <div className="font-medium text-[rgb(var(--text-primary))]">Global Presence</div>
-                    <div className="text-sm text-[rgb(var(--text-muted))]">USA, UK, Singapore, Malaysia, Thailand, India</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Users className="w-5 h-5 text-[rgb(var(--primary))] mt-1" />
-                  <div>
-                    <div className="font-medium text-[rgb(var(--text-primary))]">Team Size</div>
-                    <div className="text-sm text-[rgb(var(--text-muted))]">Expert team across domains</div>
-                  </div>
+                {/* Quote Icon */}
+                <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-[rgb(var(--primary))] rounded-full flex items-center justify-center shadow-lg">
+                  <Quote className="w-8 h-8 text-white" />
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Milestones */}
-      <section className="py-16 md:py-24 bg-[rgb(var(--surface))]">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-4">
-              Our Journey
-            </h2>
-            <p className="text-[rgb(var(--text-muted))] max-w-2xl mx-auto">
-              Key milestones in our growth and evolution
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {milestones.map((milestone, index) => (
-              <div key={index} className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
-                <div className="text-sm font-bold text-[rgb(var(--primary))] mb-2">{milestone.year}</div>
-                <h3 className="text-lg font-semibold text-[rgb(var(--text-primary))] mb-2">{milestone.title}</h3>
-                <p className="text-sm text-[rgb(var(--text-muted))]">{milestone.description}</p>
+            {/* CEO Message Content */}
+            <div className="lg:col-span-2">
+              {/* Name and Designation */}
+              <div className="mb-6">
+                <h3 className="text-2xl md:text-3xl font-bold text-[rgb(var(--text-primary))] mb-2">
+                  Kazi Fakrul Latif
+                </h3>
+                <p className="text-lg text-[rgb(var(--primary))] font-medium mb-4">
+                  Founder & CEO, WEB SOFT BD
+                </p>
+                <div className="flex flex-wrap gap-4 text-sm text-[rgb(var(--text-muted))] mb-6">
+                  <div className="flex items-center gap-2">
+                    <Phone className="w-4 h-4" />
+                    <span>+88 01716983511 (WhatsApp)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Mail className="w-4 h-4" />
+                    <span>info@websoftbd.net</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Globe className="w-4 h-4" />
+                    <span>www.websoftbd.net</span>
+                  </div>
+                </div>
               </div>
-            ))}
+
+              {/* Message Text */}
+              <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-[rgb(var(--border-subtle))]">
+                <p className="text-[rgb(var(--text-muted))] leading-relaxed mb-4">
+                  Thanks to all my clients for being with me and also Greetings to upcoming clients. Web Soft BD is a privately held ICT Company in Dhaka, Bangladesh. In the year of 2008, Web Soft BD started its journey. It has achieved Certification of ISO 9001:2015 & BASIS (Bangladesh Association of Software & Information Services).
+                </p>
+                <p className="text-[rgb(var(--text-muted))] leading-relaxed mb-4">
+                  Web Soft BD was established by a group of professionals with a desire to provide the best ICT (Information Communication Technology) Solutions in Bangladesh and abroad. We are experienced in System Development & ICT Solution of Agro-Meteorology, Meteorology, Agriculture, climate, Weather, Hydrology, Water, Food, Environment.
+                </p>
+                <p className="text-[rgb(var(--text-muted))] leading-relaxed mb-4">
+                  We offer cutting edge solutions for today's interactive ICT Solution, including all kinds of System Development, Portal Development, Apps Development, A.I. Solution, Server Solution, datacenter solution, Domain Expert Services, Software Development, Data Center Solution, Networking, Server Solution, ERP Solution, Web Solution, Mail Solution, Corporate Support & Consultancy.
+                </p>
+                <p className="text-[rgb(var(--text-muted))] leading-relaxed mb-4">
+                  Information Communication Technology (ICT) has great role to play in climate services. Linking of successful ICT pilot projects can provide weather forecast and Agromet information to farmers. Such approaches enhance the understanding of farmers' needs and improve the existing state of dissemination of Agro-met advisory services. There is a need of strengthening of ICTs in the country as well as in the world.
+                </p>
+                <p className="text-[rgb(var(--text-muted))] leading-relaxed mb-4">
+                  At present, Web Soft BD is actively involved in operationalization of the World Bank funded project entitled <strong className="text-[rgb(var(--text-primary))]">"Agro-Meteorological Information Systems Development Project, Component-C of Bangladesh Weather and Climate Services Regional Project"</strong> in Department of Agricultural Extension (DAE), Ministry of Agriculture, Bangladesh. Under this project, we developed a dynamic and interactive portal, Crop Weather Calendar Development, automation Solution & ICT Solution of{" "}
+                  <a href="https://www.bamis.gov.bd" target="_blank" rel="noopener noreferrer" className="text-[rgb(var(--primary))] hover:underline">
+                    BAMIS portal (bamis.gov.bd)
+                  </a>
+                  . The portal is very popular in Bangladesh and has been appreciated by World Bank and other national and international organizations.
+                </p>
+                <p className="text-[rgb(var(--text-muted))] leading-relaxed mb-4">
+                  We are also actively involved in operationalization and AI solution of <strong className="text-[rgb(var(--text-primary))]">Bangladesh Meteorological Department (BMD)</strong>, Ministry of Defence, Bangladesh. Under this project, we developed a dynamic and interactive Portal, Apps, Software, Weather Automated Dissemination System, Meteorological Data Assessment Sub System, Earth Quake Apps and other ICT services at{" "}
+                  <a href="https://www.bmd.gov.bd" target="_blank" rel="noopener noreferrer" className="text-[rgb(var(--primary))] hover:underline">
+                    bmd.gov.bd
+                  </a>
+                  .
+                </p>
+                <p className="text-[rgb(var(--text-muted))] leading-relaxed mb-4">
+                  Web Soft BD is also actively involved in operationalization and AI based portal Development, System Solution & Integration of <strong className="text-[rgb(var(--text-primary))]">Bangladesh Water Development Board (BWDB)</strong>, developing the Salinity Intrusion model, Sediment Transport and Morphological model, Drought model, and Groundwater Assessment model at{" "}
+                  <a href="http://hifm.bwdb.gov.bd" target="_blank" rel="noopener noreferrer" className="text-[rgb(var(--primary))] hover:underline">
+                    hifm.bwdb.gov.bd
+                  </a>
+                  .
+                </p>
+                <p className="text-[rgb(var(--text-muted))] leading-relaxed mb-4">
+                  Our team also worked together to construct SMRCs (SAARC Meteorological Research Centre) Portal & Server solution of{" "}
+                  <a href="https://www.smrc.gov.bd" target="_blank" rel="noopener noreferrer" className="text-[rgb(var(--primary))] hover:underline">
+                    smrc.gov.bd
+                  </a>
+                  . We maintain and manage various types of meteorological and agrometeorological data collected at the field level and distributed to various organizations via web API.
+                </p>
+                <p className="text-[rgb(var(--text-muted))] leading-relaxed mb-4">
+                  Web Soft BD also provided Server & Integration of Integrated Rice Advisory System (IRAS). IRAS Advisory system is based on NASA satellite technology co-developed and maintained by University of Washington, USA. The goal is to improve irrigation efficiency and yield for Bangladesh rice production at no additional cost during the Boro 2024 season using latest advancements in satellite technology. Impact evaluation on applying the advisory has already proven a potential 30% reduction in ground water pumping and fuel cost savings up to hundreds of millions of US dollars. Visit{" "}
+                  <a href="https://www.iras.bamis.gov.bd" target="_blank" rel="noopener noreferrer" className="text-[rgb(var(--primary))] hover:underline">
+                    iras.bamis.gov.bd
+                  </a>
+                  {" "}for more information.
+                </p>
+                <p className="text-[rgb(var(--text-muted))] leading-relaxed mb-4">
+                  We also develop & maintain Portal of Bangladesh Olympic Association (BOA){" "}
+                  <a href="https://www.nocban.org" target="_blank" rel="noopener noreferrer" className="text-[rgb(var(--primary))] hover:underline">
+                    nocban.org
+                  </a>
+                  , Human Development Foundation{" "}
+                  <a href="https://www.hdfbd.com" target="_blank" rel="noopener noreferrer" className="text-[rgb(var(--primary))] hover:underline">
+                    hdfbd.com
+                  </a>
+                  , Poly Cables Industries Ltd.{" "}
+                  <a href="https://www.polycables.com.bd" target="_blank" rel="noopener noreferrer" className="text-[rgb(var(--primary))] hover:underline">
+                    polycables.com.bd
+                  </a>
+                  , SOFTEL{" "}
+                  <a href="https://www.softelbd.com" target="_blank" rel="noopener noreferrer" className="text-[rgb(var(--primary))] hover:underline">
+                    softelbd.com
+                  </a>
+                  , DMGI Pte., Singapore{" "}
+                  <a href="https://dmgi.com.sg" target="_blank" rel="noopener noreferrer" className="text-[rgb(var(--primary))] hover:underline">
+                    dmgi.com.sg
+                  </a>
+                  , Earth Science Technology and Policy Services Ltd.{" "}
+                  <a href="https://www.esteps.org.bd" target="_blank" rel="noopener noreferrer" className="text-[rgb(var(--primary))] hover:underline">
+                    esteps.org.bd
+                  </a>
+                  .
+                </p>
+                <p className="text-[rgb(var(--text-muted))] leading-relaxed mb-4">
+                  We also developed near about 1000+ Website, Portal, Apps, Newspaper Website, API, E-commerce site, Mail Server Solution in National & International level. We also provided various of IT Service in USA, UK, Singapore, Malaysia, Thailand, India & Others.
+                </p>
+                <p className="text-[rgb(var(--text-muted))] leading-relaxed mb-4">
+                  Web Soft BD expresses its interest to support similar services to other countries in the World where such facilities are not available. At present, Web Soft BD has well experienced personnel having domain knowledge in agriculture, meteorology, computer science, ICT etc. Web Soft BD will be extremely happy and ready to accept any such project elsewhere and also fully justify its commitment to the project.
+                </p>
+                <p className="text-[rgb(var(--text-muted))] leading-relaxed">
+                  In the future, I would like to be able to serve the whole world, so I wish for everyone's sincere cooperation.
+                </p>
+                <div className="mt-6 pt-6 border-t border-[rgb(var(--border-subtle))]">
+                  <p className="text-sm text-[rgb(var(--text-subtle))]">
+                    Thanks & Regards,<br />
+                    <span className="text-[rgb(var(--primary))] font-semibold">Kazi Fakrul Latif</span><br />
+                    Founder & CEO, WEB SOFT BD
+                  </p>
+                  <div className="mt-4 space-y-2 text-sm text-[rgb(var(--text-muted))]">
+                    <div className="flex items-center gap-2">
+                      <Phone className="w-4 h-4" />
+                      <span>+88 01716983511 (WhatsApp)</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <MapPin className="w-4 h-4" />
+                      <span>Level-04, House-1194, Avenue-11, Mirpur DOHS, Dhaka-1216, Bangladesh</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Mail className="w-4 h-4" />
+                      <span>info@websoftbd.net, fakrulebt@yahoo.com</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Globe className="w-4 h-4" />
+                      <span>www.websoftbd.net, www.websoft.com.bd</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -230,7 +220,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-[rgb(var(--navy))]">
+      <section className="py-12 md:py-16 bg-[rgb(var(--navy))]">
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Ready to Work Together?
@@ -249,29 +239,5 @@ export default function AboutPage() {
         </div>
       </section>
     </div>
-  )
-}
-
-function Building({ className }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-    >
-      <rect width="16" height="20" x="4" y="2" rx="2" ry="2" />
-      <path d="M9 22v-4h6v4" />
-      <path d="M8 6h.01" />
-      <path d="M16 6h.01" />
-      <path d="M12 6h.01" />
-      <path d="M12 10h.01" />
-      <path d="M12 14h.01" />
-      <path d="M12 18h.01" />
-    </svg>
   )
 }

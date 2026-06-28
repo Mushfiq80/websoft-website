@@ -9,7 +9,7 @@ export default function ClientsPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 bg-gradient-to-b from-[rgb(var(--primary-faint))] to-white">
+      <section className="relative py-20 md:py-28 bg-gradient-to-b from-[rgb(var(--primary-faint))] to-white">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="max-w-3xl">
             <Badge className="mb-4 bg-[rgb(var(--primary))] text-white">Our Clients</Badge>
@@ -26,7 +26,7 @@ export default function ClientsPage() {
       </section>
 
       {/* Anchor Clients */}
-      <section className="py-16 md:py-24">
+      <section className="py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-4">
@@ -59,7 +59,7 @@ export default function ClientsPage() {
       </section>
 
       {/* Client Challenges - Case Studies */}
-      <section className="py-16 md:py-24 bg-[rgb(var(--surface))]">
+      <section className="py-12 md:py-16 bg-[rgb(var(--surface))]">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-4">
@@ -135,7 +135,7 @@ export default function ClientsPage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-16 md:py-24">
+      <section className="py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-4">
@@ -183,7 +183,7 @@ export default function ClientsPage() {
       </section>
 
       {/* All Clients Logo Grid */}
-      <section className="py-16 md:py-24 bg-[rgb(var(--navy))]">
+      <section className="py-12 md:py-16 bg-[rgb(var(--navy))]">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -217,7 +217,7 @@ export default function ClientsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24">
+      <section className="py-12 md:py-16">
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-6">
             Ready to Become Our Next Success Story?

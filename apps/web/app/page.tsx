@@ -292,57 +292,60 @@ const PROJECTS = [
     color: "rgb(24, 95, 165)",
   },
   {
-    id: "aviation",
-    name: "Aviation Observed Data Sharing System",
-    shortName: "Aviation Data",
-    tag: "Aviation · Data Sharing",
-    stat: "Real-time aviation weather integration",
-    image: "/images/projects/phone-bmd.png",
-    color: "rgb(133, 79, 11)",
+    id: "hydrology",
+    name: "Hydrological Information Forecasting Model",
+    shortName: "HIFM",
+    tag: "Hydrology · BWDB",
+    stat: "Flood forecasting · Water management",
+    image: "/images/projects/Hydrology.png",
+    url: "http://hifm.bwdb.gov.bd/bwdb/",
+    color: "rgb(24, 95, 165)",
   },
   {
-    id: "salinity",
-    name: "Salinity Intrusion Model",
-    shortName: "Salinity Model",
-    tag: "Hydrology · BWDB",
-    stat: "Coastal Bangladesh protection",
+    id: "bmd-mobile",
+    name: "BMD Mobile Weather App",
+    shortName: "BMD Mobile",
+    tag: "Meteorology · Mobile",
+    stat: "Real-time weather on the go",
+    image: "/images/projects/phone-bmd.png",
+    url: "https://mobile.bmd.gov.bd/",
+    color: "rgb(83, 74, 183)",
+  },
+  {
+    id: "isoil",
+    name: "I-Soil — IoT & AI Soil Advisory",
+    shortName: "I-Soil",
+    tag: "IoT · AI · Agriculture",
+    stat: "Smart soil testing · AI-powered recommendations",
     image: "/images/projects/isoil-web.png",
     color: "rgb(83, 74, 183)",
   },
   {
-    id: "flood-risk",
-    name: "3D Flood Risk Mapping Simulation",
-    shortName: "Flood Risk Map",
-    tag: "GIS · Hydrology · BWDB",
-    stat: "3D simulation · Disaster preparedness",
+    id: "rri",
+    name: "River Research Institute Technical Journal",
+    shortName: "RRI Journal",
+    tag: "Research · Publishing",
+    stat: "River research & publication platform",
     image: "/images/projects/rri-web.png",
     color: "rgb(24, 95, 165)",
   },
   {
-    id: "ai-bamis",
-    name: "AI Development for BAMIS",
-    shortName: "AI for BAMIS",
-    tag: "AI · Big Data · ML",
-    stat: "Climate adaptation model",
-    image: "/images/projects/mushroom-market-web.png",
-    color: "rgb(83, 74, 183)",
-  },
-  {
-    id: "met-inventory",
-    name: "Meteorology Inventory Software",
-    shortName: "Met Inventory",
-    tag: "Meteorology · Asset Mgmt",
-    stat: "Equipment management system",
-    image: "/images/projects/hdfd-web.png",
+    id: "mushroom",
+    name: "Mushroom e-Commerce & Portal",
+    shortName: "INRPMCP",
+    tag: "e-Commerce · Agriculture",
+    stat: "Mushroom development · Digital marketplace",
+    image: "/images/projects/mushroom-web.png",
     color: "rgb(133, 79, 11)",
   },
   {
     id: "hdf",
     name: "Human Development Foundation System",
-    shortName: "HDF System",
-    tag: "NGO · Web · Social",
+    shortName: "HDF",
+    tag: "NGO · Social",
     stat: "Social impact management",
-    image: "/images/projects/mushroom-web.png",
+    image: "/images/projects/hdfd-web.png",
+    url: "https://hdfbd.com/",
     color: "rgb(var(--success))",
   },
 ]
@@ -737,7 +740,12 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[number]; ind
   const springY = useSpring(translateY, { stiffness: 30, damping: 40, restDelta: 0.1 })
 
   return (
-    <Link href={`/projects/${project.id}`} className="group block">
+    <Link
+      href={project.url || `/projects/${project.id}`}
+      target={project.url ? "_blank" : undefined}
+      rel={project.url ? "noopener noreferrer" : undefined}
+      className="group block"
+    >
       <motion.div
         className="bg-white rounded-2xl overflow-hidden border border-[rgb(var(--border-subtle))] hover:border-[rgb(var(--primary))] transition-all duration-500"
         initial={{ opacity: 0, y: 20 }}

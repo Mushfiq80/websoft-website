@@ -57,7 +57,7 @@ export default function ServerSpecialtyPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 bg-gradient-to-b from-[rgb(var(--navy))] to-[rgb(var(--primary))] text-white overflow-hidden">
+      <section className="relative py-20 md:py-28 bg-gradient-to-b from-[rgb(var(--navy))] to-[rgb(var(--primary))] text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-[url('/images/server/server-strength-grid.jpg')] bg-cover bg-center" />
         </div>
@@ -86,7 +86,7 @@ export default function ServerSpecialtyPage() {
       </section>
 
       {/* Server Types */}
-      <section className="py-16 md:py-24">
+      <section className="py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-4">
@@ -136,7 +136,7 @@ export default function ServerSpecialtyPage() {
       </section>
 
       {/* Infrastructure Overview */}
-      <section className="py-16 md:py-24 bg-[rgb(var(--surface))]">
+      <section className="py-12 md:py-16 bg-[rgb(var(--surface))]">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -180,7 +180,7 @@ export default function ServerSpecialtyPage() {
       </section>
 
       {/* Proven at Scale */}
-      <section className="py-16 md:py-24 bg-[rgb(var(--navy))]">
+      <section className="py-12 md:py-16 bg-[rgb(var(--navy))]">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-[rgb(var(--primary))] text-white">Proven Track Record</Badge>
@@ -228,7 +228,7 @@ export default function ServerSpecialtyPage() {
       </section>
 
       {/* Features */}
-      <section className="py-16 md:py-24">
+      <section className="py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-4">
@@ -264,7 +264,7 @@ export default function ServerSpecialtyPage() {
       </section>
 
       {/* Data Center Solutions */}
-      <section className="py-16 md:py-24 bg-[rgb(var(--surface))]">
+      <section className="py-12 md:py-16 bg-[rgb(var(--surface))]">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -303,7 +303,7 @@ export default function ServerSpecialtyPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24">
+      <section className="py-12 md:py-16">
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-6">
             Ready to Scale Your Infrastructure?
