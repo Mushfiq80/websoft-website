@@ -57,7 +57,7 @@ export default function ServerSpecialtyPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-b from-[rgb(var(--navy))] to-[rgb(var(--primary))] text-white overflow-hidden">
+      <section className="relative py-8 md:py-12 bg-gradient-to-b from-[rgb(var(--navy))] to-[rgb(var(--primary))] text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-[url('/images/server/server-strength-grid.jpg')] bg-cover bg-center" />
         </div>

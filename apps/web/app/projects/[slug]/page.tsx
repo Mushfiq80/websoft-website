@@ -41,7 +41,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       </div>
 
       {/* Hero Section */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-b from-[rgb(var(--primary-faint))] to-white">
+      <section className="relative py-8 md:py-12 bg-gradient-to-b from-[rgb(var(--primary-faint))] to-white">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="grid lg:grid-cols-3 gap-6 lg:gap-8 items-start">
             {/* Content */}

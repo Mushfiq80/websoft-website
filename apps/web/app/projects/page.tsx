@@ -43,7 +43,7 @@ export default function ProjectsPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-b from-[rgb(var(--primary-faint))] to-white">
+      <section className="relative py-8 md:py-12 bg-gradient-to-b from-[rgb(var(--primary-faint))] to-white">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="max-w-4xl">
             <Badge className="mb-4 bg-[rgb(var(--primary))] text-white">Our Projects</Badge>

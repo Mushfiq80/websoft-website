@@ -11,7 +11,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-b from-[rgb(var(--primary-faint))] to-white">
+      <section className="relative py-8 md:py-12 bg-gradient-to-b from-[rgb(var(--primary-faint))] to-white">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="max-w-3xl">
             <Badge className="mb-4 bg-[rgb(var(--primary))] text-white">About Us</Badge>
@@ -196,7 +196,7 @@ export default function AboutPage() {
                     </div>
                     <div className="flex items-center gap-2">
                       <MapPin className="w-4 h-4" />
-                      <span>Level-04, House-1194, Avenue-11, Mirpur DOHS, Dhaka-1216, Bangladesh</span>
+                      <span>Level-2B, House-30, Road-02, Block-B, Pallabi Section-12, Mirpur, Dhaka-1216, Bangladesh</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Mail className="w-4 h-4" />
