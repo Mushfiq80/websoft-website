@@ -297,6 +297,33 @@ export const PROJECTS: Project[] = [
     accentColor: "#1D9E75",
   },
   {
+    id: "mushroom-app",
+    slug: "mushroom-mobile-app",
+    name: "Mushroom Marketplace Mobile App",
+    shortName: "Mushroom App",
+    sector: "App",
+    tags: ["Mobile App", "Flutter", "e-Commerce", "Agriculture"],
+    client: "DAE / Mushroom Development Institute, Savar",
+    impact: "Flutter mobile marketplace app connecting mushroom growers with buyers",
+    stats: [
+      { value: "Flutter", label: "Cross-platform mobile app" },
+      { value: "Growers", label: "Direct marketplace access" },
+      { value: "Real-time", label: "Buy-sell transactions" },
+    ],
+    description: "A Flutter-based mobile application for mushroom marketing, enabling growers to list products and connect directly with buyers in real-time.",
+    challenge: "Smallholder mushroom growers needed a mobile-first solution to access markets and sell their products on-the-go.",
+    solution: "Built Flutter cross-platform marketplace app with product listing, buyer-seller messaging, and real-time transaction capabilities.",
+    results: [
+      "Mobile-first marketplace accessible to growers anytime, anywhere",
+      "Direct grower-to-buyer connection reducing middlemen",
+      "Real-time transaction capabilities improving market access",
+    ],
+    image: "/images/projects/mushroom-market-web.png",
+    images: ["/images/projects/mushroom-market-web.png"],
+    featured: false,
+    accentColor: "#7370D8",
+  },
+  {
     id: "coxda",
     slug: "coxda",
     name: "CoxDA Financial Management System",
@@ -322,6 +349,34 @@ export const PROJECTS: Project[] = [
     featured: false,
     accentColor: "#7370D8",
   },
+  {
+    id: "hdf",
+    slug: "human-development-foundation",
+    name: "Human Development Foundation System",
+    shortName: "HDF System",
+    sector: "NGO",
+    tags: ["NGO", "Web Portal", "Social Impact"],
+    client: "Human Development Foundation (HDF)",
+    impact: "Comprehensive web platform for social impact management and community development",
+    stats: [
+      { value: "Social", label: "Impact management" },
+      { value: "Community", label: "Development focused" },
+      { value: "Web", label: "Portal solution" },
+    ],
+    description: "A comprehensive web platform for Human Development Foundation to manage social impact programs, community development initiatives, and organizational activities.",
+    challenge: "HDF needed a digital platform to effectively manage and showcase their social development programs and impact to stakeholders.",
+    solution: "Built a full-featured web portal with program management, impact tracking, and stakeholder communication capabilities.",
+    results: [
+      "Centralized platform for managing social development programs",
+      "Improved visibility of HDF's community impact and initiatives",
+      "Enhanced stakeholder engagement and communication",
+    ],
+    image: "/images/projects/hdfd-web.png",
+    images: ["/images/projects/hdfd-web.png"],
+    featured: false,
+    accentColor: "#1D9E75",
+    liveUrl: "https://www.hdfbd.com",
+  },
 ]
 
 export const PROJECT_SECTORS = [
@@ -337,6 +392,7 @@ export const PROJECT_SECTORS = [
   "Web",
   "App",
   "Infrastructure",
+  "NGO",
 ].sort()
 
 export function getProjectBySlug(slug: string): Project | undefined {
