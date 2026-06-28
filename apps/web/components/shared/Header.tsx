@@ -21,7 +21,7 @@ export function Header() {
     <header
       className={`sticky top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "border-b border-white/10 bg-white/70 backdrop-blur-xl shadow-lg"
+          ? "border-b border-white/10 bg-white/70 shadow-lg backdrop-blur-xl"
           : "bg-transparent"
       }`}
     >
@@ -37,11 +37,6 @@ export function Header() {
               className="h-10 w-auto md:h-14"
               priority
             />
-            {/* <span className={`ml-2 md:ml-3 font-bold text-lg md:text-xl transition-all duration-300 ${
-              scrolled ? "text-[rgb(var(--text-primary))]" : "text-[rgb(var(--text-primary))]"
-            }`}>
-              Web Soft BD
-            </span> */}
           </Link>
 
           {/* Desktop Nav */}

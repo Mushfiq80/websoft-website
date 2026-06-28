@@ -33,13 +33,14 @@ export const SITE_CONFIG = {
 }
 
 export const CERTIFICATIONS = [
-  { name: "ISO 9001:2015", logo: "/images/certifications/iso.jpg", short: "ISO" },
-  { name: "ISO/IEC 27001:2022", logo: "/images/certifications/iso.jpg", short: "ISO 27k" },
-  { name: "CMMI Level 3", logo: "/images/certifications/cmmi.png", short: "CMMI" },
-  { name: "BASIS Member", logo: "/images/certifications/basis_japan.png", short: "BASIS" },
-  { name: "BCS Member", logo: "/images/certifications/bcs_member.png", short: "BCS" },
-  { name: "APN Member", logo: "/images/certifications/apn.png", short: "APN" },
-  { name: "QMS", logo: "/images/certifications/qms.png", short: "QMS" },
-  { name: "QRO", logo: "/images/certifications/qro.png", short: "QRO" },
-  { name: "IAF", logo: "/images/certifications/iaf.png", short: "IAF" },
+  { name: "ISO 9001:2015", logo: "/images/certifications/1_ISO_9001-2015.png", short: "ISO", pdf: "" },
+  { name: "ISO/IEC 27001:2022", logo: "/images/certifications/2_ISO-IEC_27001-2022.png", short: "ISO 27k", pdf: "" },
+  { name: "ORO", logo: "/images/certifications/3_ORO.png", short: "ORO", pdf: "" },
+  { name: "CMMI Level 3", logo: "/images/certifications/4_CMMI_Level_3.png", short: "CMMI", pdf: "" },
+  { name: "UKCERT", logo: "/images/certifications/5_UKCERT.png", short: "UKCERT", pdf: "" },
+  { name: "International Accreditation Forum (IAF)", logo: "/images/certifications/6_International_Accreditation_Forum_(IAF).png", short: "IAF", pdf: "" },
+  { name: "APN Nepal", logo: "/images/certifications/7_APN-Nepal.png", short: "APN", pdf: "" },
+  { name: "B-Meet Japan", logo: "/images/certifications/8_B-Meet-Japan.png", short: "B-Meet", pdf: "" },
+  { name: "BASIS", logo: "/images/certifications/9_BASIS.png", short: "BASIS", pdf: "" },
+  { name: "BCS", logo: "/images/certifications/10_BCS.png", short: "BCS", pdf: "" },
 ]

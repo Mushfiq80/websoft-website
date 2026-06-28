@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@workspace/ui/components/button"
 import { motion, useMotionValue, useTransform, useSpring } from "motion/react"
+import { CertificationMarquee } from "@/components/shared/CertificationMarquee"
 import { Cloud, Droplet, BarChart3, Brain, Globe, Server, Smartphone, ArrowRight, Leaf, Satellite, TrendingUp, CloudRain, Wind, Navigation, Quote, Check, Zap, Waves, Building, Cpu, Network, Wrench, HardDrive, Database, Phone, Shield, Mail, Users, FileText, Map, AlertTriangle } from "lucide-react"
 
 // ============================================
@@ -41,17 +42,6 @@ const CLIENTS = [
   { name: "UW", logo: "/images/clients/uw.jpg", abbr: "UW" },
   { name: "VT", logo: "/images/clients/vt.jpeg", abbr: "VT" },
   { name: "Shark", logo: "/images/clients/shark.jpeg", abbr: "SH" },
-]
-
-const CERTIFICATIONS = [
-  { name: "ISO 9001:2015", logo: "/images/certifications/iso.jpg", short: "ISO" },
-  // { name: "BASIS Member", logo: "/images/certifications/basis_japan.png", short: "BASIS" }, // Add basis_japan.png file
-  { name: "CMMI", logo: "/images/certifications/cmmi.png", short: "CMMI" },
-  { name: "QMS", logo: "/images/certifications/qms.png", short: "QMS" },
-  { name: "QRO", logo: "/images/certifications/qro.png", short: "QRO" },
-  { name: "BCS Member", logo: "/images/certifications/bcs_member.png", short: "BCS" },
-  { name: "IAF", logo: "/images/certifications/iaf.png", short: "IAF" },
-  { name: "Government Seal", logo: "/images/certifications/Government_Seal_of_Bangladesh.png", short: "Govt" },
 ]
 
 const SECTORS = [
@@ -1294,51 +1284,9 @@ function TestimonialsSection() {
 }
 
 function CertificationsSection() {
-  const { ref, isInView } = useInView(0.1)
-
   return (
-    <section ref={ref} className="py-16 bg-[rgb(var(--surface))]" id="certifications">
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <p className="text-xs md:text-sm font-semibold text-[rgb(var(--primary))] uppercase tracking-widest mb-2">
-            Global Recognition
-          </p>
-          <h2 className="text-2xl md:text-3xl font-bold text-[rgb(var(--text-primary))]">
-            Certified Excellence & Strategic Partnerships
-          </h2>
-          <p className="text-sm text-[rgb(var(--text-muted))] mt-3 max-w-2xl mx-auto">
-            Our commitment to quality standards and international partnerships enables us to deliver
-            world-class solutions.
-          </p>
-        </div>
-
-        {/* Certifications Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-          {CERTIFICATIONS.map((cert) => (
-            <div
-              key={cert.name}
-              className="group relative flex flex-col items-center"
-            >
-              {/* Logo container - no background */}
-              <div className="relative h-20 w-full">
-                <Image
-                  src={cert.logo}
-                  alt={cert.name}
-                  fill
-                  className="object-contain hover:scale-110 transition-transform duration-300"
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                />
-              </div>
-
-              {/* Label */}
-              <span className="text-xs text-[rgb(var(--text-muted))] mt-3 font-medium">
-                {cert.short}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
+    <section id="certifications" className="bg-[rgb(var(--surface))]">
+      <CertificationMarquee />
     </section>
   )
 }

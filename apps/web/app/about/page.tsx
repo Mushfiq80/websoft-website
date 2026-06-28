@@ -2,7 +2,8 @@ import { Badge } from "@workspace/ui/components/badge"
 import { Button } from "@workspace/ui/components/button"
 import Image from "next/image"
 import Link from "next/link"
-import { SITE_CONFIG, CERTIFICATIONS } from "@/data/site"
+import { SITE_CONFIG } from "@/data/site"
+import { CertificationMarquee } from "@/components/shared/CertificationMarquee"
 import { MapPin, Phone, Mail, Globe, Award, Users, Target, Zap, CheckCircle2, Calendar, TrendingUp } from "lucide-react"
 
 export default function AboutPage() {
@@ -224,33 +225,8 @@ export default function AboutPage() {
       </section>
 
       {/* Certifications */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-4">
-              Certifications & Memberships
-            </h2>
-            <p className="text-[rgb(var(--text-muted))] max-w-2xl mx-auto">
-              Internationally recognized certifications and professional affiliations
-            </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-            {CERTIFICATIONS.map((cert, index) => (
-              <div key={index} className="bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center justify-center aspect-square">
-                <div className="relative w-16 h-16 md:w-20 md:h-20 mb-3">
-                  <Image
-                    src={cert.logo}
-                    alt={cert.name}
-                    fill
-                    className="object-contain"
-                    sizes="80px"
-                  />
-                </div>
-                <div className="text-xs md:text-sm text-center text-[rgb(var(--text-muted))] font-medium">{cert.short || cert.name}</div>
-              </div>
-            ))}
-          </div>
-        </div>
+      <section id="certifications" className="bg-white">
+        <CertificationMarquee />
       </section>
 
       {/* CTA Section */}
