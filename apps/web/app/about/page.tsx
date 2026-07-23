@@ -141,7 +141,7 @@ export default function AboutPage() {
                   . We maintain and manage various types of meteorological and agrometeorological data collected at the field level and distributed to various organizations via web API.
                 </p>
                 <p className="text-[rgb(var(--text-muted))] leading-relaxed mb-4">
-                  Web Soft BD also provided Server & Integration of Integrated Rice Advisory System (IRAS). IRAS Advisory system is based on NASA satellite technology co-developed and maintained by University of Washington, USA. The goal is to improve irrigation efficiency and yield for Bangladesh rice production at no additional cost during the Boro 2024 season using latest advancements in satellite technology. Impact evaluation on applying the advisory has already proven a potential 30% reduction in ground water pumping and fuel cost savings up to hundreds of millions of US dollars. Visit{" "}
+                  Web Soft BD also provided Server &amp; Integration for the Integrated Rice Advisory System (IRAS), an advisory system based on satellite technology co-developed and maintained by the University of Washington, USA. It aims to improve irrigation efficiency and yield for Bangladesh rice production during the Boro season using satellite technology. Visit{" "}
                   <a href="https://www.iras.bamis.gov.bd" target="_blank" rel="noopener noreferrer" className="text-[rgb(var(--primary))] hover:underline">
                     iras.bamis.gov.bd
                   </a>

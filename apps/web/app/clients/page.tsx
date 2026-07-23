@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Badge } from "@workspace/ui/components/badge"
 import { Button } from "@workspace/ui/components/button"
 import { CLIENTS, TESTIMONIALS, CLIENT_CHALLENGES, ANCHOR_CLIENTS } from "@/data/clients"
+import { Marquee } from "@workspace/ui/components/marquee"
 import { Quote, Building2, ArrowRight, CheckCircle2, Users, Zap } from "lucide-react"
 
 export default function ClientsPage() {
@@ -19,7 +20,7 @@ export default function ClientsPage() {
             </h1>
             <p className="text-lg md:text-xl text-[rgb(var(--text-muted))] leading-relaxed">
               From multilateral organizations like the World Bank and JICA to government agencies and private enterprises,
-              we've had the privilege of serving 2000+ clients across Bangladesh and beyond.
+              we've had the privilege of serving 950+ clients across Bangladesh and beyond.
             </p>
           </div>
         </div>
@@ -59,7 +60,7 @@ export default function ClientsPage() {
       </section>
 
       {/* Client Challenges - Case Studies */}
-      <section className="py-12 md:py-16 bg-[rgb(var(--surface))]">
+      <section className="py-12 md:py-16 bg-[rgb(var(--surface-teal))]">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-4">
@@ -134,28 +135,30 @@ export default function ClientsPage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-12 md:py-16">
+      {/* Testimonials - auto-scrolling slider */}
+      <section className="py-12 md:py-16 bg-[rgb(var(--surface-blue))] overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-4">
-              In Their Own Words
+              What We Delivered
             </h2>
             <p className="text-[rgb(var(--text-muted))] max-w-2xl mx-auto">
-              What our clients say about working with us
+              A snapshot of the work we&apos;ve delivered for our clients
             </p>
           </div>
+        </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="relative">
+          <Marquee pauseOnHover className="[--duration:45s] [--gap:1.5rem]">
             {TESTIMONIALS.map((testimonial) => (
               <div
                 key={testimonial.id}
-                className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-[rgb(var(--border-subtle))] hover:shadow-md transition-shadow"
+                className="w-[320px] md:w-[380px] shrink-0 bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-[rgb(var(--border-subtle))]"
               >
-                <Quote className="w-10 h-10 text-[rgb(var(--primary-pale))] mb-4" />
+                <Quote className="w-9 h-9 text-[rgb(var(--primary-pale))] mb-4" />
 
-                <p className="text-[rgb(var(--text-muted))] leading-relaxed mb-6">
-                  "{testimonial.quote}"
+                <p className="text-[rgb(var(--text-muted))] leading-relaxed mb-6 text-sm md:text-base">
+                  {testimonial.quote}
                 </p>
 
                 <div className="flex items-center gap-4">
@@ -171,12 +174,17 @@ export default function ClientsPage() {
                     </div>
                   )}
                   <div className="min-w-0">
-                    <div className="font-medium text-[rgb(var(--text-primary))]">{testimonial.org}</div>
+                    <div className="font-medium text-[rgb(var(--text-primary))] truncate">{testimonial.org}</div>
+                    <div className="text-xs text-[rgb(var(--text-subtle))]">{testimonial.project}</div>
                   </div>
                 </div>
               </div>
             ))}
-          </div>
+          </Marquee>
+
+          {/* edge fades */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[rgb(var(--surface-blue))] to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[rgb(var(--surface-blue))] to-transparent" />
         </div>
       </section>
 

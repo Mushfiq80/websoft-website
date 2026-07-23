@@ -52,7 +52,7 @@ export default function ProjectsPage() {
               <span className="text-[rgb(var(--primary))]">Known For</span>
             </h1>
             <p className="text-lg md:text-xl text-[rgb(var(--text-muted))] leading-relaxed">
-              Explore our portfolio of 2000+ projects across agro-meteorology, hydrology, AI, and enterprise solutions.
+              Explore our portfolio of 1000+ projects across agro-meteorology, hydrology, AI, and enterprise solutions.
             </p>
           </div>
         </div>

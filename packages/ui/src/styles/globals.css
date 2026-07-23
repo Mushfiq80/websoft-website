@@ -115,6 +115,11 @@
     --surface: 248 249 255;
     --hero-end: 243 242 253;
 
+    /* Light domain-themed surfaces (weather / water / agri) */
+    --surface-teal: 236 248 247;
+    --surface-blue: 237 245 252;
+    --surface-mint: 239 249 245;
+
     /* Tailwind compatible values */
     --secondary: 248 249 255;
     --secondary-foreground: 26 26 46;
@@ -194,6 +199,9 @@
 
   --color-surface: rgb(var(--surface));
   --color-hero-end: rgb(var(--hero-end));
+  --color-surface-teal: rgb(var(--surface-teal));
+  --color-surface-blue: rgb(var(--surface-blue));
+  --color-surface-mint: rgb(var(--surface-mint));
 
   --color-success: rgb(var(--success));
   --color-success-light: rgb(var(--success-light));

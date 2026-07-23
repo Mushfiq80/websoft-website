@@ -71,7 +71,7 @@ const SECTORS = [
       { title: "Weather Forecasting", desc: "Advanced weather prediction models and forecasting systems", icon: Cloud },
       { title: "Climate Monitoring", desc: "Real-time climate monitoring and alert systems for government agencies", icon: TrendingUp },
     ],
-    visual: { label: "BMD System — National Weather Infrastructure", icon: Wind, image: "/images/case-studies/bmd-portal-homepage.png" }
+    visual: { label: "BMD — National Weather Meteorology System", icon: Wind, image: "/images/case-studies/bmd-portal-homepage.png" }
   },
   {
     id: "agriculture",
@@ -83,7 +83,7 @@ const SECTORS = [
       { title: "Crop Monitoring", desc: "Satellite-based crop health monitoring and yield prediction", icon: Satellite },
       { title: "DAE Integration", desc: "Department of Agricultural Extension system integration and data platforms", icon: Building },
     ],
-    visual: { label: "I-Soil Platform — AI Soil Advisory", icon: Leaf, image: "/images/projects/isoil-web.png" }
+    visual: { label: "I-Soil — Soil Monitoring Platform", icon: Leaf, image: "/images/projects/isoil-web.png" }
   },
   {
     id: "water",
@@ -167,7 +167,7 @@ const SECTORS = [
       { title: "ICT Solutions", desc: "Comprehensive ICT solutions including VoIP, video conferencing, and collaboration", icon: Phone },
       { title: "Connectivity", desc: "High-speed connectivity solutions and network security implementations", icon: Shield },
     ],
-    visual: { label: "BMD Network — 15M+ Hits During Cyclone", icon: Network, image: "/images/case-studies/bmd-mobile-apps.jpg" }
+    visual: { label: "BMD Network — Peak Cyclone-Season Traffic", icon: Network, image: "/images/case-studies/bmd-mobile-apps.jpg" }
   },
   {
     id: "erp",
@@ -206,10 +206,10 @@ const CASE_STUDIES = [
     solution: "Dynamic web portal plus iOS/Android apps collecting BMD weather data, generating district-level forecasts, and producing automated advisories.",
     results: [
       { num: "64", label: "Districts covered nationwide" },
-      { num: "36", label: "Weather station network" },
-      { num: "5-Day", label: "Forecast horizon" },
+      { num: "iOS + Android", label: "Bilingual mobile apps" },
+      { num: "GIS", label: "Satellite crop-health products" },
     ],
-    tech: ["Automated BMD data ingestion", "WRF model output per district", "AI-powered advisory generation", "Native iOS/Android apps"],
+    tech: ["Automated BMD data ingestion", "Automated agromet advisory bulletins", "GIS satellite products (NDVI, VHI, VCI)", "Native iOS/Android apps"],
     image: "/images/projects/BAMIS_web.png",
     mobileImage: "/images/case-studies/bamis-mobile-app.png",
     liveUrl: "https://www.bamis.gov.bd/",
@@ -220,12 +220,12 @@ const CASE_STUDIES = [
     client: "Bangladesh Meteorological Department",
     partner: "Ministry of Defence",
     title: "BMD — National Weather Ecosystem",
-    subtitle: "End-to-end digital infrastructure sustaining 15M+ hits during cyclones",
+    subtitle: "End-to-end digital infrastructure sustaining peak cyclone-season traffic",
     challenge: "BMD needed a fully integrated digital ecosystem capable of staying online and accurate during high-traffic events like cyclones.",
-    solution: "National portal, two mobile apps, earthquake monitoring, aviation data systems, multi-channel fax dissemination — load-balanced across 5 servers.",
+    solution: "National portal, two mobile apps, earthquake monitoring, aviation data systems, multi-channel fax dissemination — load-balanced multi-server hosting.",
     results: [
-      { num: "15M+", label: "Hits/month at peak (Cyclone Sitrang)" },
-      { num: "5", label: "Load-balanced servers" },
+      { num: "120M+", label: "Hits/month at peak (cyclone season)" },
+      { num: "Bilingual", label: "Bangla & English portal" },
       { num: "2", label: "Mobile apps + mobile web" },
     ],
     tech: ["Load-balanced architecture", "Real-time API data transmission", "Aviation met-data systems", "Continuous hosting & maintenance"],
@@ -256,20 +256,20 @@ const CASE_STUDIES = [
     id: "isoil",
     client: "Rural Development Academy (RDA)",
     partner: "Research Project",
-    title: "I-Soil — IoT & AI for Climate-Resilient Soil Health",
-    subtitle: "AI-based soil nutrition analysis and fertilizer guidance for farmers",
+    title: "I-Soil — IoT Soil Monitoring Platform",
+    subtitle: "Soil monitoring dashboard and mobile advisory for farmers",
     challenge: "Farmers had no accessible, data-driven way to get soil-specific nutrient and fertilizer guidance.",
-    solution: "IoT + data-science platform with web portal and mobile apps delivering AI-based soil nutrition analysis in Bengali.",
+    solution: "IoT + data-science platform with a web dashboard and mobile app delivering soil-nutrition and fertiliser guidance in Bengali.",
     results: [
       { num: "IoT", label: "Sensor data collection" },
-      { num: "AI", label: "Soil advisory models" },
+      { num: "Dashboard", label: "Soil monitoring portal" },
       { num: "Bengali", label: "Language farmer app" },
     ],
-    tech: ["IoT sensor integration", "Machine learning models", "Secure database server", "Native mobile apps"],
+    tech: ["IoT sensor integration", "Soil monitoring dashboard", "Secure database server", "Native mobile app"],
     image: "/images/projects/isoil-web.png",
     mobileImage: "/images/case-studies/isoil-mobile-app.png",
     liveUrl: "http://www.isoilbd.com/",
-    tags: ["IoT", "AI/ML", "Agriculture", "R&D"]
+    tags: ["IoT", "Data Science", "Agriculture", "R&D"]
   },
 ]
 
@@ -279,7 +279,7 @@ const PROJECTS = [
     name: "BAMIS — Agro-Meteorological Information System",
     shortName: "BAMIS",
     tag: "Agro-Met · AI · Govt",
-    stat: "Serving 1.2M+ farmers · 64 districts",
+    stat: "Nationwide advisories · 64 districts",
     image: "/images/projects/BAMIS_web.png",
     color: "rgb(var(--success))",
   },
@@ -288,7 +288,7 @@ const PROJECTS = [
     name: "Bangladesh Meteorological Department System",
     shortName: "BMD System",
     tag: "Meteorology · Govt",
-    stat: "National weather data infrastructure",
+    stat: "National weather meteorology system",
     image: "/images/projects/bmd-web.png",
     color: "rgb(24, 95, 165)",
   },
@@ -314,10 +314,10 @@ const PROJECTS = [
   },
   {
     id: "isoil",
-    name: "I-Soil — IoT & AI Soil Advisory",
+    name: "I-Soil — IoT Soil Monitoring",
     shortName: "I-Soil",
-    tag: "IoT · AI · Agriculture",
-    stat: "Smart soil testing · AI-powered recommendations",
+    tag: "IoT · Data Science · Agriculture",
+    stat: "Soil monitoring dashboard · Bengali advisory",
     image: "/images/projects/isoil-web.png",
     color: "rgb(83, 74, 183)",
   },
@@ -437,21 +437,21 @@ const SERVICES = [
 const TESTIMONIALS = [
   {
     id: 1,
-    org: "World Bank",
+    org: "World Bank (AMISDP)",
     logo: "/images/clients/world_bank-logo.png",
-    quote: "WebsoftBD delivered a robust agro-met platform that directly supports food security for millions of farmers across Bangladesh.",
+    quote: "Delivered the national agro-met portal and mobile apps under the World Bank–funded AMISDP for the Department of Agricultural Extension.",
   },
   {
     id: 2,
-    org: "JICA Bangladesh",
+    org: "JICA (with BMD)",
     logo: "/images/clients/jica.png",
-    quote: "The flood forecasting system developed by WebsoftBD has significantly improved our disaster preparedness capabilities.",
+    quote: "Built BMD's mobile-optimised weather site with GIS, cloud and data-visualisation components under a JICA capacity-strengthening project.",
   },
   {
     id: 3,
-    org: "DAE",
+    org: "Department of Agricultural Extension",
     logo: "/images/clients/dae.png",
-    quote: "The BAMIS platform has revolutionized how we disseminate agro-meteorological information to farmers across Bangladesh.",
+    quote: "Built the BAMIS agro-met portal and apps to disseminate agro-meteorological advisories to farmers across Bangladesh.",
   },
 ]
 

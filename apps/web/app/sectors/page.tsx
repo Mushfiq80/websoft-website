@@ -6,11 +6,11 @@ import Link from "next/link"
 import { Badge } from "@workspace/ui/components/badge"
 import { Button } from "@workspace/ui/components/button"
 import { SECTORS } from "@/data/sectors"
-import { ArrowRight, CheckCircle2, CloudRain, Wind, Leaf, Droplets, Globe, Brain, Server, Users, Smartphone, Satellite } from "lucide-react"
+import { ArrowRight, CheckCircle2, CloudRain, Wind, Leaf, Droplets, Globe, Brain, Server, Users, Smartphone, Satellite, Cloud, TrendingUp, Plane, Cpu, Waves, Activity, Zap, HardDrive, Wrench, Award, Building2, Radio, BarChart3, Map } from "lucide-react"
 
 const iconMap: Record<string, React.ElementType> = {
   CloudRain, Wind, Leaf, Droplets, Globe, Brain, Server, Users, Smartphone, Satellite, Sprout: Leaf,
-  Building2: Globe, Radio: Smartphone, BarChart3: Brain, Activity: Droplets, Map: Globe,
+  Building2, Radio, BarChart3, Activity, Map, Cloud, TrendingUp, Plane, Cpu, Waves, Zap, HardDrive, Wrench, Award,
 }
 
 export default function SectorsPage() {

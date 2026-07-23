@@ -22,9 +22,10 @@ export const CLIENTS: Client[] = [
 
   // Research & Academic
   { id: "du", name: "Dhaka University", logo: "/images/clients/DU-logo.jpg", abbr: "DU", tier: "research" },
-  { id: "rda", name: "Rural Development Academy", logo: "/images/clients/hdf-LOGO-WEB.gif", abbr: "RDA", tier: "research" },
-  { id: "rri", name: "River Research Institute", logo: "/images/clients/DU-logo.jpg", abbr: "RRI", tier: "research" },
-  { id: "coxda", name: "Cox's Bazar Development Authority", logo: "/images/clients/DU-logo.jpg", abbr: "CoxDA", tier: "government" },
+  { id: "reading", name: "University of Reading", logo: "/images/clients/university_of_Reading_DHDR.png", abbr: "UoR", tier: "research", url: "https://www.reading.ac.uk" },
+  { id: "rda", name: "Rural Development Academy (RDA)", logo: "/images/clients/bd.gov.png", abbr: "RDA", tier: "government" },
+  { id: "rri", name: "River Research Institute", logo: "/images/clients/bd-water.png", abbr: "RRI", tier: "government", url: "http://rri.gov.bd/" },
+  { id: "coxda", name: "Cox's Bazar Development Authority", logo: "/images/clients/bd.gov.png", abbr: "CoxDA", tier: "government", url: "https://coxda.gov.bd" },
 
   // NGO & Development
   { id: "hdf", name: "Human Development Foundation", logo: "/images/clients/hdf-LOGO-WEB.gif", abbr: "HDF", tier: "ngo" },
@@ -44,66 +45,118 @@ export const CLIENTS: Client[] = [
   { id: "karim-karim", name: "Karim Karim", logo: "/images/clients/karim-karim.png", abbr: "KK", tier: "private" },
   { id: "euro-india", name: "Euro India", logo: "/images/clients/euro-india.jpeg", abbr: "EI", tier: "private" },
   { id: "vt", name: "Villa Thawthisa Agro Green", logo: "/images/clients/vt.jpeg", abbr: "VT", tier: "private" },
-  { id: "uw", name: "University of Washington", logo: "/images/clients/uw.jpg", abbr: "UW", tier: "research" },
 ]
 
 export const ANCHOR_CLIENTS = CLIENTS.filter(c => c.tier === "anchor" || c.tier === "government").slice(0, 10)
 
+// Short, service-specific notes describing the scope we delivered for each client.
 export const TESTIMONIALS = [
   {
     id: "world-bank",
-    org: "World Bank",
+    org: "World Bank (AMISDP)",
     orgLogo: "/images/clients/world_bank-logo.png",
-    quote: "WebsoftBD delivered a robust agro-met platform that directly supports food security for millions of farmers across Bangladesh. The BAMIS system exemplifies how technology can transform agricultural decision-making at scale.",
+    quote: "Delivered the national agro-met portal and mobile apps under the World Bank–funded AMISDP for the Department of Agricultural Extension.",
     project: "BAMIS",
   },
   {
     id: "jica",
-    org: "JICA Bangladesh",
+    org: "JICA (with BMD)",
     orgLogo: "/images/clients/jica.png",
-    quote: "The flood forecasting system developed by WebsoftBD has significantly improved our disaster preparedness capabilities. The real-time data integration and accurate modeling are impressive.",
-    project: "Flood Forecasting System",
+    quote: "Built BMD's mobile-optimised weather site with GIS, cloud and data-visualisation components under a JICA capacity-strengthening project.",
+    project: "BMD Mobile Site",
   },
   {
     id: "bwdb",
     org: "Bangladesh Water Development Board",
     orgLogo: "/images/clients/bd-water.png",
-    quote: "The unified hydrological platform has transformed how we manage water-related data. The integration of multiple modules into one system has greatly improved our operational efficiency.",
-    project: "Hydrological Platform",
+    quote: "Developed the hydrological services platform for sediment, drought, salinity and groundwater, with real-time data, products and warnings.",
+    project: "Hydrological Platform (HIFM)",
+  },
+  {
+    id: "bmd",
+    org: "Bangladesh Meteorological Department",
+    orgLogo: "/images/clients/bd.gov.png",
+    quote: "Delivered and maintained the national weather portal, mobile apps, aviation message software and data systems across successive contracts.",
+    project: "BMD System",
+  },
+  {
+    id: "dae",
+    org: "Department of Agricultural Extension",
+    orgLogo: "/images/clients/dae.png",
+    quote: "Built the mushroom e-commerce portal and Android marketplace app for the INRPMCP under the Department of Agricultural Extension.",
+    project: "Mushroom Platform",
+  },
+  {
+    id: "hdf",
+    org: "Human Development Foundation",
+    orgLogo: "/images/clients/hdf-LOGO-WEB.gif",
+    quote: "Provided a dynamic website with HRMS and payroll management, maintained continuously since 2018.",
+    project: "HDF System",
+  },
+  {
+    id: "sunlife",
+    org: "Sunlife Insurance Company",
+    orgLogo: "/images/clients/sunlife-onetech_logo.gif",
+    quote: "Delivered the PAPYRUS HRMS and a dynamic corporate website, supported over a long-running engagement.",
+    project: "PAPYRUS HRMS",
+  },
+  {
+    id: "polycables",
+    org: "Poly Cables Ind. Ltd.",
+    orgLogo: "/images/clients/poly-cables-logo_name.jpg",
+    quote: "Set up a corporate mail-server solution with a dynamic website, integration and ongoing maintenance.",
+    project: "Mail & Web",
   },
 ]
 
+// Grounded in delivered scope of work — no unverifiable metrics or attributed quotes.
 export const CLIENT_CHALLENGES = [
   {
-    client: "DAE / World Bank",
-    logo: "/images/clients/world_bank-logo.png",
-    challenge: "Farmers across Bangladesh lacked timely, localized weather and crop advisory information, leaving critical decisions on irrigation, pest control, and harvesting to guesswork.",
-    solution: "BAMIS - Agro-Meteorological Information System",
-    result: "Now serving farmers across all 64 districts with automated advisories",
+    client: "Department of Agricultural Extension (World Bank / AMISDP)",
+    logo: "/images/clients/dae.png",
+    challenge: "Farmers and extension officers across Bangladesh needed timely, district-level weather and crop-advisory information in an accessible, localised form.",
+    solution: "BAMIS — national agro-met portal, mobile apps and automated advisories",
+    result: "District-level advisories published nationwide across all 64 districts",
     link: "/projects/bamis",
   },
   {
     client: "Bangladesh Meteorological Department",
     logo: "/images/clients/bd.gov.png",
-    challenge: "Needed a fully integrated digital ecosystem capable of staying online and accurate during high-traffic disaster events like cyclones, while serving aviation and seismic monitoring needs.",
-    solution: "Complete BMD Ecosystem - Portal, Apps, Data Systems",
-    result: "Sustained 15M+ hits/month during Cyclone Sitrang without service failure",
+    challenge: "BMD needed an integrated digital ecosystem that stays online and accurate during high-traffic events such as cyclones, while serving aviation and seismic needs.",
+    solution: "Complete BMD ecosystem — portal, mobile apps, aviation and data systems",
+    result: "Sustained heavy cyclone-season traffic across a multi-year engagement",
     link: "/projects/bmd",
   },
   {
-    client: "Bangladesh Water Development Board",
+    client: "Bangladesh Water Development Board (IDA / World Bank)",
     logo: "/images/clients/bd-water.png",
-    challenge: "Water-related data — river sediment, salinity, drought indicators, groundwater levels — was fragmented across agencies, making unified early-warning information difficult to produce.",
-    solution: "Integrated Hydrological Platform with 4 Real-time Modules",
-    result: "Single platform for flood, drought, salinity, and groundwater monitoring",
+    challenge: "Hydrological data — sediment, salinity, drought indicators and groundwater — was fragmented, making unified early-warning information difficult to produce.",
+    solution: "Integrated hydrological services platform with real-time data and GIS",
+    result: "One platform for sediment, drought, salinity and groundwater services",
     link: "/projects/bwdb",
   },
   {
     client: "Rural Development Academy (RDA)",
-    logo: "/images/clients/hdf-LOGO-WEB.gif",
-    challenge: "Farmers had no accessible, data-driven way to get soil-specific nutrient and fertilizer guidance grounded in real sensor data and predictive modeling.",
-    solution: "I-Soil - IoT + AI Soil Advisory Platform",
-    result: "AI-generated soil guidance delivered in Bengali directly to farmers' phones",
+    logo: "/images/clients/bd.gov.png",
+    challenge: "Farmers lacked an accessible, data-driven way to get soil-specific nutrient and fertiliser guidance grounded in real sensor data.",
+    solution: "I-Soil — IoT soil-monitoring dashboard with a Bengali mobile advisory",
+    result: "Soil-monitoring dashboard and mobile app delivering guidance in Bengali",
     link: "/projects/isoil",
+  },
+  {
+    client: "Human Development Foundation (HDF)",
+    logo: "/images/clients/hdf-LOGO-WEB.gif",
+    challenge: "HDF needed a digital presence together with structured HR and payroll management for its operations.",
+    solution: "Dynamic website plus HRMS and payroll management",
+    result: "In continuous use with ongoing maintenance since 2018",
+    link: "/projects/human-development-foundation",
+  },
+  {
+    client: "SAARC Meteorological Research Centre (SMRC)",
+    logo: "/images/clients/saarc.png",
+    challenge: "A regional flood-forecasting platform needed integrated data streams, coupled models and automated warning generation.",
+    solution: "Flood-forecasting platform with real-time/forecast data and models",
+    result: "Automated generation of flood warnings and reports",
+    link: "/projects/smrc-flood-forecasting",
   },
 ]

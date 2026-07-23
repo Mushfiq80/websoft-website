@@ -2,10 +2,10 @@ import Link from "next/link"
 import { Badge } from "@workspace/ui/components/badge"
 import { Button } from "@workspace/ui/components/button"
 import { SOLUTION_CLUSTERS, SOLUTIONS } from "@/data/solutions"
-import { ArrowRight, CheckCircle2, Globe, Brain, Server, Users, Database, Mail, Smartphone, Cpu, Network, FileText, Building2, Zap, Shield, HardDrive } from "lucide-react"
+import { ArrowRight, CheckCircle2, Globe, Brain, Server, Users, Database, Mail, Smartphone, Cpu, Network, FileText, Building2, Zap, Shield, HardDrive, LayoutDashboard, Wallet, Wrench } from "lucide-react"
 
 const iconMap: Record<string, React.ElementType> = {
-  Globe, Brain, Server, Users, Database, Mail, Smartphone, Cpu, Network, FileText, Building2, Zap, Shield, HardDrive, Award: CheckCircle2,
+  Globe, Brain, Server, Users, Database, Mail, Smartphone, Cpu, Network, FileText, Building2, Zap, Shield, HardDrive, LayoutDashboard, Wallet, Wrench, Award: CheckCircle2,
 }
 
 export default function SolutionsPage() {
@@ -159,7 +159,7 @@ export default function SolutionsPage() {
               },
               {
                 title: "Proven Track Record",
-                description: "2000+ projects delivered for World Bank, JICA, and government agencies since 2008.",
+                description: "1000+ projects delivered for World Bank, JICA, and government agencies since 2008.",
                 icon: "Award",
               },
               {

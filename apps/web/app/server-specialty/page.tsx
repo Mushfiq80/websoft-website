@@ -48,9 +48,9 @@ export default function ServerSpecialtyPage() {
   ]
 
   const provenStats = [
-    { value: "5", label: "Load-balanced servers for BMD", description: "Handling national weather infrastructure" },
-    { value: "15M+", label: "Hits/month sustained", description: "During Cyclone Sitrang peak traffic" },
-    { value: "100%", label: "Uptime record", description: "Continuous hosting and maintenance" },
+    { value: "Multi-server", label: "Load-balanced hosting for BMD", description: "Supporting the national weather meteorology system" },
+    { value: "120M+", label: "Hits/month at peak", description: "During cyclone-season peak traffic" },
+    { value: "Continuous", label: "Hosting & maintenance", description: "Ongoing hosting and maintenance" },
     { value: "24/7", label: "Monitoring", description: "Round-the-clock infrastructure oversight" },
   ]
 
@@ -213,10 +213,10 @@ export default function ServerSpecialtyPage() {
               <div className="flex-1">
                 <h3 className="text-xl font-semibold text-white mb-2">BMD Infrastructure Case Study</h3>
                 <p className="text-white/80 leading-relaxed">
-                  During Cyclone Sitrang, the Bangladesh Meteorological Department platform sustained an average of
-                  4.6 million hits per month, peaking at over 15 million hits monthly—all without service failure.
-                  Our 5-server load-balanced setup with continuous SSL provisioning and database maintenance ensures
-                  mission-critical availability when it matters most.
+                  During cyclone-season warning periods, the Bangladesh Meteorological Department platform sustained
+                  peak traffic of the order of 120 million hits per month without service failure. Our load-balanced
+                  multi-server hosting with continuous SSL provisioning and database maintenance keeps the national
+                  weather meteorology system available when it matters most.
                 </p>
               </div>
               <Button asChild variant="outline" className="rounded-full border-white text-white hover:bg-white/10 flex-shrink-0">
