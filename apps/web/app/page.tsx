@@ -24,6 +24,7 @@ const CLIENTS = [
   { name: "SAARC", logo: "/images/clients/saarc.png", abbr: "SA" },
   { name: "A2i", logo: "/images/clients/a2i_logo_2021.png", abbr: "A2" },
   { name: "Dhaka University", logo: "/images/clients/DU-logo.jpg", abbr: "DU" },
+  { name: "University of Reading", logo: "/images/clients/university_of_Reading_DHDR.png", abbr: "UR" },
   { name: "FFWC", logo: "/images/clients/bd-water.png", abbr: "FF" },
   { name: "HDF", logo: "/images/clients/hdf-LOGO-WEB.gif", abbr: "HD" },
   { name: "NocBan", logo: "/images/clients/nocban-logo.png", abbr: "NB" },
@@ -330,6 +331,16 @@ const PROJECTS = [
     color: "rgb(24, 95, 165)",
   },
   {
+    id: "dhdr",
+    name: "DHDR — Farming Research Data Portal",
+    shortName: "DHDR Reading",
+    tag: "Research · University · Data Portal",
+    stat: "Water-locked farming research & analytics",
+    image: "/images/projects/dhdr_reading_university.png",
+    url: "https://dhdrreading.com/",
+    color: "rgb(115, 112, 216)",
+  },
+  {
     id: "mushroom",
     name: "Mushroom e-Commerce & Portal",
     shortName: "INRPMCP",
@@ -338,38 +349,68 @@ const PROJECTS = [
     image: "/images/projects/mushroom-web.png",
     color: "rgb(133, 79, 11)",
   },
-  {
-    id: "hdf",
-    name: "Human Development Foundation System",
-    shortName: "HDF",
-    tag: "NGO · Social",
-    stat: "Social impact management",
-    image: "/images/projects/hdfd-web.png",
-    url: "https://hdfbd.com/",
-    color: "rgb(var(--success))",
-  },
 ]
 
 const SERVICES = [
   {
-    id: "agro-met",
-    name: "Agro-Met Systems",
-    shortName: "Agro-Met",
-    description: "Real-time crop advisory and weather intelligence platforms for farmers and food security planning.",
-    details: "BAMIS · Satellite Data · Climate Models",
-    icon: CloudRain,
-    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80",
-    gradient: "from-emerald-600/80 to-green-800/80"
+    id: "web-app",
+    name: "Web Applications",
+    shortName: "Web Apps",
+    description: "Custom web platforms, portals, and applications tailored to your business needs.",
+    details: "Portals · Web Apps · E-commerce",
+    icon: Globe,
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+    gradient: "from-violet-600/80 to-purple-800/80"
+  },
+  {
+    id: "mobile-software",
+    name: "Mobile Software",
+    shortName: "Mobile",
+    description: "Native iOS and Android applications with offline support and real-time sync.",
+    details: "iOS · Android · Cross-Platform",
+    icon: Smartphone,
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
+    gradient: "from-rose-600/80 to-pink-800/80"
   },
   {
     id: "ai-bigdata",
     name: "AI & Big Data",
     shortName: "AI & Data",
-    description: "Machine learning models and large-scale data pipelines for environmental intelligence.",
+    description: "Machine learning models and large-scale data pipelines for intelligent insights.",
     details: "ML Models · Analytics · Data Fusion",
     icon: Brain,
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
     gradient: "from-purple-600/80 to-indigo-800/80"
+  },
+  {
+    id: "research-dev",
+    name: "Research & Development",
+    shortName: "R&D",
+    description: "Innovation-driven research and prototyping for cutting-edge technology solutions.",
+    details: "Innovation · Prototyping · R&D",
+    icon: Cpu,
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
+    gradient: "from-cyan-600/80 to-teal-800/80"
+  },
+  {
+    id: "iot",
+    name: "IoT Solutions",
+    shortName: "IoT",
+    description: "Internet of Things systems for smart sensing, data collection, and automation.",
+    details: "Sensors · Connectivity · Smart Devices",
+    icon: Network,
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+    gradient: "from-amber-600/80 to-orange-800/80"
+  },
+  {
+    id: "erp-server",
+    name: "ERP & Server",
+    shortName: "ERP",
+    description: "Enterprise resource planning systems and server infrastructure management.",
+    details: "Infrastructure · Cloud · Server Solutions",
+    icon: Server,
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
+    gradient: "from-slate-600/80 to-gray-800/80"
   },
   {
     id: "hydrology",
@@ -382,34 +423,14 @@ const SERVICES = [
     gradient: "from-blue-600/80 to-cyan-800/80"
   },
   {
-    id: "web-dev",
-    name: "Web Development",
-    shortName: "Web Dev",
-    description: "Custom government portals, data dashboards, and public-facing web platforms.",
-    details: "Portals · Dashboards · Web Apps",
-    icon: Globe,
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-    gradient: "from-violet-600/80 to-purple-800/80"
-  },
-  {
-    id: "app-dev",
-    name: "App Development",
-    shortName: "App Dev",
-    description: "Mobile applications for iOS and Android with API integrations and IoT connectivity.",
-    details: "Mobile Apps · APIs · IoT Solutions",
-    icon: Smartphone,
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
-    gradient: "from-rose-600/80 to-pink-800/80"
-  },
-  {
-    id: "erp-server",
-    name: "ERP & Server",
-    shortName: "ERP",
-    description: "Enterprise resource planning systems and server infrastructure management.",
-    details: "Infrastructure · Cloud · Server Solutions",
-    icon: Server,
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
-    gradient: "from-slate-600/80 to-gray-800/80"
+    id: "agro-met",
+    name: "Agro-Met Systems",
+    shortName: "Agro-Met",
+    description: "Real-time crop advisory and weather intelligence platforms for farmers and food security planning.",
+    details: "BAMIS · Satellite Data · Climate Models",
+    icon: CloudRain,
+    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80",
+    gradient: "from-emerald-600/80 to-green-800/80"
   },
 ]
 
@@ -417,21 +438,18 @@ const TESTIMONIALS = [
   {
     id: 1,
     org: "World Bank",
-    role: "Development Partner",
     logo: "/images/clients/world_bank-logo.png",
     quote: "WebsoftBD delivered a robust agro-met platform that directly supports food security for millions of farmers across Bangladesh.",
   },
   {
     id: 2,
     org: "JICA Bangladesh",
-    role: "Project Partner",
     logo: "/images/clients/jica.png",
     quote: "The flood forecasting system developed by WebsoftBD has significantly improved our disaster preparedness capabilities.",
   },
   {
     id: 3,
     org: "DAE",
-    role: "Government Partner",
     logo: "/images/clients/dae.png",
     quote: "The BAMIS platform has revolutionized how we disseminate agro-meteorological information to farmers across Bangladesh.",
   },
@@ -445,8 +463,8 @@ const STATS = [
 ]
 
 const PROPOSITIONS = [
-  "Bangladesh's only ISO-certified agro-met ICT company",
-  "AI-powered data fusion for weather and agriculture",
+  "18+ years delivering software solutions across all sectors",
+  "Full-stack development: web, mobile, IoT, AI & enterprise systems",
   "Trusted by World Bank, JICA & Bangladesh Government",
 ]
 
@@ -553,16 +571,16 @@ function Hero() {
 
         {/* Headline */}
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
-          Engineering Earth Intelligence
+          Engineering Digital Excellence
           <br />
           for a{' '}
           <span className="text-[rgb(var(--primary))] inline-block align-middle">
             <WordRotate
               className="text-4xl md:text-6xl lg:text-7xl font-bold text-[rgb(var(--primary))]"
               words={[
-                "Resilient Future",
-                "Climate Security",
-                "Sustainable World"
+                "Connected World",
+                "Smart Bangladesh",
+                "Digital Future"
               ]}
               duration={3000}
             />
@@ -571,8 +589,8 @@ function Hero() {
 
         {/* Subtitle */}
         <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-8 animate-fade-up" style={{ animationDelay: "0.2s" }}>
-          Translating complex environmental, meteorological, and hydrological data into intelligent
-          enterprise platforms.
+          From web and mobile applications to IoT and AI — we deliver end-to-end software solutions
+          for government, enterprise, and innovation partners.
         </p>
 
         {/* CTAs */}
@@ -587,7 +605,7 @@ function Hero() {
 
         {/* Trust Tags */}
         <div className="flex flex-wrap gap-4 md:gap-6 justify-center animate-fade-up" style={{ animationDelay: "0.4s" }}>
-          {["Meteorology", "Agriculture", "Agro-Meteorology", "Climate", "Weather", "Water", "Crop", "Environment", "ERP", "Server Solution", "AI/ML"].map((tag) => (
+          {["Web & Mobile Apps", "IoT Solutions", "AI & Analytics", "R&D Innovation", "Enterprise ERP", "Cloud Infrastructure", "Government Systems", "Data Platforms", "API Development", "Software Integration"].map((tag) => (
             <div key={tag} className="flex items-center gap-2 text-sm text-white/80">
               <div className="w-2 h-2 rounded-full bg-[rgb(var(--primary))]" />
               {tag}
@@ -873,7 +891,7 @@ function StatsSection() {
             By the numbers
           </p>
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            18 years of building Bangladesh's data infrastructure
+            18 years of delivering software excellence
           </h2>
         </div>
 
@@ -1269,7 +1287,6 @@ function TestimonialsSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-[rgb(var(--text-primary))]">{testimonial.org}</h4>
-                  <p className="text-sm text-[rgb(var(--text-muted))]">{testimonial.role}</p>
                 </div>
               </div>
 
@@ -1303,11 +1320,11 @@ function CTASection() {
     <section ref={ref} className="py-20 bg-[rgb(var(--navy))]">
       <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
         <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-          Ready to transform your data into intelligence?
+          Ready to transform your vision into reality?
         </h2>
         <p className="text-white/70 mb-8 max-w-2xl mx-auto">
-          Talk to our specialists about your meteorological, agricultural, or water management
-          challenge.
+          Talk to our specialists about your software development needs — from web and mobile
+          to IoT, AI, and enterprise systems.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button className="bg-[rgb(var(--primary))] hover:bg-[rgb(var(--primary-dark))] text-white rounded-full px-8">

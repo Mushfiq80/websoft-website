@@ -2,7 +2,6 @@ import { Inter } from "next/font/google"
 import "@workspace/ui/globals.css"
 import { Header } from "@/components/shared/Header"
 import { Footer } from "@/components/shared/Footer"
-import { AnnouncementBar } from "@/components/shared/AnnouncementBar"
 import { TooltipProvider } from "@workspace/ui/components/tooltip"
 import { SITE_CONFIG } from "@/data/site"
 
@@ -45,7 +44,6 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} font-sans antialiased`}>
       <body suppressHydrationWarning>
         <TooltipProvider>
-          <AnnouncementBar />
           <Header />
           <main>{children}</main>
           <Footer />

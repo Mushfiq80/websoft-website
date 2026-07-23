@@ -377,6 +377,35 @@ export const PROJECTS: Project[] = [
     accentColor: "#1D9E75",
     liveUrl: "https://www.hdfbd.com",
   },
+  {
+    id: "dhdr",
+    slug: "dhdr-reading",
+    name: "DHDR — Farming Research Data Portal",
+    shortName: "DHDR Reading",
+    sector: "Research",
+    tags: ["Research", "Data Portal", "University", "Agriculture", "R&D"],
+    client: "University of Reading",
+    clientLogo: "/images/clients/university_of_Reading_DHDR.png",
+    impact: "User-based data portal system for water-logged farming research and analysis",
+    stats: [
+      { value: "Research", label: "Based data portal" },
+      { value: "Water-locked", label: "Farming analytics" },
+      { value: "Complete", label: "User-based system" },
+    ],
+    description: "A complete user-based data portal system for farming research, specifically focused on water-logged farming research purpose data and analysis.",
+    challenge: "University researchers needed a comprehensive data portal to manage, analyze, and disseminate farming research data, particularly for water-logged agricultural systems.",
+    solution: "Built a full-featured research data portal with user-based access control, comprehensive data management, and advanced analytics for water-logged farming research.",
+    results: [
+      "Centralized research data management for water-locked farming studies",
+      "User-based access enabling controlled collaboration among researchers",
+      "Advanced analytics supporting evidence-based agricultural research",
+    ],
+    image: "/images/projects/dhdr_reading_university.png",
+    images: ["/images/projects/dhdr_reading_university.png", "/images/projects/dhdrreading_full_page.png"],
+    featured: true,
+    accentColor: "#7370D8",
+    liveUrl: "https://dhdrreading.com",
+  },
 ]
 
 export const PROJECT_SECTORS = [

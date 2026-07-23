@@ -171,9 +171,7 @@ export default function ClientsPage() {
                     </div>
                   )}
                   <div className="min-w-0">
-                    <div className="font-medium text-[rgb(var(--text-primary))]">{testimonial.personName}</div>
-                    <div className="text-sm text-[rgb(var(--text-subtle))]">{testimonial.personRole}</div>
-                    <div className="text-xs text-[rgb(var(--primary))] mt-1">{testimonial.org}</div>
+                    <div className="font-medium text-[rgb(var(--text-primary))]">{testimonial.org}</div>
                   </div>
                 </div>
               </div>

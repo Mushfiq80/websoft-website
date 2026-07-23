@@ -16,12 +16,12 @@ export default function AboutPage() {
           <div className="max-w-3xl">
             <Badge className="mb-4 bg-[rgb(var(--primary))] text-white">About Us</Badge>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[rgb(var(--text-primary))] mb-6">
-              Engineering Earth Intelligence for a{" "}
-              <span className="text-[rgb(var(--primary))]">Resilient Future</span>
+              Engineering Digital Excellence for a{" "}
+              <span className="text-[rgb(var(--primary))]">Connected World</span>
             </h1>
             <p className="text-lg md:text-xl text-[rgb(var(--text-muted))] leading-relaxed">
-              Since {SITE_CONFIG.company.founded}, Web Soft BD has been at the forefront of transforming complex environmental,
-              meteorological, and hydrological data into intelligent enterprise platforms for government and private sector clients.
+              Since {SITE_CONFIG.company.founded}, Web Soft BD has been delivering comprehensive software solutions
+              — from web and mobile applications to IoT, AI, and enterprise systems — for government and private sector clients.
             </p>
           </div>
         </div>
