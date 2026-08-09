@@ -16,14 +16,16 @@ function CertificationCard({ certification }: { certification: typeof CERTIFICAT
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <div className="relative flex items-center justify-center p-4 cursor-pointer hover:scale-105 transition-transform duration-300">
-          <div className="relative w-24 h-24 md:w-32 md:h-32">
+        {/* Fixed width keeps every logo on the same line with even spacing,
+            regardless of how wide or narrow the logo artwork is. */}
+        <div className="flex w-40 shrink-0 items-center justify-center p-4 md:w-48">
+          <div className="relative h-20 w-full md:h-24">
             <Image
               src={certification.logo}
               alt={certification.name}
               fill
-              className="object-contain"
-              sizes="(max-width: 640px) 96px, 128px"
+              className="object-contain transition-transform duration-300 hover:scale-105"
+              sizes="(max-width: 640px) 160px, 192px"
             />
           </div>
         </div>
@@ -54,14 +56,14 @@ export function CertificationMarquee() {
 
       <TooltipProvider>
         {/* First marquee - left to right */}
-        <Marquee pauseOnHover className="[--duration:80s]">
+        <Marquee pauseOnHover className="mb-6 [--duration:80s] [--gap:2rem]">
           {marqueeContent.map((cert, index) => (
             <CertificationCard key={`left-${index}`} certification={cert} />
           ))}
         </Marquee>
 
         {/* Second marquee - right to left (reversed) */}
-        <Marquee reverse pauseOnHover className="[--duration:90s]">
+        <Marquee reverse pauseOnHover className="[--duration:90s] [--gap:2rem]">
           {marqueeContent.map((cert, index) => (
             <CertificationCard key={`right-${index}`} certification={cert} />
           ))}

@@ -15,10 +15,10 @@ export function Footer() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-12">
           {/* Brand & Description */}
           <div className="lg:col-span-1">
-            <div className="mb-6">
+            <div className="mb-2">
               <Link
                 href="/"
-                className="inline-flex items-center rounded-xl bg-white px-4 py-3 shadow-md"
+                className="inline-flex items-center shadow-md"
               >
                 <Image
                   src="/images/logo/web-soft-logo.png"
