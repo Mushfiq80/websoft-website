@@ -86,7 +86,7 @@ export default function ProjectsPage() {
               >
                 All Projects
               </button>
-              {PROJECT_SECTORS.slice(0, 8).map((sector) => (
+              {PROJECT_SECTORS.map((sector) => (
                 <button
                   key={sector}
                   onClick={() => setSelectedSector(sector)}

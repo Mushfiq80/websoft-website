@@ -7,6 +7,7 @@ import { Button } from "@workspace/ui/components/button"
 import { motion, useMotionValue, useTransform, useSpring } from "motion/react"
 import { CertificationMarquee } from "@/components/shared/CertificationMarquee"
 import { ClientMarquee } from "@/components/shared/ClientMarquee"
+import { Marquee } from "@workspace/ui/components/marquee"
 import { WordRotate } from "@workspace/ui/components/word-rotate"
 import { HyperText } from "@workspace/ui/components/hyper-text"
 import { Cloud, Droplet, BarChart3, Brain, Globe, Server, Smartphone, ArrowRight, Leaf, Satellite, TrendingUp, CloudRain, Wind, Navigation, Quote, Check, Zap, Waves, Building, Cpu, Network, Wrench, HardDrive, Database, Phone, Shield, Mail, Users, FileText, Map, AlertTriangle } from "lucide-react"
@@ -18,7 +19,7 @@ import { Cloud, Droplet, BarChart3, Brain, Globe, Server, Smartphone, ArrowRight
 const CLIENTS = [
   { name: "World Bank", logo: "/images/clients/world_bank-logo.png", abbr: "WB" },
   { name: "JICA", logo: "/images/clients/jica.png", abbr: "JI" },
-  { name: "BMD", logo: "/images/clients/bd.gov.png", abbr: "BM" },
+  { name: "BMD", logo: "/images/clients/bmd-logo.jpg", abbr: "BM" },
   { name: "BWDB", logo: "/images/clients/bd-water.png", abbr: "BW" },
   { name: "DAE", logo: "/images/clients/dae.png", abbr: "DA" },
   { name: "SAARC", logo: "/images/clients/saarc.png", abbr: "SA" },
@@ -51,135 +52,199 @@ const CLIENTS = [
 const SECTORS = [
   {
     id: "agro-met",
-    name: "Agro-Met System",
+    name: "Agro-Meteorology",
     icon: CloudRain,
     color: "rgb(var(--primary))",
     features: [
-      { title: "BAMIS Platform", desc: "Bangladesh Agro-Meteorological Information System with real-time weather data for farmers", icon: CloudRain },
-      { title: "Climate Analytics", desc: "Advanced climate data processing and analytics for agricultural decision support", icon: BarChart3 },
-      { title: "Crop Advisory", desc: "Automated crop advisories based on weather patterns and soil conditions", icon: Leaf },
+      { title: "BAMIS Platform", desc: "National agro-meteorological portal, mobile apps and GIS products for farmers across all 64 districts", icon: CloudRain },
+      { title: "Crop Weather Calendar", desc: "Automated agromet advisory bulletins and crop weather calendars", icon: Leaf },
+      { title: "Satellite/GIS Products", desc: "NDVI, VHI, VCI and soil-moisture products for decision support", icon: Satellite },
     ],
-    visual: { label: "BAMIS Dashboard — Real-time Agro-Met Platform", icon: BarChart3, image: "/images/projects/BAMIS_web.png" }
+    images: [
+      "/images/expertise/bamis-agro-met-n-GIS.png",
+      "/images/expertise/bamis-portal-agro-met-n-agri.png",
+      "/images/expertise/Agro-Meteorology-solution-n-cropsystem.jpg",
+      "/images/expertise/bamis-mobile-app-portal-admin.png",
+    ],
   },
   {
     id: "meteorology",
-    name: "Meteorology System",
+    name: "Meteorology",
     icon: Wind,
     color: "rgb(var(--primary))",
     features: [
-      { title: "BMD Integration", desc: "Bangladesh Meteorological Department system integration and data management", icon: Wind },
-      { title: "Weather Forecasting", desc: "Advanced weather prediction models and forecasting systems", icon: Cloud },
-      { title: "Climate Monitoring", desc: "Real-time climate monitoring and alert systems for government agencies", icon: TrendingUp },
+      { title: "National Weather Portal", desc: "Bangla & English BMD portal, weather apps and mobile web", icon: Wind },
+      { title: "MDASS / ADS Data Systems", desc: "Data acquisition, ADS desktop-to-web conversion and dissemination", icon: TrendingUp },
+      { title: "Seismology & Landslide", desc: "Seismological apps and landslide warning modules for BMD", icon: AlertTriangle },
     ],
-    visual: { label: "BMD — National Weather Meteorology System", icon: Wind, image: "/images/case-studies/bmd-portal-homepage.png" }
+    images: [
+      "/images/expertise/Meteorology-Solution.jpg",
+      "/images/expertise/meterology-bmd-forcasting-and-weather.png",
+      "/images/expertise/Meteorology-bmd-data-aquisition-portal.png",
+      "/images/expertise/meteorology-bmd-mobile-web-app.png",
+      "/images/expertise/bmd-mobile-app-weather-app.png",
+      "/images/expertise/bmd-landlside-warning.png",
+    ],
   },
   {
-    id: "agriculture",
-    name: "Agriculture System",
+    id: "agricultural",
+    name: "Agricultural",
     icon: Leaf,
     color: "rgb(var(--primary))",
     features: [
-      { title: "Farm Management", desc: "Digital farm management solutions with IoT sensor integration", icon: Leaf },
-      { title: "Crop Monitoring", desc: "Satellite-based crop health monitoring and yield prediction", icon: Satellite },
-      { title: "DAE Integration", desc: "Department of Agricultural Extension system integration and data platforms", icon: Building },
+      { title: "Crop & Pest Management", desc: "Pest and disease management and crop management systems", icon: Leaf },
+      { title: "Soil Monitoring", desc: "I-Soil IoT soil monitoring and Bengali fertiliser advisory", icon: Satellite },
+      { title: "Agri e-Commerce", desc: "Mushroom marketing platform and Android marketplace for DAE", icon: Building },
     ],
-    visual: { label: "I-Soil — Soil Monitoring Platform", icon: Leaf, image: "/images/projects/isoil-web.png" }
+    images: [
+      "/images/expertise/Agricuture-Solution.jpg",
+      "/images/expertise/bamis-portal-agro-met-n-agri.png",
+      "/images/expertise/mobile-app-mushroom-e-commerce.png",
+      "/images/expertise/Agro-Meteorology-solution-n-cropsystem.jpg",
+    ],
+  },
+  {
+    id: "crop",
+    name: "Crop",
+    icon: Leaf,
+    color: "rgb(var(--primary))",
+    features: [
+      { title: "Crop Weather Calendar", desc: "District-level crop calendars tied to weather patterns", icon: CloudRain },
+      { title: "Crop Health Monitoring", desc: "Satellite-linked crop health tracking and yield indicators", icon: Satellite },
+      { title: "Crop Management System", desc: "Crop and pest/disease management workflows", icon: Leaf },
+    ],
+    images: [
+      "/images/expertise/Agro-Meteorology-solution-n-cropsystem.jpg",
+      "/images/expertise/Agricuture-Solution.jpg",
+      "/images/expertise/bamis-portal-agro-met-n-agri.png",
+    ],
+  },
+  {
+    id: "climate",
+    name: "Climate",
+    icon: Cloud,
+    color: "rgb(var(--primary))",
+    features: [
+      { title: "Climate Analytics", desc: "Processing historical and real-time climate data for planning", icon: BarChart3 },
+      { title: "Adaptation Support", desc: "Data products supporting climate resilience and adaptation", icon: TrendingUp },
+      { title: "Forecast Dissemination", desc: "Turning climate data into actionable advisories", icon: CloudRain },
+    ],
+    images: [
+      "/images/expertise/meterology-bmd-forcasting-and-weather.png",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
+    ],
+  },
+  {
+    id: "weather",
+    name: "Weather",
+    icon: CloudRain,
+    color: "rgb(var(--primary))",
+    features: [
+      { title: "Forecasting Systems", desc: "Weather prediction and current-weather dissemination", icon: Wind },
+      { title: "Weather Apps", desc: "BMD weather and current-weather mobile apps", icon: Smartphone },
+      { title: "Warnings", desc: "Automated warning generation during high-impact events", icon: AlertTriangle },
+    ],
+    images: [
+      "/images/expertise/meterology-bmd-forcasting-and-weather.png",
+      "/images/expertise/bmd-mobile-app-weather-app.png",
+      "/images/expertise/meteorology-bmd-mobile-web-app.png",
+    ],
   },
   {
     id: "water",
-    name: "Water System",
+    name: "Water",
     icon: Droplet,
     color: "rgb(var(--primary))",
     features: [
-      { title: "Flood Forecasting", desc: "Real-time flood prediction and early warning systems for disaster management", icon: Droplet },
-      { title: "Salinity Modeling", desc: "Coastal water salinity intrusion simulation and impact assessment", icon: Waves },
-      { title: "BWDB Systems", desc: "Bangladesh Water Development Board integrated water management platforms", icon: Droplet },
+      { title: "HIFM Platform", desc: "BWDB Hydrological Information & Forecasting Model with GIS", icon: Droplet },
+      { title: "Flood, Drought & Salinity", desc: "Integrated early-warning across multiple hydrological services", icon: Waves },
+      { title: "River System GIS", desc: "Major river-system mapping and real-time products", icon: Map },
     ],
-    visual: { label: "BWDB Groundwater Dashboard — Real-time Monitoring", icon: Waves, image: "/images/case-studies/bwdb-groundwater-dashboard.png" }
+    images: [
+      "/images/expertise/hifm-major-river-system-gis.png",
+      "/images/expertise/hifm-hydrology-drought-maps-gis.png",
+    ],
+  },
+  {
+    id: "environment",
+    name: "Environment",
+    icon: Leaf,
+    color: "rgb(var(--primary))",
+    features: [
+      { title: "Environmental Monitoring", desc: "Data platforms for environmental and land-use analysis", icon: BarChart3 },
+      { title: "Forestry Software", desc: "Software supporting sustainable resource management", icon: Leaf },
+      { title: "Earth Observation", desc: "Remote-sensing products for environmental insight", icon: Satellite },
+    ],
+    images: [
+      "/images/expertise/Environment1.jpg",
+      "/images/expertise/Environment2.jpg",
+      "/images/expertise/Environment3.jpg",
+    ],
+  },
+  {
+    id: "gis",
+    name: "GIS & Remote Sensing",
+    icon: Map,
+    color: "rgb(var(--primary))",
+    features: [
+      { title: "Geospatial Platforms", desc: "Interactive mapping and spatial data solutions", icon: Map },
+      { title: "Satellite Products", desc: "NDVI, VHI, VCI and drought/river mapping", icon: Satellite },
+      { title: "Decision Dashboards", desc: "GIS-driven dashboards for government agencies", icon: BarChart3 },
+    ],
+    images: [
+      "/images/expertise/hifm-hydrology-drought-maps-gis.png",
+      "/images/expertise/hifm-major-river-system-gis.png",
+      "/images/expertise/bamis-agro-met-n-GIS.png",
+    ],
+  },
+  {
+    id: "ai-bigdata",
+    name: "AI & Big Data",
+    icon: Brain,
+    color: "rgb(var(--primary))",
+    features: [
+      { title: "Big Data Analytics", desc: "Analytics over large, diverse datasets (Lead Infosys)", icon: BarChart3 },
+      { title: "Applied ML", desc: "Models for weather, soil and agricultural prediction", icon: Brain },
+      { title: "Data Fusion", desc: "Merging satellite, station and IoT sensor data", icon: Network },
+    ],
+    images: [
+      "/images/expertise/lead-infosys-bigdata-analysis-system.png",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+      "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=1200&q=80",
+    ],
+  },
+  {
+    id: "rnd",
+    name: "R&D Innovation",
+    icon: Cpu,
+    color: "rgb(var(--primary))",
+    features: [
+      { title: "Applied R&D", desc: "Prototyping IoT, data-science and AI for real-world problems", icon: Cpu },
+      { title: "Research Data Portals", desc: "Secure user-based portals such as DHDR for field research", icon: Database },
+      { title: "Scientific Publishing", desc: "Journal and publication platforms for research institutes", icon: FileText },
+    ],
+    images: [
+      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&q=80",
+      "/images/expertise/lead-infosys-bigdata-analysis-system.png",
+      "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=1200&q=80",
+    ],
   },
   {
     id: "web-portal",
-    name: "Web Portal",
+    name: "Web & Portals",
     icon: Globe,
     color: "rgb(var(--primary))",
     features: [
-      { title: "Government Portals", desc: "Secure, scalable web portals for government ministries and agencies", icon: Building },
-      { title: "Data Dashboards", desc: "Interactive data visualization dashboards for decision makers", icon: BarChart3 },
-      { title: "Public Platforms", desc: "Citizen-facing public service platforms with modern UX", icon: Globe },
+      { title: "Government & Corporate Sites", desc: "Custom websites and portals (Poly Cables, Inventure, HDF)", icon: Globe },
+      { title: "Dashboards & Web Apps", desc: "Interactive data dashboards for decision makers", icon: BarChart3 },
+      { title: "HRMS & Payroll", desc: "Web systems with HR and payroll (HDF)", icon: Users },
     ],
-    visual: { label: "RRI Journal Platform — Technical Publishing", icon: Globe, image: "/images/case-studies/rri-journal-portal.png" }
-  },
-  {
-    id: "app-dev",
-    name: "App Development",
-    icon: Smartphone,
-    color: "rgb(var(--primary))",
-    features: [
-      { title: "Mobile Applications", desc: "Native iOS and Android apps for field data collection and monitoring", icon: Smartphone },
-      { title: "API Integration", desc: "RESTful API development and third-party system integration", icon: Cpu },
-      { title: "IoT Solutions", desc: "IoT sensor integration and real-time data collection platforms", icon: Network },
+    images: [
+      "/images/expertise/polycables.png",
+      "/images/expertise/lead-interior-building-website.png",
+      "/images/expertise/hdfbd-website-hrm-system.png",
     ],
-    visual: { label: "BAMIS Mobile — Field Data Collection", icon: Smartphone, image: "/images/case-studies/bamis-mobile-app.png" }
-  },
-  {
-    id: "domain",
-    name: "Domain Expert",
-    icon: Building,
-    color: "rgb(var(--primary))",
-    features: [
-      { title: "Industry Expertise", desc: "Deep domain knowledge in meteorology, agriculture, and water management", icon: Building },
-      { title: "Custom Solutions", desc: "Tailored solutions based on specific industry requirements and standards", icon: Wrench },
-      { title: "Specialized Tools", desc: "Purpose-built tools for agro-met and environmental data management", icon: Zap },
-    ],
-    visual: { label: "BWDB Workflow — Hydrological Data Architecture", icon: Building, image: "/images/case-studies/bwdb-workflow-diagram.jpg" }
-  },
-  {
-    id: "server",
-    name: "Server Solution",
-    icon: Server,
-    color: "rgb(var(--primary))",
-    features: [
-      { title: "Server Management", desc: "Enterprise server setup, configuration, and maintenance", icon: Server },
-      { title: "Virtualization", desc: "VMware and Hyper-V virtualization solutions for optimal resource utilization", icon: Cpu },
-      { title: "High Availability", desc: "Clustered server configurations with automatic failover systems", icon: Check },
-    ],
-    visual: { label: "BMD Infrastructure — Load-Balanced Servers", icon: Server, image: "/images/case-studies/bmd-portal-homepage.png" }
-  },
-  {
-    id: "data-center",
-    name: "Data Center",
-    icon: HardDrive,
-    color: "rgb(var(--primary))",
-    features: [
-      { title: "Data Warehousing", desc: "Large-scale data storage and warehousing solutions for enterprise data", icon: Database },
-      { title: "Storage Solutions", desc: "SAN, NAS, and cloud storage integration and management", icon: HardDrive },
-      { title: "Infrastructure", desc: "Complete data center infrastructure design and deployment", icon: Server },
-    ],
-    visual: { label: "BWDB Data Center — Hydrological Warehouse", icon: HardDrive, image: "/images/case-studies/bwdb-workflow-diagram.jpg" }
-  },
-  {
-    id: "network",
-    name: "Network & ICT",
-    icon: Network,
-    color: "rgb(var(--primary))",
-    features: [
-      { title: "Network Infrastructure", desc: "Complete enterprise network design, setup, and optimization", icon: Network },
-      { title: "ICT Solutions", desc: "Comprehensive ICT solutions including VoIP, video conferencing, and collaboration", icon: Phone },
-      { title: "Connectivity", desc: "High-speed connectivity solutions and network security implementations", icon: Shield },
-    ],
-    visual: { label: "BMD Network — Peak Cyclone-Season Traffic", icon: Network, image: "/images/case-studies/bmd-mobile-apps.jpg" }
-  },
-  {
-    id: "erp",
-    name: "ERP Solution",
-    icon: Wrench,
-    color: "rgb(var(--primary))",
-    features: [
-      { title: "Process Automation", desc: "Business process automation and workflow optimization", icon: Wrench },
-      { title: "Financial Management", desc: "Integrated financial management and accounting systems", icon: BarChart3 },
-      { title: "Resource Planning", desc: "Complete ERP implementation for manufacturing and service sectors", icon: Building },
-    ],
-    visual: { label: "CoxDA ERP — Financial Management System", icon: Wrench, image: "/images/case-studies/coxda-fms-dashboard.png" }
   },
   {
     id: "corporate-mail",
@@ -187,11 +252,16 @@ const SECTORS = [
     icon: Mail,
     color: "rgb(var(--primary))",
     features: [
-      { title: "Email Solutions", desc: "Enterprise email systems with spam filtering and security", icon: Mail },
-      { title: "Collaboration Tools", desc: "Team collaboration platforms including calendar, tasks, and file sharing", icon: Users },
-      { title: "Productivity Suites", desc: "Complete office productivity suites for organizational efficiency", icon: FileText },
+      { title: "Enterprise Webmail", desc: "Secure corporate mail servers (hdfbd.com, mail.bmd.gov.bd)", icon: Mail },
+      { title: "Microsoft Mail Systems", desc: "Microsoft-based enterprise email deployment", icon: Mail },
+      { title: "Spam & Security", desc: "Filtering, security and reliable delivery", icon: Shield },
     ],
-    visual: { label: "Mushroom Portal — Agri-Livelihoods Platform", icon: Mail, image: "/images/case-studies/mushroom-portal.png" }
+    images: [
+      "/images/expertise/enterprise-webmail.jpg",
+      "/images/expertise/microsoft-mail-systems.webp",
+      "/images/expertise/ms-webmail-service.avif",
+      "/images/expertise/spam-security-mail.jpg",
+    ],
   },
 ]
 
@@ -250,6 +320,7 @@ const CASE_STUDIES = [
     tech: ["Model admin modules", "Real-time data visualization", "Seasonal river-salinity tracking", "Integrated data warehouse"],
     image: "/images/case-studies/bwdb-groundwater-dashboard.png",
     mobileImage: "/images/case-studies/bwdb-workflow-diagram.jpg",
+    liveUrl: "/go/bwdb",
     tags: ["Hydrology", "Climate Resilience", "Disaster Early-Warning"]
   },
   {
@@ -353,30 +424,70 @@ const PROJECTS = [
 
 const SERVICES = [
   {
-    id: "web-app",
-    name: "Web Applications",
-    shortName: "Web Apps",
-    description: "Custom web platforms, portals, and applications tailored to your business needs.",
-    details: "Portals · Web Apps · E-commerce",
-    icon: Globe,
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-    gradient: "from-violet-600/80 to-purple-800/80"
+    id: "agro-met",
+    name: "Agro-Meteorology System Development",
+    shortName: "Agro-Met",
+    description: "National agro-meteorological platforms — crop advisories, weather intelligence and GIS products for farmers and food-security planning.",
+    details: "BAMIS · Crop Advisory · Satellite/GIS",
+    icon: CloudRain,
+    image: "/images/expertise/bamis-agro-met-n-GIS.png",
+    gradient: "from-emerald-600/80 to-green-800/80"
   },
   {
-    id: "mobile-software",
-    name: "Mobile Software",
-    shortName: "Mobile",
-    description: "Native iOS and Android applications with offline support and real-time sync.",
-    details: "iOS · Android · Cross-Platform",
-    icon: Smartphone,
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
-    gradient: "from-rose-600/80 to-pink-800/80"
+    id: "meteorology",
+    name: "Meteorology System Development",
+    shortName: "Meteorology",
+    description: "Weather portals, forecasting, MDASS/ADS data systems, seismology and aviation meteorological software for national weather services.",
+    details: "Forecasting · MDASS/ADS · Aviation Met",
+    icon: Wind,
+    image: "/images/expertise/meterology-bmd-forcasting-and-weather.png",
+    gradient: "from-sky-600/80 to-blue-800/80"
+  },
+  {
+    id: "hydrology",
+    name: "Hydrology System Design",
+    shortName: "Hydrology",
+    description: "Flood, drought and salinity early-warning platforms with GIS — including the BWDB HIFM hydrological information & forecasting model.",
+    details: "Flood · Salinity · GIS Early-Warning",
+    icon: Waves,
+    image: "/images/expertise/hifm-major-river-system-gis.png",
+    gradient: "from-blue-600/80 to-cyan-800/80"
+  },
+  {
+    id: "gis-remote-sensing",
+    name: "GIS & Remote Sensing",
+    shortName: "GIS",
+    description: "Geospatial platforms, mapping and satellite data products (NDVI, VHI, VCI) for environmental and land-use analysis.",
+    details: "Mapping · NDVI/VHI · Earth Observation",
+    icon: Map,
+    image: "/images/expertise/hifm-hydrology-drought-maps-gis.png",
+    gradient: "from-teal-600/80 to-emerald-800/80"
+  },
+  {
+    id: "agriculture",
+    name: "Agricultural Solutions",
+    shortName: "Agriculture",
+    description: "Digital agriculture platforms — crop & pest management, soil monitoring, e-commerce and extension services for the farming sector.",
+    details: "Crop/Pest Mgmt · Soil · Agri e-Commerce",
+    icon: Leaf,
+    image: "/images/expertise/Agricuture-Solution.jpg",
+    gradient: "from-lime-600/80 to-green-800/80"
+  },
+  {
+    id: "climate-environment",
+    name: "Climate & Environment Solutions",
+    shortName: "Climate",
+    description: "Climate analytics, environmental monitoring and forestry software supporting resilience and sustainable resource management.",
+    details: "Climate Analytics · Environment · Forestry",
+    icon: Cloud,
+    image: "/images/expertise/hifm-hydrology-drought-maps-gis.png",
+    gradient: "from-cyan-600/80 to-teal-800/80"
   },
   {
     id: "ai-bigdata",
     name: "AI & Big Data",
     shortName: "AI & Data",
-    description: "Machine learning models and large-scale data pipelines for intelligent insights.",
+    description: "Machine learning models and large-scale data pipelines for weather, agriculture and environmental intelligence.",
     details: "ML Models · Analytics · Data Fusion",
     icon: Brain,
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
@@ -386,78 +497,108 @@ const SERVICES = [
     id: "research-dev",
     name: "Research & Development",
     shortName: "R&D",
-    description: "Innovation-driven research and prototyping for cutting-edge technology solutions.",
-    details: "Innovation · Prototyping · R&D",
+    description: "Applied R&D and research data platforms — from IoT and data science to scientific journals and study portals.",
+    details: "Innovation · IoT R&D · Research Portals",
     icon: Cpu,
     image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
-    gradient: "from-cyan-600/80 to-teal-800/80"
+    gradient: "from-indigo-600/80 to-slate-800/80"
   },
   {
     id: "iot",
     name: "IoT Solutions",
     shortName: "IoT",
-    description: "Internet of Things systems for smart sensing, data collection, and automation.",
+    description: "Internet of Things systems for smart sensing, real-time field data collection and automation.",
     details: "Sensors · Connectivity · Smart Devices",
     icon: Network,
     image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
     gradient: "from-amber-600/80 to-orange-800/80"
   },
   {
+    id: "web-app",
+    name: "Web & Portal Development",
+    shortName: "Web Apps",
+    description: "Custom government and enterprise web platforms, portals, dashboards and e-commerce.",
+    details: "Portals · Dashboards · E-commerce",
+    icon: Globe,
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+    gradient: "from-violet-600/80 to-purple-800/80"
+  },
+  {
+    id: "mobile-software",
+    name: "Mobile App Development",
+    shortName: "Mobile",
+    description: "Native iOS and Android applications with offline support and real-time sync.",
+    details: "iOS · Android · Cross-Platform",
+    icon: Smartphone,
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
+    gradient: "from-rose-600/80 to-pink-800/80"
+  },
+  {
     id: "erp-server",
-    name: "ERP & Server",
+    name: "ERP, Server & Corporate Mail",
     shortName: "ERP",
-    description: "Enterprise resource planning systems and server infrastructure management.",
-    details: "Infrastructure · Cloud · Server Solutions",
+    description: "Enterprise resource planning, financial systems, server infrastructure and corporate mail solutions.",
+    details: "ERP · Hosting · Corporate Mail",
     icon: Server,
     image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
     gradient: "from-slate-600/80 to-gray-800/80"
-  },
-  {
-    id: "hydrology",
-    name: "Hydrology & Water",
-    shortName: "Hydrology",
-    description: "Flood forecasting, salinity modeling, and water resource management systems.",
-    details: "Flood Forecasting · Salinity · River Flow",
-    icon: Waves,
-    image: "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=800&q=80",
-    gradient: "from-blue-600/80 to-cyan-800/80"
-  },
-  {
-    id: "agro-met",
-    name: "Agro-Met Systems",
-    shortName: "Agro-Met",
-    description: "Real-time crop advisory and weather intelligence platforms for farmers and food security planning.",
-    details: "BAMIS · Satellite Data · Climate Models",
-    icon: CloudRain,
-    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80",
-    gradient: "from-emerald-600/80 to-green-800/80"
   },
 ]
 
 const TESTIMONIALS = [
   {
     id: 1,
-    org: "World Bank (AMISDP)",
+    org: "World Bank",
     logo: "/images/clients/world_bank-logo.png",
-    quote: "Delivered the national agro-met portal and mobile apps under the World Bank–funded AMISDP for the Department of Agricultural Extension.",
+    quote: "A dependable technology partner for national agro-met systems.",
   },
   {
     id: 2,
-    org: "JICA (with BMD)",
+    org: "JICA",
     logo: "/images/clients/jica.png",
-    quote: "Built BMD's mobile-optimised weather site with GIS, cloud and data-visualisation components under a JICA capacity-strengthening project.",
+    quote: "Delivered our mobile weather platform on time and to standard.",
   },
   {
     id: 3,
     org: "Department of Agricultural Extension",
     logo: "/images/clients/dae.png",
-    quote: "Built the BAMIS agro-met portal and apps to disseminate agro-meteorological advisories to farmers across Bangladesh.",
+    quote: "Advisories now reach farmers across every district.",
+  },
+  {
+    id: 4,
+    org: "Bangladesh Meteorological Department",
+    logo: "/images/clients/bmd-logo.jpg",
+    quote: "Our national weather portal stays online when it matters most.",
+  },
+  {
+    id: 5,
+    org: "Bangladesh Water Development Board",
+    logo: "/images/clients/bd-water.png",
+    quote: "One platform for flood, drought and salinity early warning.",
+  },
+  {
+    id: 6,
+    org: "River Research Institute",
+    logo: "/images/clients/rri-bd.png",
+    quote: "A modern home for our technical research and publications.",
+  },
+  {
+    id: 7,
+    org: "Human Development Foundation",
+    logo: "/images/clients/hdf-LOGO-WEB.gif",
+    quote: "Reliable HR, payroll and web systems, maintained for years.",
+  },
+  {
+    id: 8,
+    org: "University of Reading",
+    logo: "/images/clients/university_of_Reading_DHDR.png",
+    quote: "A secure, well-built data portal for our field research.",
   },
 ]
 
 const STATS = [
   { num: "18+", label: "Years operating" },
-  { num: "1000+", label: "Projects delivered" },
+  { num: "2000+", label: "Projects delivered" },
   { num: "956", label: "Satisfied clients" },
   { num: "ISO", label: "9001:2015 certified" },
 ]
@@ -562,7 +703,7 @@ function Hero() {
             className="text-sm font-semibold text-white"
             words={[
               "ISO 9001:2015 · BASIS · 18 Years",
-              "CMMI Certified · QRO · Quality Assured",
+              "CAMMI Level 3 · QRO · Quality Assured",
               "World Bank Partner · JICA · Govt Approved"
             ]}
             duration={3000}
@@ -595,22 +736,37 @@ function Hero() {
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-up" style={{ animationDelay: "0.3s" }}>
-          <Button className="bg-[rgb(var(--primary))] hover:bg-[rgb(var(--primary-dark))] text-white rounded-full px-8">
-            Explore Solutions
+          <Button asChild className="bg-[rgb(var(--primary))] hover:bg-[rgb(var(--primary-dark))] text-white rounded-full px-8">
+            <Link href="/solutions">Explore Solutions</Link>
           </Button>
-          <Button variant="outline" className="border-[rgb(var(--primary))] text-[rgb(var(--primary))] hover:bg-[rgb(var(--primary-pale))] rounded-full px-8">
-            View Projects
+          <Button asChild variant="outline" className="border-[rgb(var(--primary))] text-[rgb(var(--primary))] hover:bg-[rgb(var(--primary-pale))] rounded-full px-8">
+            <Link href="/projects">View Projects</Link>
           </Button>
         </div>
 
-        {/* Trust Tags */}
-        <div className="flex flex-wrap gap-4 md:gap-6 justify-center animate-fade-up" style={{ animationDelay: "0.4s" }}>
-          {["Web & Mobile Apps", "IoT Solutions", "AI & Analytics", "R&D Innovation", "Enterprise ERP", "Cloud Infrastructure", "Government Systems", "Data Platforms", "API Development", "Software Integration"].map((tag) => (
-            <div key={tag} className="flex items-center gap-2 text-sm text-white/80">
-              <div className="w-2 h-2 rounded-full bg-[rgb(var(--primary))]" />
-              {tag}
-            </div>
-          ))}
+        {/* Focus areas — full-width auto-scrolling swiper */}
+        <div className="animate-fade-up relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen" style={{ animationDelay: "0.4s" }}>
+          <Marquee pauseOnHover className="[--duration:45s] [--gap:1.5rem]">
+            {[
+              "Agro-Meteorology System Development",
+              "Meteorology System Development",
+              "Hydrology System Design",
+              "Agricultural Solutions",
+              "Climate Solutions",
+              "Forestry Software",
+              "GIS & Remote Sensing",
+              "AI & Big Data",
+              "IoT Solutions",
+              "R&D Innovation",
+              "Web & Mobile Apps",
+              "ERP & Server",
+            ].map((tag) => (
+              <div key={tag} className="flex items-center gap-2 text-sm text-white/90 whitespace-nowrap">
+                <div className="h-2 w-2 rounded-full bg-[rgb(var(--primary))]" />
+                {tag}
+              </div>
+            ))}
+          </Marquee>
         </div>
 
       </div>
@@ -631,6 +787,60 @@ function ClientsMarqueeSection() {
 
       <ClientMarquee clients={CLIENTS} />
     </section>
+  )
+}
+
+function ExpertiseSlider({ images, label }: { images: string[]; label: string }) {
+  const [idx, setIdx] = React.useState(0)
+
+  // Reset to first slide whenever the selected expertise changes.
+  React.useEffect(() => {
+    setIdx(0)
+  }, [label])
+
+  // Auto-advance the slides.
+  React.useEffect(() => {
+    if (!images || images.length <= 1) return
+    const t = setInterval(() => setIdx((i) => (i + 1) % images.length), 3500)
+    return () => clearInterval(t)
+  }, [images])
+
+  const safeImages = images && images.length > 0 ? images : ["https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200&q=80"]
+
+  return (
+    <div className="relative h-[400px] md:h-[500px] rounded-xl overflow-hidden bg-[rgb(var(--primary-pale))]">
+      {safeImages.map((src, i) => (
+        <Image
+          key={src + i}
+          src={src}
+          alt={`${label} — slide ${i + 1}`}
+          fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className={`object-cover transition-opacity duration-700 ${i === idx ? "opacity-100" : "opacity-0"}`}
+          priority={i === 0}
+        />
+      ))}
+
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+
+      <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between p-6">
+        <p className="inline-block rounded-lg bg-[rgb(var(--primary))]/90 px-4 py-2.5 text-sm font-medium text-white shadow-lg backdrop-blur-sm md:text-base">
+          {label}
+        </p>
+        {safeImages.length > 1 && (
+          <div className="flex gap-1.5">
+            {safeImages.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setIdx(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                className={`h-2 rounded-full transition-all ${i === idx ? "w-6 bg-white" : "w-2 bg-white/50 hover:bg-white/80"}`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
   )
 }
 
@@ -684,9 +894,9 @@ function SectorsSection() {
         </div>
 
         {/* Content */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-5 gap-8">
           {/* Features List */}
-          <div className="space-y-3">
+          <div className="space-y-3 md:col-span-2">
             {sector.features?.map((feature, i) => {
               const FeatureIcon = feature.icon
               return (
@@ -715,21 +925,9 @@ function SectorsSection() {
             })}
           </div>
 
-          {/* Visual */}
-          <div className="relative h-[400px] md:h-[500px] rounded-xl overflow-hidden bg-[rgb(var(--primary-pale))]">
-            <Image
-              src={sector.visual?.image || "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200&q=80"}
-              alt={sector.visual?.label || sector.name}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-6">
-              <p className="text-sm md:text-base font-medium text-white bg-[rgb(var(--primary))]/90 backdrop-blur-sm px-4 py-2.5 rounded-lg inline-block shadow-lg">
-                {sector.visual?.label || "Dashboard"}
-              </p>
-            </div>
+          {/* Visual — auto-playing image slides for the selected expertise (wider) */}
+          <div className="md:col-span-3">
+            <ExpertiseSlider images={sector.images} label={sector.name} />
           </div>
         </div>
       </div>
@@ -903,9 +1101,14 @@ function StatsSection() {
             return (
               <div key={i} className="text-center" ref={ref}>
                 <div className="text-3xl md:text-4xl font-bold text-[rgb(var(--success))]">
-                  {stat.num.replace(/[0-9]/g, "")}
-                  {count}
-                  {stat.num.includes("+") && "+"}
+                  {/[0-9]/.test(stat.num) ? (
+                    <>
+                      {count}
+                      {stat.num.includes("+") && "+"}
+                    </>
+                  ) : (
+                    stat.num
+                  )}
                 </div>
                 <div className="text-xs md:text-sm text-white/60 mt-2">{stat.label}</div>
               </div>
@@ -1134,6 +1337,13 @@ function ServicesSection() {
   const { ref, isInView } = useInView(0.1)
   const [activeIndex, setActiveIndex] = React.useState(0)
 
+  // Panel widths scale with the number of services so the accordion always fits.
+  const panelCount = SERVICES.length
+  const totalGap = (panelCount - 1) * 8 // gap-2 = 8px
+  const denom = 3.5 + (panelCount - 1) * 0.5
+  const activeWidth = `calc((100% - ${totalGap}px) * ${3.5 / denom})`
+  const collapsedWidth = `calc((100% - ${totalGap}px) * ${0.5 / denom})`
+
   return (
     <section ref={ref} className="py-20 bg-white w-full overflow-hidden" id="services">
       <div className="max-w-7xl mx-auto px-4 md:px-8 mb-8">
@@ -1162,7 +1372,7 @@ function ServicesSection() {
               key={service.id}
               className="service-panel group relative h-full overflow-hidden rounded-2xl cursor-pointer transition-all duration-700 ease-out"
               style={{
-                width: isActive ? 'calc((100% - 16px) / 6 * 3.5)' : 'calc((100% - 16px) / 6 * 0.5)',
+                width: isActive ? activeWidth : collapsedWidth,
                 flexShrink: 0,
               }}
               onMouseEnter={() => setActiveIndex(index)}
@@ -1267,12 +1477,15 @@ function TestimonialsSection() {
           </h2>
         </div>
 
-        {/* Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      </div>
+
+      {/* Auto-playing testimonial swiper */}
+      <div className="relative w-full overflow-hidden">
+        <Marquee pauseOnHover className="[--duration:60s] [--gap:1.5rem]">
           {TESTIMONIALS.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="bg-white rounded-xl p-6 border border-[rgb(var(--border-subtle))] shadow-sm hover:shadow-md transition-shadow"
+              className="w-[300px] md:w-[360px] flex-shrink-0 bg-white rounded-xl p-6 border border-[rgb(var(--border-subtle))] shadow-sm"
             >
               {/* Organization */}
               <div className="flex items-center gap-4 mb-4">
@@ -1286,7 +1499,7 @@ function TestimonialsSection() {
                   />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-[rgb(var(--text-primary))]">{testimonial.org}</h4>
+                  <h4 className="font-semibold text-[rgb(var(--text-primary))] text-sm leading-snug">{testimonial.org}</h4>
                 </div>
               </div>
 
@@ -1299,7 +1512,11 @@ function TestimonialsSection() {
               </div>
             </div>
           ))}
-        </div>
+        </Marquee>
+
+        {/* Edge fade */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[rgb(var(--surface))] to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[rgb(var(--surface))] to-transparent" />
       </div>
     </section>
   )

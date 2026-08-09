@@ -2,11 +2,27 @@ import Link from "next/link"
 import { Badge } from "@workspace/ui/components/badge"
 import { Button } from "@workspace/ui/components/button"
 import { SOLUTION_CLUSTERS, SOLUTIONS } from "@/data/solutions"
-import { ArrowRight, CheckCircle2, Globe, Brain, Server, Users, Database, Mail, Smartphone, Cpu, Network, FileText, Building2, Zap, Shield, HardDrive, LayoutDashboard, Wallet, Wrench } from "lucide-react"
+import { ArrowRight, CheckCircle2, Globe, Brain, Server, Users, Database, Mail, Smartphone, Cpu, Network, FileText, Building2, Zap, Shield, HardDrive, LayoutDashboard, Wallet, Wrench, CloudRain, Wind, Cloud, TrendingUp, Leaf, Satellite, Droplets, Map } from "lucide-react"
 
 const iconMap: Record<string, React.ElementType> = {
   Globe, Brain, Server, Users, Database, Mail, Smartphone, Cpu, Network, FileText, Building2, Zap, Shield, HardDrive, LayoutDashboard, Wallet, Wrench, Award: CheckCircle2,
 }
+
+// Sector expertise we specialise in — always shown first.
+const SPECIALIST_SECTORS = [
+  { name: "Agro-Meteorology", desc: "Agro-met platforms, advisories and GIS for farming and food security.", icon: CloudRain },
+  { name: "Meteorology", desc: "Weather portals, forecasting and data systems for national services.", icon: Wind },
+  { name: "Weather", desc: "Current-weather, forecasting and warning dissemination.", icon: Cloud },
+  { name: "Climate", desc: "Climate analytics and adaptation-support data products.", icon: TrendingUp },
+  { name: "Agricultural", desc: "Crop & pest management, soil monitoring and agri e-commerce.", icon: Leaf },
+  { name: "Crop", desc: "Crop weather calendars, monitoring and management systems.", icon: Satellite },
+  { name: "Water & Hydrology", desc: "Flood, drought and salinity early-warning with GIS (HIFM).", icon: Droplets },
+  { name: "Environment", desc: "Environmental monitoring and earth-observation platforms.", icon: Globe },
+  { name: "Forestry", desc: "Forestry software supporting sustainable resource management.", icon: Leaf },
+  { name: "GIS & Remote Sensing", desc: "Mapping and satellite products (NDVI, VHI, VCI).", icon: Map },
+  { name: "AI & Big Data", desc: "Applied ML and large-scale environmental data pipelines.", icon: Brain },
+  { name: "Research & Development", desc: "Applied R&D, IoT prototyping and research data platforms.", icon: Cpu },
+]
 
 export default function SolutionsPage() {
   return (
@@ -22,8 +38,44 @@ export default function SolutionsPage() {
             </h1>
             <p className="text-lg md:text-xl text-[rgb(var(--text-muted))] leading-relaxed">
               From web platforms to AI-powered analytics, we deliver end-to-end solutions tailored to your needs.
-              Explore our 14 core service offerings across four strategic clusters.
+              Explore our 20 core service offerings across four strategic clusters.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Specialist Sectors — our unique expertise, shown first */}
+      <section className="py-12 md:py-16 border-b border-[rgb(var(--border-subtle))]">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
+          <div className="mb-10 text-center">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-[rgb(var(--primary))] md:text-sm">
+              Where We Lead
+            </p>
+            <h2 className="text-3xl font-bold text-[rgb(var(--text-primary))] md:text-4xl">
+              Specialist Sector Solutions
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-[rgb(var(--text-muted))]">
+              Beyond traditional software, we are a sector-focused solutions company — a key player in
+              climate, agro-meteorology, agriculture, weather, crop, forestry and the wider environment.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {SPECIALIST_SECTORS.map((sector) => {
+              const Icon = sector.icon
+              return (
+                <div
+                  key={sector.name}
+                  className="rounded-2xl border border-[rgb(var(--border-subtle))] bg-white p-6 transition-all duration-300 hover:border-[rgb(var(--primary))] hover:shadow-lg"
+                >
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[rgb(var(--primary-pale))]">
+                    <Icon className="h-6 w-6 text-[rgb(var(--primary))]" />
+                  </div>
+                  <h3 className="mb-2 text-lg font-semibold text-[rgb(var(--text-primary))]">{sector.name}</h3>
+                  <p className="text-sm leading-relaxed text-[rgb(var(--text-muted))]">{sector.desc}</p>
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -55,7 +107,7 @@ export default function SolutionsPage() {
             </div>
 
             {/* Solutions Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
               {cluster.solutions.map((solution) => {
                 const Icon = iconMap[solution.icon] || CheckCircle2
                 return (
@@ -115,7 +167,7 @@ export default function SolutionsPage() {
               Complete Service Portfolio
             </h2>
             <p className="text-lg text-white/80 max-w-2xl mx-auto">
-              All 14 services we offer, organized by capability
+              All 20 services we offer, organized by capability
             </p>
           </div>
 

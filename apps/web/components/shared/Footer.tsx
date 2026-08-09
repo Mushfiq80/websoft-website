@@ -4,7 +4,6 @@ import Link from "next/link"
 import { MapPin, Phone, Mail, ExternalLink } from "lucide-react"
 import { SITE_CONFIG, CERTIFICATIONS } from "@/data/site"
 import { NAVIGATION } from "@/data/navigation"
-import { ShinyButton } from "@workspace/ui/components/shiny-button"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -17,44 +16,23 @@ export function Footer() {
           {/* Brand & Description */}
           <div className="lg:col-span-1">
             <div className="mb-6">
-              <Link href="/">
-                <ShinyButton className="!rounded-xl !px-4 !py-2">
-                  <Image
-                    src="/images/logo/web-soft-logo.png"
-                    alt="Web Soft BD"
-                    width={225}
-                    height={100}
-                    className="h-10 w-auto md:h-14"
-                    priority
-                  />
-                </ShinyButton>
+              <Link
+                href="/"
+                className="inline-flex items-center rounded-xl bg-white px-4 py-3 shadow-md"
+              >
+                <Image
+                  src="/images/logo/web-soft-logo.png"
+                  alt="Web Soft BD"
+                  width={225}
+                  height={100}
+                  className="h-10 w-auto md:h-14"
+                  priority
+                />
               </Link>
             </div>
             <p className="mb-6 text-sm leading-relaxed text-white/60">
               {SITE_CONFIG.company.tagline}
             </p>
-
-            {/* Social Links */}
-            <div className="flex flex-wrap gap-3">
-              <a
-                href={SITE_CONFIG.contact.social.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 text-xs font-medium text-white/60 transition-colors hover:bg-white/20 hover:text-white"
-                aria-label="Facebook"
-              >
-                FB
-              </a>
-              <a
-                href={SITE_CONFIG.contact.social.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 text-xs font-medium text-white/60 transition-colors hover:bg-white/20 hover:text-white"
-                aria-label="LinkedIn"
-              >
-                IN
-              </a>
-            </div>
           </div>
 
           {/* Solutions */}

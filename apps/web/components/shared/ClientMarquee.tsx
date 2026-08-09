@@ -40,14 +40,14 @@ export function ClientMarquee({ clients }: ClientMarqueeProps) {
   return (
     <div className="relative w-full overflow-hidden bg-white">
       {/* First marquee - left to right */}
-      <Marquee pauseOnHover className="[--duration:80s] mb-4">
+      <Marquee pauseOnHover className="[--duration:130s] mb-4">
         {row1Content.map((client, index) => (
           <ClientCard key={`row1-${index}`} client={client} />
         ))}
       </Marquee>
 
       {/* Second marquee - right to left (reversed) */}
-      <Marquee reverse pauseOnHover className="[--duration:90s]">
+      <Marquee reverse pauseOnHover className="[--duration:150s]">
         {row2Content.map((client, index) => (
           <ClientCard key={`row2-${index}`} client={client} />
         ))}

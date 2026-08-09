@@ -1,56 +1,57 @@
 import Image from "next/image"
-import Link from "next/link"
 import { Badge } from "@workspace/ui/components/badge"
-import { Button } from "@workspace/ui/components/button"
-import { CLIENTS, TESTIMONIALS, CLIENT_CHALLENGES, ANCHOR_CLIENTS } from "@/data/clients"
+import { CLIENTS, TESTIMONIALS } from "@/data/clients"
 import { Marquee } from "@workspace/ui/components/marquee"
-import { Quote, Building2, ArrowRight, CheckCircle2, Users, Zap } from "lucide-react"
+import { Quote } from "lucide-react"
 
 export default function ClientsPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative py-8 md:py-12 bg-gradient-to-b from-[rgb(var(--primary-faint))] to-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
           <div className="max-w-3xl">
             <Badge className="mb-4 bg-[rgb(var(--primary))] text-white">Our Clients</Badge>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[rgb(var(--text-primary))] mb-6">
-              Trusted by{" "}
-              <span className="text-[rgb(var(--primary))]">Leading Organizations</span>
+            <h1 className="mb-6 text-4xl font-bold text-[rgb(var(--text-primary))] md:text-5xl lg:text-6xl">
+              Trusted by <span className="text-[rgb(var(--primary))]">Leading Organizations</span>
             </h1>
-            <p className="text-lg md:text-xl text-[rgb(var(--text-muted))] leading-relaxed">
-              From multilateral organizations like the World Bank and JICA to government agencies and private enterprises,
-              we've had the privilege of serving 950+ clients across Bangladesh and beyond.
+            <p className="text-lg leading-relaxed text-[rgb(var(--text-muted))] md:text-xl">
+              From multilateral organizations like the World Bank and JICA to government agencies and private
+              enterprises, we&apos;ve had the privilege of serving 950+ clients across Bangladesh and beyond.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Anchor Clients */}
+      {/* Section 1 — All Clients */}
       <section className="py-12 md:py-16">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-4">
-              Trusted by the Best
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
+          <div className="mb-10 text-center md:mb-12">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-[rgb(var(--primary))] md:text-sm">
+              Our Clients
+            </p>
+            <h2 className="text-3xl font-bold text-[rgb(var(--text-primary))] md:text-4xl">
+              Organizations We&apos;ve Served
             </h2>
-            <p className="text-[rgb(var(--text-muted))] max-w-2xl mx-auto">
-              Our anchor clients include multilateral organizations, government agencies, and leading enterprises
+            <p className="mx-auto mt-3 max-w-2xl text-[rgb(var(--text-muted))]">
+              Government, multilateral, NGO and private-sector organizations that trust Web Soft BD.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8">
-            {ANCHOR_CLIENTS.slice(0, 10).map((client) => (
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+            {CLIENTS.map((client) => (
               <div
                 key={client.id}
-                className="bg-white rounded-xl p-4 md:p-6 shadow-sm border border-[rgb(var(--border-subtle))] flex items-center justify-center aspect-square hover:shadow-md transition-shadow"
+                title={client.name}
+                className="flex aspect-[3/2] items-center justify-center rounded-xl border border-[rgb(var(--border-subtle))] bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[rgb(var(--primary))] hover:shadow-md"
               >
-                <div className="relative w-full h-full">
+                <div className="relative h-full w-full">
                   <Image
                     src={client.logo}
                     alt={client.name}
                     fill
                     className="object-contain"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 16vw"
                   />
                 </div>
               </div>
@@ -59,111 +60,38 @@ export default function ClientsPage() {
         </div>
       </section>
 
-      {/* Client Challenges - Case Studies */}
-      <section className="py-12 md:py-16 bg-[rgb(var(--surface-teal))]">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-4">
-              Challenges We've Solved
-            </h2>
-            <p className="text-[rgb(var(--text-muted))] max-w-2xl mx-auto">
-              Real problems, real solutions, real impact
+      {/* Section 2 — Client Reviews (auto-playing swiper) */}
+      <section className="overflow-hidden bg-[rgb(var(--surface))] py-12 md:py-16">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
+          <div className="mb-10 text-center md:mb-12">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-[rgb(var(--primary))] md:text-sm">
+              In Their Own Words
             </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {CLIENT_CHALLENGES.map((challenge) => (
-              <div
-                key={challenge.client}
-                className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-[rgb(var(--border-subtle))] hover:shadow-md transition-shadow"
-              >
-                {/* Client Header */}
-                <div className="flex items-center gap-4 mb-6">
-                  {challenge.logo && (
-                    <div className="relative w-16 h-16 flex-shrink-0">
-                      <Image
-                        src={challenge.logo}
-                        alt={challenge.client}
-                        fill
-                        className="object-contain"
-                        sizes="64px"
-                      />
-                    </div>
-                  )}
-                  <div className="min-w-0">
-                    <h3 className="font-semibold text-[rgb(var(--text-primary))] truncate">{challenge.client}</h3>
-                  </div>
-                </div>
-
-                {/* Challenge */}
-                <div className="mb-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Users className="w-5 h-5 text-orange-500" />
-                    <h4 className="font-medium text-[rgb(var(--text-primary))]">The Challenge</h4>
-                  </div>
-                  <p className="text-sm text-[rgb(var(--text-muted))] pl-7">{challenge.challenge}</p>
-                </div>
-
-                {/* Solution */}
-                <div className="mb-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Zap className="w-5 h-5 text-[rgb(var(--primary))]" />
-                    <h4 className="font-medium text-[rgb(var(--text-primary))]">Our Solution</h4>
-                  </div>
-                  <p className="text-sm text-[rgb(var(--text-muted))] pl-7">{challenge.solution}</p>
-                </div>
-
-                {/* Result */}
-                <div className="flex items-start gap-2 p-4 bg-[rgb(var(--primary-faint))] rounded-lg mb-6">
-                  <CheckCircle2 className="w-5 h-5 text-[rgb(var(--primary))] flex-shrink-0 mt-0.5" />
-                  <p className="text-sm text-[rgb(var(--text-primary))] font-medium">{challenge.result}</p>
-                </div>
-
-                {/* Link */}
-                {challenge.link && (
-                  <Link
-                    href={challenge.link}
-                    className="inline-flex items-center gap-2 text-sm font-medium text-[rgb(var(--primary))] hover:underline"
-                  >
-                    View Full Case Study
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials - auto-scrolling slider */}
-      <section className="py-12 md:py-16 bg-[rgb(var(--surface-blue))] overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-4">
-              What We Delivered
+            <h2 className="text-3xl font-bold text-[rgb(var(--text-primary))] md:text-4xl">
+              What Our Clients Say
             </h2>
-            <p className="text-[rgb(var(--text-muted))] max-w-2xl mx-auto">
-              A snapshot of the work we&apos;ve delivered for our clients
+            <p className="mx-auto mt-3 max-w-2xl text-[rgb(var(--text-muted))]">
+              A snapshot of the work we&apos;ve delivered for our clients.
             </p>
           </div>
         </div>
 
         <div className="relative">
-          <Marquee pauseOnHover className="[--duration:45s] [--gap:1.5rem]">
+          <Marquee pauseOnHover className="[--duration:50s] [--gap:1.5rem]">
             {TESTIMONIALS.map((testimonial) => (
               <div
                 key={testimonial.id}
-                className="w-[320px] md:w-[380px] shrink-0 bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-[rgb(var(--border-subtle))]"
+                className="w-[320px] shrink-0 rounded-2xl border border-[rgb(var(--border-subtle))] bg-white p-6 shadow-sm md:w-[380px] md:p-8"
               >
-                <Quote className="w-9 h-9 text-[rgb(var(--primary-pale))] mb-4" />
+                <Quote className="mb-4 h-9 w-9 text-[rgb(var(--primary-pale))]" />
 
-                <p className="text-[rgb(var(--text-muted))] leading-relaxed mb-6 text-sm md:text-base">
+                <p className="mb-6 text-sm leading-relaxed text-[rgb(var(--text-muted))] md:text-base">
                   {testimonial.quote}
                 </p>
 
                 <div className="flex items-center gap-4">
                   {testimonial.orgLogo && (
-                    <div className="relative w-12 h-12 flex-shrink-0">
+                    <div className="relative h-12 w-12 flex-shrink-0">
                       <Image
                         src={testimonial.orgLogo}
                         alt={testimonial.org}
@@ -174,8 +102,10 @@ export default function ClientsPage() {
                     </div>
                   )}
                   <div className="min-w-0">
-                    <div className="font-medium text-[rgb(var(--text-primary))] truncate">{testimonial.org}</div>
-                    <div className="text-xs text-[rgb(var(--text-subtle))]">{testimonial.project}</div>
+                    <div className="truncate font-medium text-[rgb(var(--text-primary))]">{testimonial.org}</div>
+                    {testimonial.project && (
+                      <div className="text-xs text-[rgb(var(--text-subtle))]">{testimonial.project}</div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -183,62 +113,8 @@ export default function ClientsPage() {
           </Marquee>
 
           {/* edge fades */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[rgb(var(--surface-blue))] to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[rgb(var(--surface-blue))] to-transparent" />
-        </div>
-      </section>
-
-      {/* All Clients Logo Grid */}
-      <section className="py-12 md:py-16 bg-[rgb(var(--navy))]">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Our Complete Client Roster
-            </h2>
-            <p className="text-lg text-white/80 max-w-2xl mx-auto">
-              Government, multilateral, NGO, and private sector organizations we've served
-            </p>
-          </div>
-
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4">
-            {CLIENTS.map((client) => (
-              <div
-                key={client.id}
-                className="bg-gray-200 rounded-lg p-3 flex items-center justify-center aspect-square hover:bg-gray-300 transition-colors"
-                title={client.name}
-              >
-                <div className="relative w-full h-full">
-                  <Image
-                    src={client.logo}
-                    alt={client.name}
-                    fill
-                    className="object-contain"
-                    sizes="(max-width: 640px) 33vw, (max-width: 1024px) 25vw, 12vw"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-12 md:py-16">
-        <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-[rgb(var(--text-primary))] mb-6">
-            Ready to Become Our Next Success Story?
-          </h2>
-          <p className="text-lg text-[rgb(var(--text-muted))] mb-8">
-            Let's discuss how we can help transform your challenges into opportunities.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="rounded-full bg-[rgb(var(--primary))] hover:bg-[rgb(var(--primary-dark))]">
-              <Link href="/contact">Start a Conversation</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="rounded-full">
-              <Link href="/projects">See Our Work</Link>
-            </Button>
-          </div>
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[rgb(var(--surface))] to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[rgb(var(--surface))] to-transparent" />
         </div>
       </section>
     </div>

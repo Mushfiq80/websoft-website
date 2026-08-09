@@ -1,3 +1,16 @@
+export interface NavChild {
+  name: string
+  href: string
+  external?: boolean
+}
+
+export interface NavItem {
+  name: string
+  href: string
+  external?: boolean
+  children?: NavChild[]
+}
+
 export const NAVIGATION = {
   main: [
     { name: "Home", href: "/" },
@@ -5,9 +18,18 @@ export const NAVIGATION = {
     { name: "Sectors", href: "/sectors" },
     { name: "Solutions", href: "/solutions" },
     { name: "Projects", href: "/projects" },
+    {
+      name: "R&D Innovation",
+      href: "/rnd/team",
+      children: [
+        { name: "Team", href: "/rnd/team" },
+        { name: "Projects", href: "/rnd/projects" },
+      ],
+    },
+    { name: "IoT", href: "https://iot.websoftbd.net/", external: true },
     { name: "Clients", href: "/clients" },
     { name: "Contact", href: "/contact" },
-  ],
+  ] as NavItem[],
   footer: {
     solutions: [
       { name: "Agro-Met Systems", href: "/sectors#agro-met" },

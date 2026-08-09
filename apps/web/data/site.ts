@@ -21,7 +21,7 @@ export const SITE_CONFIG = {
   },
   stats: [
     { value: "18+", label: "Years operating", description: "Since 2008" },
-    { value: "1000+", label: "Projects delivered", description: "Across govt & private sector" },
+    { value: "2000+", label: "Projects delivered", description: "Across govt & private sector" },
     { value: "956", label: "Satisfied clients", description: "Nationally and internationally" },
     { value: "ISO", label: "9001:2015 certified", description: "Quality management standard" },
   ],
@@ -36,7 +36,7 @@ export const CERTIFICATIONS = [
   { name: "ISO 9001:2015", logo: "/images/certifications/1_ISO_9001-2015.png", short: "ISO", pdf: "" },
   { name: "ISO/IEC 27001:2022", logo: "/images/certifications/2_ISO-IEC_27001-2022.png", short: "ISO 27k", pdf: "" },
   { name: "ORO", logo: "/images/certifications/3_ORO.png", short: "ORO", pdf: "" },
-  { name: "CMMI Level 3", logo: "/images/certifications/4_CMMI_Level_3.png", short: "CMMI", pdf: "" },
+  { name: "CAMMI Level 3", logo: "/images/certifications/4_CMMI_Level_3.png", short: "CAMMI", pdf: "" },
   { name: "UKCERT", logo: "/images/certifications/5_UKCERT.png", short: "UKCERT", pdf: "" },
   { name: "International Accreditation Forum (IAF)", logo: "/images/certifications/6_International_Accreditation_Forum_(IAF).png", short: "IAF", pdf: "" },
   { name: "APN Nepal", logo: "/images/certifications/7_APN-Nepal.png", short: "APN", pdf: "" },
