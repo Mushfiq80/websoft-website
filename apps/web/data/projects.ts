@@ -122,6 +122,42 @@ export const PROJECTS: Project[] = [
     liveUrl: "https://mobile.bmd.gov.bd/",
   },
   {
+    id: "bmd-mobile-webapp",
+    slug: "bmd-mobile-webapp",
+    name: "BMD Mobile Weather Web App",
+    shortName: "BMD Mobile App",
+    sector: "Meteorology",
+    tags: ["Meteorology", "Mobile", "Government", "NWP"],
+    client: "Bangladesh Meteorological Department (BMD)",
+    clientLogo: "/images/clients/bd.gov.png",
+    impact: "Mobile web app delivering live weather, forecasts and NWP products",
+    stats: [
+      { value: "Mobile web", label: "Install-free weather app" },
+      { value: "NWP", label: "Numerical weather products" },
+      { value: "Live", label: "Current weather & forecasts" },
+    ],
+    description:
+      "A mobile web application (mobile.bmd.gov.bd) for the Bangladesh Meteorological Department that gives the public fast, phone-optimised access to current weather, multi-day forecasts and numerical weather prediction (NWP) products such as wind fields — straight from the browser, with no install required.",
+    challenge:
+      "The public needed a fast, install-free way to reach BMD's current weather, forecasts and NWP products from any phone.",
+    solution:
+      "Delivered a mobile-first web app surfacing live weather, forecasts and NWP products (including wind) through a lightweight, touch-friendly interface.",
+    results: [
+      "Phone-optimised access to live weather and forecasts",
+      "NWP products including wind fields on mobile",
+      "No app install required — runs in the browser",
+    ],
+    image: "/images/projects/bmd-mobile-web-app-homepage.png",
+    images: [
+      "/images/projects/bmd-mobile-web-app-homepage.png",
+      "/images/projects/bmd-mobile-web-appForcast.png",
+      "/images/projects/bmd-mobile-web-app-NWP-wind.png",
+    ],
+    featured: true,
+    accentColor: "#185FA5",
+    liveUrl: "https://mobile.bmd.gov.bd/",
+  },
+  {
     id: "bwdb",
     slug: "bwdb",
     name: "Hydrological Information & Forecasting Model (HIFM)",
@@ -160,30 +196,33 @@ export const PROJECTS: Project[] = [
   {
     id: "isoil",
     slug: "isoil",
-    name: "I-Soil — Soil Monitoring Platform",
+    name: "I-Soil — IoT Soil Monitoring Mobile App",
     shortName: "I-Soil",
-    sector: "IoT/AI",
-    tags: ["IoT", "Data Science", "Agriculture", "R&D"],
+    sector: "IoT",
+    tags: ["IoT", "Mobile App", "Data Science", "Agriculture", "R&D"],
     client: "Rural Development Academy (RDA), Bogura",
-    impact: "IoT soil-monitoring dashboard with mobile advisory in Bengali",
+    impact: "Mobile app streaming real-time data from field IoT soil devices",
     stats: [
-      { value: "IoT", label: "Soil sensor integration" },
-      { value: "Dashboard", label: "Soil monitoring web portal" },
-      { value: "Bengali", label: "Mobile advisory output" },
+      { value: "Real-time", label: "IoT device data streaming" },
+      { value: "Mobile App", label: "Farmer-facing (Android)" },
+      { value: "Bengali", label: "Soil & fertiliser advisory" },
     ],
     description:
-      "A soil-monitoring platform (isoilbd.com) with a web dashboard and mobile app that brings soil sensor data together to support soil-nutrition and fertiliser guidance for farmers in Bengali.",
+      "I-Soil (isoilbd.com) is a mobile app that reads real-time data directly from field IoT soil-sensor devices and turns it into soil-nutrition and fertiliser guidance for farmers in Bengali, backed by a web dashboard for monitoring. Sensors capture soil parameters in the field and stream them to the app, giving farmers live, location-specific insights.",
     challenge:
-      "Farmers had no accessible, data-driven way to get soil-specific nutrient and fertiliser guidance grounded in real sensor data.",
+      "Farmers had no accessible, data-driven way to read live soil conditions and get soil-specific nutrient and fertiliser guidance from real IoT sensor data.",
     solution:
-      "Built a pipeline from soil sensors to a monitoring dashboard and farmer-facing mobile app with a Bengali-language interface.",
+      "Built an IoT pipeline from field soil-sensor devices to a mobile app with real-time data streaming and a Bengali-language advisory interface, plus a web dashboard for monitoring.",
     results: [
-      "Soil-monitoring dashboard and mobile app in Bengali",
-      "Demonstrates R&D capability beyond government portals",
-      "Applies data science to soil and fertiliser guidance",
+      "Mobile app delivering real-time IoT soil-sensor data to farmers",
+      "Bengali-language soil and fertiliser advisory",
+      "Demonstrates IoT + data-science R&D capability beyond government portals",
     ],
     image: "/images/projects/isoil-web.png",
-    images: ["/images/projects/isoil-web.png", "/images/case-studies/isoil-mobile-app.png"],
+    images: [
+      "/images/projects/isoil-mobile-app.png",
+      "/images/projects/isoil-web.png",
+    ],
     featured: true,
     accentColor: "#534AB7",
     liveUrl: "http://www.isoilbd.com",
@@ -523,65 +562,6 @@ export const PROJECTS: Project[] = [
     accentColor: "#185FA5",
   },
   {
-    id: "sunlife-hrms",
-    slug: "sunlife-hrms",
-    name: "PAPYRUS HRMS & Website — Sunlife Insurance",
-    shortName: "Sunlife HRMS",
-    sector: "ERP",
-    tags: ["HRMS", "ERP", "Web", "Corporate"],
-    client: "Sunlife Insurance Company Ltd.",
-    impact: "HRMS 'PAPYRUS' and dynamic website, maintained for a decade",
-    stats: [
-      { value: "PAPYRUS", label: "HRMS platform" },
-      { value: "Website", label: "Dynamic corporate site" },
-      { value: "2014–2025", label: "Maintenance ongoing" },
-    ],
-    description:
-      "A Human Resource Management System named PAPYRUS together with a dynamic website for Sunlife Insurance Company Ltd., delivered and maintained over a multi-year engagement.",
-    challenge:
-      "The insurer needed structured HR management and a maintained corporate web presence.",
-    solution:
-      "Delivered the PAPYRUS HRMS and a dynamic website with long-term maintenance.",
-    results: [
-      "PAPYRUS HRMS for a large corporate insurer",
-      "Dynamic corporate website",
-      "Long-running engagement with ongoing maintenance",
-    ],
-    image: "/images/projects/hdfd-web.png",
-    featured: false,
-    accentColor: "#534AB7",
-  },
-  {
-    id: "esteps-erp",
-    slug: "esteps-erp",
-    name: "ESTEPS Portal & ERP",
-    shortName: "ESTEPS ERP",
-    sector: "ERP",
-    tags: ["ERP", "Web", "System Integration"],
-    client: "ESTEPS Limited",
-    clientLogo: "/images/clients/esteps-logo.jpg",
-    impact: "Portal, ERP, hosting and system integration for a corporate client",
-    stats: [
-      { value: "ERP", label: "Enterprise system" },
-      { value: "Portal", label: "Website + hosting" },
-      { value: "Integration", label: "System integration" },
-    ],
-    description:
-      "Portal (website) development, hosting, system integration, ERP development, software development, training and maintenance for ESTEPS Limited.",
-    challenge:
-      "ESTEPS needed an integrated web and ERP platform with hosting and support.",
-    solution:
-      "Delivered portal, ERP and software development with system integration, training and maintenance.",
-    results: [
-      "Integrated portal and ERP platform",
-      "Hosting, system integration and training",
-      "Ongoing software maintenance",
-    ],
-    image: "/images/projects/hdfd-web.png",
-    featured: false,
-    accentColor: "#7370D8",
-  },
-  {
     id: "lead-bigdata",
     slug: "lead-infosys-big-data",
     name: "Big Data Analytics System — Lead Infosys",
@@ -627,38 +607,206 @@ export const PROJECTS: Project[] = [
       { value: "Maintenance", label: "Upgrades & modification" },
     ],
     description:
-      "A mail-server solution with dynamic website development, integration, maintenance, upgrades and modification for Poly Cables Ind. Ltd.",
+      "A WordPress-based corporate website with an online product catalogue for Poly Cables Ind. Ltd., alongside a mail-server solution, integration, hosting, maintenance and upgrades. The site showcases thousands of cable and wire products for the manufacturer.",
     challenge:
-      "The manufacturer needed reliable corporate email and a maintained dynamic website.",
+      "The manufacturer needed a maintainable corporate website with a large, browsable product catalogue plus reliable corporate email.",
     solution:
-      "Delivered a mail-server solution and a dynamic, integrated website with ongoing maintenance and upgrades.",
+      "Delivered a WordPress website with a structured product catalogue and a mail-server solution, with ongoing integration, hosting, maintenance and upgrades.",
     results: [
+      "WordPress corporate website with thousands of products online",
       "Corporate mail-server infrastructure",
-      "Dynamic, integrated corporate website",
       "Ongoing maintenance, upgrades and modification",
     ],
-    image: "/images/projects/hdfd-web.png",
+    image: "/images/projects/Polycables.com_Homepage.png",
+    images: [
+      "/images/projects/Polycables.com_Homepage.png",
+      "/images/projects/Polycables.com-thousands-of-products-uploaded..png",
+    ],
     featured: false,
     accentColor: "#4a5568",
     liveUrl: "https://www.polycables.com.bd",
   },
+  {
+    id: "inventure",
+    slug: "inventure-arch",
+    name: "Inventure Builders — Architecture Firm Website",
+    shortName: "Inventure",
+    sector: "Web",
+    tags: ["Web", "Corporate", "CMS"],
+    client: "Inventure (Architecture, Interior & Engineering)",
+    impact: "Custom architecture-firm website with project galleries and an admin panel",
+    stats: [
+      { value: "Since 2001", label: "Consultancy showcased" },
+      { value: "300+", label: "Projects presented" },
+      { value: "Admin panel", label: "Self-managed content" },
+    ],
+    description:
+      "A custom website for Inventure, a Dhaka-based architectural, interior and engineering consultancy operating since 2001 with 300+ landmark projects. The site presents categorised building and interior project galleries, services, and a blog, backed by an admin panel so the team can publish and manage content themselves.",
+    challenge:
+      "Inventure needed a modern, self-manageable web presence to showcase hundreds of architectural and interior projects and generate client enquiries.",
+    solution:
+      "Built a custom website with categorised project galleries, service pages and a blog, plus an admin panel and WhatsApp enquiry integration.",
+    results: [
+      "Custom, self-manageable website with an admin panel",
+      "Categorised building and interior project galleries",
+      "Direct WhatsApp and form-based lead capture",
+    ],
+    image: "/images/projects/inventure-arch-website1.png",
+    images: [
+      "/images/projects/inventure-arch-website1.png",
+      "/images/projects/inventure-arch-website2.png",
+      "/images/projects/inventure-arch-website3.png",
+    ],
+    featured: false,
+    accentColor: "#7370D8",
+    liveUrl: "https://www.inventurearch.com/",
+  },
+  {
+    id: "innovative-bd",
+    slug: "innovative-bd",
+    name: "Innovative BD — ICT & Global Trading Website",
+    shortName: "Innovative BD",
+    sector: "Web",
+    tags: ["Web", "Corporate", "ICT"],
+    client: "Innovative BD Pte. Ltd. (Singapore)",
+    impact: "Corporate website for a Singapore ICT, AI & trading company serving 13+ countries",
+    stats: [
+      { value: "Since 2007", label: "Company established" },
+      { value: "13+", label: "Countries served" },
+      { value: "ICT · AI", label: "Products & trading" },
+    ],
+    description:
+      "A corporate marketing website for Innovative BD Pte. Ltd., a Singapore-registered ICT products, AI solutions, software & hardware and general trading company operating since 2007 across 13+ countries. The site presents business areas, global presence, partners and products.",
+    challenge:
+      "Innovative BD needed a polished corporate site to present its ICT, AI and trading business to a global, multi-country audience.",
+    solution:
+      "Delivered a modern single-page corporate website covering business areas, global presence, partners, products and contact, optimised for international visitors.",
+    results: [
+      "Modern corporate presence for a global ICT & trading firm",
+      "Clear presentation of business areas and partners",
+      "Multi-country contact and enquiry handling",
+    ],
+    image: "/images/projects/innovative-bd-1.png",
+    images: [
+      "/images/projects/innovative-bd-1.png",
+      "/images/projects/innovative-bd-2.png",
+      "/images/projects/innovative-bd-3.png",
+    ],
+    featured: false,
+    accentColor: "#534AB7",
+    liveUrl: "https://innovativebd.com/",
+  },
+  {
+    id: "softel",
+    slug: "softel",
+    name: "Softel — Telecom & IT Company Website",
+    shortName: "Softel",
+    sector: "Web",
+    tags: ["Web", "Corporate", "Telecom"],
+    client: "Softel",
+    impact: "Corporate website with product catalogue and webmail for a telecom/IT firm",
+    stats: [
+      { value: "Since 2004", label: "Telecom & IT firm" },
+      { value: "Catalogue", label: "Multi-product lines" },
+      { value: "Webmail", label: "Corporate email" },
+    ],
+    description:
+      "A corporate website for Softel, a Bangladesh telecom & IT company established in 2004, presenting its product lines (power, battery, generator, UPS, display, CCTV & security, solar) alongside a client list and corporate webmail.",
+    challenge:
+      "Softel needed a structured web presence to present a broad hardware product catalogue and support its telecom/IT business.",
+    solution:
+      "Delivered a corporate website with organised product categories, client list, contact and corporate webmail access.",
+    results: [
+      "Organised multi-category product catalogue",
+      "Client list and corporate contact channels",
+      "Integrated corporate webmail",
+    ],
+    image: "/images/projects/softel-bd-1.png",
+    images: [
+      "/images/projects/softel-bd-1.png",
+      "/images/projects/softel-bd-2.png",
+      "/images/projects/softel-bd-3.png",
+    ],
+    featured: false,
+    accentColor: "#185FA5",
+    liveUrl: "http://softelbd.com/",
+  },
+  {
+    id: "pan-bright",
+    slug: "pan-bright-travels",
+    name: "Pan Bright Travels — Travel Agency Website",
+    shortName: "Pan Bright",
+    sector: "Web",
+    tags: ["Web", "WordPress", "Travel"],
+    client: "Pan Bright Travels (Pvt.) Ltd.",
+    impact: "Travel-agency website for Hajj, Umrah, air ticketing and tour packages",
+    stats: [
+      { value: "Since 1999", label: "IATA-accredited agency" },
+      { value: "Hajj · Umrah", label: "Pilgrimage packages" },
+      { value: "Tours · Air", label: "Tickets & tours" },
+    ],
+    description:
+      "A WordPress website for Pan Bright Travels (Pvt.) Ltd., an IATA-accredited Dhaka travel agency operating since 1999. The site presents Hajj and Umrah packages, air ticketing and tour packages, with an online query form and photo gallery.",
+    challenge:
+      "The agency needed an informative online presence for its Hajj, Umrah, ticketing and tour services with an easy enquiry channel.",
+    solution:
+      "Delivered a WordPress website presenting services and packages, company profile and management, with an online query form and gallery.",
+    results: [
+      "Clear presentation of Hajj, Umrah, ticketing and tours",
+      "Online query form for enquiries",
+      "Company profile, management and photo gallery",
+    ],
+    image: "/images/projects/pan-bright-travels-1.png",
+    images: [
+      "/images/projects/pan-bright-travels-1.png",
+      "/images/projects/pan-bright-travels-2.png",
+    ],
+    featured: false,
+    accentColor: "#1D9E75",
+    liveUrl: "https://panbrighttravelsbd.com/",
+  },
+  {
+    id: "hematologist-mostafil",
+    slug: "hematologist-mostafil",
+    name: "Prof. Dr. Md Mostafil Karim — Hematology Specialist Website",
+    shortName: "Dr Mostafil Karim",
+    sector: "Web",
+    tags: ["Web", "WordPress", "Healthcare"],
+    client: "Prof. Dr. (Brig Gen) Md Mostafil Karim",
+    impact: "Professional website for a hematology & bone-marrow-transplant specialist",
+    stats: [
+      { value: "Hematology", label: "& BMT specialist" },
+      { value: "Publications", label: "Research listing" },
+      { value: "Appointments", label: "Locations & booking" },
+    ],
+    description:
+      "A professional WordPress website for Prof. Dr. (Brig Gen) Md Mostafil Karim, a clinical hematologist and bone-marrow-transplant specialist in Dhaka. It presents his credentials, conditions & treatments, publications, photo/video galleries, locations and appointment requests.",
+    challenge:
+      "The specialist needed a credible online presence for patients to learn about his expertise, publications and how to book appointments.",
+    solution:
+      "Delivered a WordPress website covering credentials, conditions & treatments, publications, media galleries and appointment/location information.",
+    results: [
+      "Professional presence for a leading hematology & BMT specialist",
+      "Structured credentials, treatments and publications",
+      "Appointment requests and location information",
+    ],
+    image: "/images/projects/hematologist-mostafil-1.png",
+    images: [
+      "/images/projects/hematologist-mostafil-1.png",
+      "/images/projects/hematologist-mostafil-2.png",
+      "/images/projects/hematologist-mostafil-3.png",
+    ],
+    featured: false,
+    accentColor: "#4a5568",
+    liveUrl: "https://hematologist-mostafil.com/",
+  },
 ]
 
-export const PROJECT_SECTORS = [
-  "Agro-Met",
-  "Meteorology",
-  "Hydrology",
-  "AI",
-  "Aviation",
-  "IoT",
-  "Research",
-  "Agriculture",
-  "ERP",
-  "Web",
-  "App",
-  "Infrastructure",
-  "NGO",
-].sort()
+// Derived from the projects that actually exist so every filter returns results
+// and no real sector is missing from the list.
+export const PROJECT_SECTORS = Array.from(
+  new Set(PROJECTS.map(p => p.sector))
+).sort()
 
 export function getProjectBySlug(slug: string): Project | undefined {
   return PROJECTS.find(p => p.slug === slug)

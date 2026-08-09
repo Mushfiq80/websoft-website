@@ -98,6 +98,16 @@ export const SOLUTIONS: Solution[] = [
     color: "#534AB7",
     proofPoint: "BMD station data integration, BAMIS weather data pipeline",
   },
+  {
+    id: "research",
+    name: "Research & Development",
+    cluster: "data-ai-automation",
+    description: "Applied R&D and research data platforms — from IoT and data-science prototyping to scientific journals and study portals.",
+    icon: "Cpu",
+    color: "#534AB7",
+    proofPoint: "I-Soil IoT R&D, DHDR research portal, RRI technical journal",
+    projectLink: "/projects/isoil",
+  },
 
   // Cluster 3: Infrastructure & Hosting
   {
@@ -134,7 +144,16 @@ export const SOLUTIONS: Solution[] = [
     description: "Secure enterprise email infrastructure with spam protection and reliability.",
     icon: "Mail",
     color: "#4a5568",
-    proofPoint: "Sunlife Insurance and Poly Cables mail-server infrastructure",
+    proofPoint: "Poly Cables corporate mail-server infrastructure",
+  },
+  {
+    id: "cloud",
+    name: "Cloud Solution",
+    cluster: "infrastructure-hosting",
+    description: "Cloud migration, hosting, and scalable infrastructure with monitoring and reliability.",
+    icon: "Server",
+    color: "#4a5568",
+    proofPoint: "Cloud-based aviation message software and BMD cloud hosting",
   },
 
   // Cluster 4: Enterprise & Support
@@ -145,8 +164,7 @@ export const SOLUTIONS: Solution[] = [
     description: "Enterprise resource planning systems for finance, operations, and management.",
     icon: "Database",
     color: "#7370D8",
-    proofPoint: "ESTEPS ERP and enterprise resource planning systems",
-    projectLink: "/projects/esteps-erp",
+    proofPoint: "Enterprise resource planning and system integration",
   },
   {
     id: "finance",
@@ -165,8 +183,8 @@ export const SOLUTIONS: Solution[] = [
     description: "Human resource management and payroll systems for corporates and NGOs.",
     icon: "Users",
     color: "#7370D8",
-    proofPoint: "PAPYRUS HRMS (Sunlife) and HDF HRMS & payroll",
-    projectLink: "/projects/sunlife-hrms",
+    proofPoint: "HDF HRMS & payroll systems, maintained since 2018",
+    projectLink: "/projects/human-development-foundation",
   },
   {
     id: "corporate",
