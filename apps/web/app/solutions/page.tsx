@@ -129,28 +129,9 @@ export default function SolutionsPage() {
                     </h3>
 
                     {/* Description */}
-                    <p className="text-sm text-[rgb(var(--text-muted))] leading-relaxed mb-4">
+                    <p className="text-sm text-[rgb(var(--text-muted))] leading-relaxed">
                       {solution.description}
                     </p>
-
-                    {/* Proof Point */}
-                    {solution.proofPoint && (
-                      <div className="flex items-start gap-2 mt-4 pt-4 border-t border-[rgb(var(--border-subtle))]">
-                        <CheckCircle2 className="w-4 h-4 text-[rgb(var(--primary))] flex-shrink-0 mt-0.5" />
-                        <p className="text-xs text-[rgb(var(--text-subtle))]">{solution.proofPoint}</p>
-                      </div>
-                    )}
-
-                    {/* Project Link */}
-                    {solution.projectLink && (
-                      <Link
-                        href={solution.projectLink}
-                        className="inline-flex items-center gap-1 mt-4 text-sm font-medium text-[rgb(var(--primary))] hover:underline"
-                      >
-                        View Project
-                        <ArrowRight className="w-3 h-3" />
-                      </Link>
-                    )}
                   </div>
                 )
               })}

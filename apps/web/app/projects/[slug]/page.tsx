@@ -4,8 +4,8 @@ import Link from "next/link"
 import { Badge } from "@workspace/ui/components/badge"
 import { Button } from "@workspace/ui/components/button"
 import { BentoGrid, BentoGridItem } from "@workspace/ui/components/bento-grid"
-import { PROJECTS, getProjectBySlug } from "@/data/projects"
-import { ArrowLeft, ArrowRight, ExternalLink, CheckCircle2, Users, MapPin, Calendar, Building2, BarChart3, TrendingUp } from "lucide-react"
+import { PROJECTS, getProjectBySlug, getEngagements } from "@/data/projects"
+import { ArrowLeft, ArrowRight, ExternalLink, CheckCircle2, Users, Calendar, Building2, TrendingUp } from "lucide-react"
 
 export async function generateStaticParams() {
   return PROJECTS.map((project) => ({
@@ -24,6 +24,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   const relatedProjects = PROJECTS
     .filter(p => p.id !== project.id && p.sector === project.sector)
     .slice(0, 3)
+
+  const engagements = getEngagements(project.id)
 
   return (
     <div className="min-h-screen">
@@ -199,6 +201,70 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           </BentoGrid>
         </div>
       </section>
+
+      {/* Work & Engagements — successive contracts with live links */}
+      {engagements.length > 0 && (
+        <section className="py-12 md:py-16 bg-[rgb(var(--surface))]">
+          <div className="max-w-5xl mx-auto px-4 md:px-8">
+            <div className="mb-8 md:mb-10">
+              <p className="text-xs md:text-sm font-semibold uppercase tracking-wider text-[rgb(var(--primary))] mb-2">
+                Work &amp; Engagements
+              </p>
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[rgb(var(--text-primary))]">
+                Delivered, upgraded &amp; maintained over multiple contracts
+              </h2>
+              <p className="text-[rgb(var(--text-muted))] mt-2">
+                A record of the successive engagements we delivered for this client — with live links.
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              {engagements.map((eng, i) => (
+                <div
+                  key={i}
+                  className="bg-white rounded-2xl p-5 md:p-6 border border-[rgb(var(--border-subtle))] hover:border-[rgb(var(--primary))] transition-colors"
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+                    <div className="min-w-0">
+                      <h3 className="font-semibold text-[rgb(var(--text-primary))]">{eng.title}</h3>
+                      {eng.description && (
+                        <p className="mt-1.5 text-sm leading-relaxed text-[rgb(var(--text-muted))]">{eng.description}</p>
+                      )}
+                      {eng.funder && (
+                        <div className="mt-1 flex items-center gap-1.5 text-xs text-[rgb(var(--text-subtle))]">
+                          <Building2 className="w-3.5 h-3.5" />
+                          {eng.funder}
+                        </div>
+                      )}
+                    </div>
+                    <span className="inline-flex items-center gap-1.5 self-start rounded-full bg-[rgb(var(--primary-pale))] px-3 py-1 text-xs font-semibold text-[rgb(var(--primary))] whitespace-nowrap">
+                      <Calendar className="w-3.5 h-3.5" />
+                      {eng.period}
+                    </span>
+                  </div>
+
+                  {eng.links && eng.links.length > 0 && (
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {eng.links.map((link, j) => (
+                        <a
+                          key={j}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 rounded-lg border border-[rgb(var(--border-subtle))] bg-[rgb(var(--surface))] px-3 py-1.5 text-xs font-medium text-[rgb(var(--text-muted))] hover:border-[rgb(var(--primary))] hover:text-[rgb(var(--primary))] transition-colors"
+                        >
+                          {link.label}
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Image Gallery */}
       {project.images && project.images.length > 1 && (

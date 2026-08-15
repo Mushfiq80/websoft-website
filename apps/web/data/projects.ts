@@ -90,38 +90,6 @@ export const PROJECTS: Project[] = [
     liveUrl: "https://www.bmd.gov.bd",
   },
   {
-    id: "bmd-mobile",
-    slug: "bmd-mobile",
-    name: "BMD Mobile-Optimised Site (JICA Project)",
-    shortName: "BMD Mobile",
-    sector: "Meteorology",
-    tags: ["Meteorology", "JICA", "IoT", "GIS"],
-    client: "Bangladesh Meteorological Department (BMD) — JICA Project",
-    clientLogo: "/images/clients/jica.png",
-    impact: "Mobile-first weather site built under JICA capacity-strengthening project",
-    stats: [
-      { value: "Mobile-first", label: "Optimised weather site" },
-      { value: "GIS", label: "Data visualisation" },
-      { value: "Cloud", label: "Server + IoT integration" },
-    ],
-    description:
-      "A mobile-phone-optimised weather website with IoT, cloud and physical server infrastructure, GIS application, data visualisation and data-science components, plus a training programme — delivered under the JICA Technical Assistance project 'Strengthening the Capacity of Weather and Climate Services' implemented by BMD.",
-    challenge:
-      "BMD needed a fast, mobile-first channel for weather and climate services, supported by modern GIS and data-visualisation capability.",
-    solution:
-      "Delivered a mobile-optimised site with IoT and cloud/physical server integration, GIS and data-visualisation modules, security licensing and staff training under JICA technical assistance.",
-    results: [
-      "Delivered under a JICA Technical Assistance project with BMD",
-      "Mobile-first access to weather and climate services",
-      "Included GIS, data visualisation and a training programme",
-    ],
-    image: "/images/projects/mobile.bmd.gov.bd.jpeg",
-    images: ["/images/projects/mobile.bmd.gov.bd.jpeg", "/images/projects/phone-bmd.png"],
-    featured: false,
-    accentColor: "#185FA5",
-    liveUrl: "https://mobile.bmd.gov.bd/",
-  },
-  {
     id: "bmd-mobile-webapp",
     slug: "bmd-mobile-webapp",
     name: "BMD Mobile Weather Web App",
@@ -818,4 +786,271 @@ export function getProjectsBySector(sector: string): Project[] {
 
 export function getFeaturedProjects(): Project[] {
   return PROJECTS.filter(p => p.featured)
+}
+
+// ---------------------------------------------------------------------------
+// Work & engagements — the successive contracts (often the same system built,
+// upgraded and maintained across multiple years), with live links.
+// Sourced from Web Soft BD's General Experience record.
+// ---------------------------------------------------------------------------
+export interface EngagementLink {
+  label: string
+  url: string
+}
+
+export interface Engagement {
+  title: string
+  description?: string
+  period: string
+  funder?: string
+  links?: EngagementLink[]
+}
+
+export const PROJECT_ENGAGEMENTS: Record<string, Engagement[]> = {
+  bmd: [
+    {
+      title: "BMD web portal update & online weather data-purchase portal — software upgradation & technical support",
+      description: "Latest upgrade of the national weather portal plus the online weather data-purchase portal, with ongoing technical support.",
+      period: "2026",
+      funder: "Government (Revenue)",
+      links: [
+        { label: "bmd.gov.bd", url: "https://bmd.gov.bd/" },
+        { label: "Data Purchase Portal", url: "https://dataportal.bmd.gov.bd/web/" },
+        { label: "BMD Weather App", url: "https://play.google.com/store/apps/details?id=bd.gov.bmd.app.weatherapp" },
+        { label: "BMD Current Weather App", url: "https://play.google.com/store/apps/details?id=bd.gov.bmd.app.bmdweatherapp" },
+      ],
+    },
+    {
+      title: "Supply, hosting, update & maintenance of BDWS automation software & BMD weather apps",
+      description: "Kept the daily weather-summary automation and the public weather apps hosted, updated and maintained.",
+      period: "2024",
+      funder: "Government (Revenue)",
+      links: [
+        { label: "bmd.gov.bd", url: "https://bmd.gov.bd/" },
+        { label: "Weather App", url: "https://play.google.com/store/apps/details?id=bd.gov.bmd.app.weatherapp" },
+      ],
+    },
+    {
+      title: "Design, development & installation of BMD web portal + online weather data-purchase portal",
+      description: "Rebuilt the bilingual national weather portal and stood up the online data-purchase portal.",
+      period: "2023",
+      funder: "Government (Revenue)",
+      links: [{ label: "BMD Mobile Apps", url: "https://live8.bmd.gov.bd/p/BMD-Mobile-Apps" }],
+    },
+    {
+      title: "BDWS (Bangladesh Daily Weather Summary) automation software",
+      description: "Automated the preparation and publishing of BMD's daily weather summary.",
+      period: "2023",
+      funder: "Government",
+      links: [{ label: "BDWS", url: "https://www.bmd.gov.bd/bdws/" }],
+    },
+    { title: "BMD web portal — design & development (sub-contract)", description: "Portal design and development delivered as a specialist sub-contract.", period: "2022", funder: "Government" },
+    { title: "Hosting & maintenance of the BMD web portal (bmd.gov.bd)", description: "Reliable hosting and upkeep of the national weather portal.", period: "2022", funder: "Government" },
+    { title: "Development & maintenance of BMD web portal + mail server (3 years)", description: "Multi-year portal development plus corporate mail-server provisioning.", period: "2017", funder: "Government" },
+    { title: "Hosting server, mail server & website development", description: "Early engagement establishing hosting, mail and the BMD website.", period: "2016", funder: "Government" },
+  ],
+  "bmd-mobile": [
+    {
+      title: "Mobile-phone-optimized website with IoT, cloud & physical servers, GIS, data visualization, data science & training",
+      description: "JICA capacity-building project delivering a mobile-first weather site with GIS and data-science components, plus staff training.",
+      period: "2025",
+      funder: "Government (JICA)",
+      links: [{ label: "mobile.bmd.gov.bd", url: "https://mobile.bmd.gov.bd/" }],
+    },
+  ],
+  "bmd-mobile-webapp": [
+    {
+      title: "BMD mobile weather web app — live weather, forecasts and NWP products",
+      description: "Install-free mobile web app giving the public current weather, forecasts and NWP products like wind fields.",
+      period: "2025",
+      funder: "Government",
+      links: [{ label: "mobile.bmd.gov.bd", url: "https://mobile.bmd.gov.bd/" }],
+    },
+  ],
+  "met-inventory": [
+    {
+      title: "Hosting, upgrading & maintenance of User-Interface Database Software (BMD, Chattogram)",
+      description: "Continued hosting, upgrades and maintenance of the Chattogram meteorological & geophysical database software.",
+      period: "2025",
+      funder: "Government (Revenue)",
+      links: [{ label: "metandgeo-ctg", url: "https://metandgeo-ctg.bmd.gov.bd/login" }],
+    },
+    {
+      title: "Hosting, upgrading & maintenance of User-Interface Database Software",
+      description: "Ongoing hosting, upgrade and maintenance cycle for the database software.",
+      period: "2024",
+      funder: "Government",
+      links: [{ label: "metandgeo-ctg", url: "https://metandgeo-ctg.bmd.gov.bd/login" }],
+    },
+    { title: "SSL certificate for data security of the User-Interface Database Software", description: "Secured the database software with an SSL certificate.", period: "2024", funder: "Government" },
+    {
+      title: "Supply & installation of User-Interface Database Software",
+      description: "Initial supply and installation of the database software for the centre.",
+      period: "2023",
+      funder: "Government",
+      links: [{ label: "metandgeo-ctg", url: "http://metandgeo-ctg.bmd.gov.bd/login" }],
+    },
+  ],
+  "bmd-journal": [
+    {
+      title: "Supply & installation of Meteorological Journal website, cloud-based aviation message software & user-satisfaction survey software",
+      description: "Delivered BMD's online journal platform alongside cloud aviation-message and survey software.",
+      period: "2025",
+      funder: "Government (Revenue)",
+      links: [
+        { label: "journal.bmd.gov.bd", url: "https://journal.bmd.gov.bd/" },
+        { label: "Aviation (Chattogram)", url: "https://av.bmd.gov.bd/chattogram/aviation/" },
+      ],
+    },
+  ],
+  aviation: [
+    {
+      title: "Aviation meter display software; multiple-fax maintenance; BDWS hosting & current-weather apps",
+      description: "Combined delivery of aviation meter display, fax dissemination upkeep and current-weather hosting.",
+      period: "2025",
+      funder: "Government (Revenue)",
+      links: [
+        { label: "BDWS admin", url: "https://admin.bmd.gov.bd/bdws/" },
+        { label: "Weather condition", url: "https://live8.bmd.gov.bd//weather-condition/" },
+      ],
+    },
+    {
+      title: "Supply & installation of cloud-based message system for 1st-class observatory, Rajshahi",
+      description: "Cloud-based aviation message system installed for the Rajshahi observatory.",
+      period: "2024",
+      funder: "Government (Revenue)",
+      links: [{ label: "Rajshahi aviation", url: "https://aviation.bmd.gov.bd/rajshahi/aviation/" }],
+    },
+    { title: "Network-based aviation observation data-sharing software — SMO Saidpur", description: "Network-based observation data-sharing for the Saidpur observatory.", period: "2019", funder: "Government" },
+  ],
+  "multiple-fax": [
+    { title: "Supply of Multiple Fax software; ADS desktop→web conversion; MDASS data conversion; Publication/Data & Rain module software", description: "Modernised dissemination — fax software plus desktop-to-web ADS conversion and new data modules.", period: "2022", funder: "Government" },
+    { title: "Existing Multiple Fax software maintenance (with aviation display & BDWS)", description: "Ongoing maintenance of the fax dissemination software.", period: "2025", funder: "Government (Revenue)" },
+  ],
+  synoptic: [
+    {
+      title: "API development for MDASS & ADS current-weather apps; NWP & satellite product development",
+      description: "Built the data pipelines and products powering BMD's current-weather, satellite and NWP outputs.",
+      period: "2022",
+      funder: "Government",
+      links: [
+        { label: "Weather condition", url: "https://live8.bmd.gov.bd//weather-condition/" },
+        { label: "Satellite", url: "https://live8.bmd.gov.bd/satelite" },
+        { label: "NWP (WRF model)", url: "https://live8.bmd.gov.bd/nwp-products/wrf-model/" },
+      ],
+    },
+    { title: "MDASS (Meteorological Data Acquisition Sub-System) — software development & maintenance", description: "Developed and maintained the core meteorological data-acquisition sub-system.", period: "2017", funder: "Government" },
+    { title: "Seismological apps & landslide system development for the BMD web portal (Bangla & English)", description: "Added seismological and landslide-warning modules to the bilingual BMD portal.", period: "2019", funder: "Government" },
+  ],
+  bamis: [
+    {
+      title: "BAMIS — original build: portal (Bangla & English), data-portal software, data-conversion software and mobile apps",
+      description: "Built the national agro-met system from the ground up — bilingual portal, data-portal software and iOS/Android apps.",
+      period: "2019–2022",
+      funder: "World Bank (AMISDP)",
+      links: [
+        { label: "bamis.gov.bd", url: "https://www.bamis.gov.bd/" },
+        { label: "Android app", url: "https://play.google.com/store/apps/details?id=bd.gov.bamis.admin" },
+        { label: "iOS app", url: "https://apps.apple.com/us/app/bamis-portal/id1499280852" },
+      ],
+    },
+    {
+      title: "Further upgradation of the BAMIS portal & GIS satellite products (NDVI, VHI, VCI, TCI, soil-moisture)",
+      description: "Extended the portal with GIS satellite crop-health products for nationwide monitoring.",
+      period: "2022–2024",
+      funder: "World Bank",
+      links: [{ label: "Satellite products", url: "https://www.bamis.gov.bd/satellite/product/" }],
+    },
+    {
+      title: "Strengthening BAMIS — agromet database & crop weather calendar",
+      description: "Added the agromet database and district crop weather calendars for irrigation, sowing and harvest decisions.",
+      period: "2023",
+      funder: "World Bank",
+      links: [
+        { label: "Crop calendar", url: "https://www.bamis.gov.bd/calendar/" },
+        { label: "Calendar (Rabi)", url: "https://www.bamis.gov.bd/calendar/2/" },
+        { label: "Calendar (Kharif)", url: "https://www.bamis.gov.bd/calendar/3/" },
+      ],
+    },
+    {
+      title: "Automation of agromet advisory bulletins",
+      description: "Automated generation of national, district and special agromet advisory bulletins.",
+      period: "2023",
+      funder: "World Bank",
+      links: [
+        { label: "National bulletin", url: "https://www.bamis.gov.bd/bulletin/nation/" },
+        { label: "District bulletin", url: "https://www.bamis.gov.bd/bulletin/district" },
+      ],
+    },
+    {
+      title: "Pest & Disease Management System and Crops Management System with crop weather calendar",
+      description: "Pest and disease modules linked to weather so farmers get crop-specific, timely guidance.",
+      period: "2018–2019",
+      funder: "World Bank",
+      links: [
+        { label: "Pests", url: "https://www.bamis.gov.bd/pests/" },
+        { label: "Diseases", url: "https://www.bamis.gov.bd/diseases/" },
+        { label: "Crop calendar", url: "https://www.bamis.gov.bd/calendar/" },
+      ],
+    },
+    { title: "AI for favorable-condition weather table, pest & disease parameters and crop weather matching", description: "Applied AI to match weather conditions with pest, disease and crop parameters.", period: "2018–2019", funder: "World Bank" },
+    { title: "BAMIS portal repair & maintenance (software and hardware)", description: "Kept the portal and its supporting hardware healthy and current.", period: "2024", funder: "World Bank" },
+    { title: "ICT equipment for establishment of the Agromet unit", description: "Supplied the ICT equipment to stand up the DAE Agromet unit.", period: "2024", funder: "World Bank" },
+  ],
+  mushroom: [
+    {
+      title: "Web-server based database application, Mushroom e-commerce & Android app — design, development, operation & maintenance",
+      description: "End-to-end marketplace for the DAE mushroom project: web portal, e-commerce and an Android app for growers and buyers.",
+      period: "2024",
+      funder: "Government (DAE)",
+      links: [
+        { label: "marketing.mushroomproject.gov.bd", url: "https://marketing.mushroomproject.gov.bd/" },
+        { label: "Android app", url: "https://play.google.com/store/apps/details?id=com.marketing.mushroomproject.online_mushroom_market" },
+      ],
+    },
+  ],
+  bwdb: [
+    {
+      title: "Hydrological services products — sediment prediction & riverbank erosion, hydrological drought, salinity intrusion and groundwater outlook, with an integrated GIS solution",
+      description: "Consolidated flood, drought, salinity and groundwater services into one real-time, GIS-enabled early-warning platform.",
+      period: "2022–2024",
+      funder: "IDA / World Bank",
+      links: [
+        { label: "HIFM portal", url: "http://hifm.bwdb.gov.bd/bwdb/" },
+        { label: "Sediment", url: "https://hifm.websoftbd.net/bwdb/sediment/observation/" },
+        { label: "Salinity", url: "https://hifm.websoftbd.net/bwdb/salinity/river/" },
+        { label: "Drought", url: "https://hifm.websoftbd.net/bwdb/drought/met-spi/" },
+        { label: "Groundwater", url: "https://hifm.websoftbd.net/bwdb/groundwater/level/" },
+      ],
+    },
+  ],
+  "smrc-flood": [
+    { title: "Flood-forecasting platform — database, real-time & forecast data streams, hydrological/hydrodynamic models and automated warnings & reports", description: "Regional flood-forecasting platform with coupled models and automated warning/report generation.", period: "2012–2015", funder: "Semi-Government / Autonomous" },
+  ],
+  hdf: [
+    {
+      title: "Dynamic website, HRMS & payroll management system (development + ongoing maintenance)",
+      description: "Web presence plus HR and payroll systems for the foundation, maintained continuously since 2018.",
+      period: "2018–2026",
+      funder: "NGO",
+      links: [{ label: "hdfbd.com", url: "https://hdfbd.com/" }],
+    },
+  ],
+  polycables: [
+    {
+      title: "Mail-server solution with dynamic website — integration, maintenance, upgradation & modification",
+      description: "Corporate mail server plus a maintained, integrated WordPress website with a large product catalogue.",
+      period: "2023–2024",
+      funder: "Private",
+      links: [{ label: "polycables.com.bd", url: "https://www.polycables.com.bd" }],
+    },
+  ],
+  "lead-bigdata": [
+    { title: "Big-data analytics system — advanced analytics over very large, diverse structured & unstructured datasets", description: "Analytics platform handling large, heterogeneous data from many sources and scales.", period: "2019–2021", funder: "Private" },
+    { title: "ICT solution & software development — infrastructure planning and major application development", description: "Infrastructure planning and major application development for the client.", period: "2017–2021", funder: "Private" },
+  ],
+}
+
+export function getEngagements(id: string): Engagement[] {
+  return PROJECT_ENGAGEMENTS[id] ?? []
 }

@@ -15,9 +15,11 @@ export default function ContactPage() {
     organization: "",
     service: "",
     message: "",
+    website: "", // honeypot
   })
   const [isSubmitting, setIsSubmitting] = React.useState(false)
   const [submitted, setSubmitted] = React.useState(false)
+  const [error, setError] = React.useState("")
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
@@ -26,19 +28,26 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError("")
 
-    // Create mailto link with form data
-    const subject = encodeURIComponent(`Contact from Website: ${formData.name} - ${formData.organization || "Individual"}`)
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nOrganization: ${formData.organization}\nService of Interest: ${formData.service}\n\nMessage:\n${formData.message}`
-    )
-
-    // Open email client
-    window.location.href = `mailto:${SITE_CONFIG.contact.emails[0]}?subject=${subject}&body=${body}`
-
-    setIsSubmitting(false)
-    setSubmitted(true)
-    setTimeout(() => setSubmitted(false), 5000)
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+      const json = await res.json().catch(() => ({ ok: false }))
+      if (!res.ok || !json.ok) {
+        throw new Error(json.error || "Failed to send")
+      }
+      setSubmitted(true)
+      setFormData({ name: "", email: "", phone: "", organization: "", service: "", message: "", website: "" })
+      setTimeout(() => setSubmitted(false), 8000)
+    } catch {
+      setError(`Sorry, your message could not be sent. Please email us directly at ${SITE_CONFIG.contact.emails[0]}.`)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const services = [
@@ -87,11 +96,28 @@ export default function ContactPage() {
 
               {submitted && (
                 <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-                  <p className="text-green-800">Thank you! Your email client has been opened with your message. Please send it to complete your inquiry.</p>
+                  <p className="text-green-800">Thank you! Your message has been sent — our team will get back to you shortly.</p>
+                </div>
+              )}
+
+              {error && (
+                <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                  <p className="text-red-800">{error}</p>
                 </div>
               )}
 
               <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+                {/* Honeypot — hidden from real users */}
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formData.website}
+                  onChange={handleChange}
+                  className="hidden"
+                  aria-hidden="true"
+                />
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-[rgb(var(--text-primary))] mb-2">
@@ -197,7 +223,7 @@ export default function ContactPage() {
                   className="w-full sm:w-auto rounded-full bg-[rgb(var(--primary))] hover:bg-[rgb(var(--primary-dark))] text-white"
                 >
                   {isSubmitting ? (
-                    "Opening Email Client..."
+                    "Sending..."
                   ) : (
                     <>
                       Send Message

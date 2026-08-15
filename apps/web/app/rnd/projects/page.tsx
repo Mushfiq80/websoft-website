@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Badge } from "@workspace/ui/components/badge"
 import { Button } from "@workspace/ui/components/button"
-import { ArrowRight, Clock } from "lucide-react"
+import { ExternalLink, Clock } from "lucide-react"
 import { RESEARCH_PROJECTS } from "@/data/research"
 
 export const metadata = {
@@ -38,24 +38,49 @@ export default function ResearchProjectsPage() {
       <section className="py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
           {RESEARCH_PROJECTS.length > 0 ? (
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {RESEARCH_PROJECTS.map((project) => (
-                <div
-                  key={project.title}
-                  className="rounded-2xl border border-[rgb(var(--border-subtle))] bg-white p-6 transition-all hover:border-[rgb(var(--primary))] hover:shadow-lg"
-                >
-                  <div className="mb-3 flex items-center justify-between">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-[rgb(var(--primary))]">
-                      {project.area}
-                    </span>
-                    <span className={`rounded-full px-3 py-1 text-xs font-semibold ${statusStyles[project.status] || statusStyles.Planned}`}>
-                      {project.status}
-                    </span>
-                  </div>
-                  <h3 className="mb-2 text-lg font-semibold text-[rgb(var(--text-primary))]">{project.title}</h3>
-                  {project.summary && <p className="text-sm leading-relaxed text-[rgb(var(--text-muted))]">{project.summary}</p>}
-                </div>
-              ))}
+            <div className="space-y-6">
+              {RESEARCH_PROJECTS.map((project) => {
+                const CardTag = project.url ? "a" : "div"
+                return (
+                  <CardTag
+                    key={project.title}
+                    {...(project.url ? { href: project.url, target: "_blank", rel: "noopener noreferrer" } : {})}
+                    className="group block w-full rounded-2xl border border-[rgb(var(--border-subtle))] bg-white p-6 transition-all hover:border-[rgb(var(--primary))] hover:shadow-lg md:p-8"
+                  >
+                    <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                      <div className="min-w-0">
+                        <div className="mb-3 flex flex-wrap items-center gap-2">
+                          <span className="text-xs font-semibold uppercase tracking-wider text-[rgb(var(--primary))]">
+                            {project.area}
+                          </span>
+                          <span className={`rounded-full px-3 py-1 text-xs font-semibold ${statusStyles[project.status] || statusStyles.Planned}`}>
+                            {project.status}
+                          </span>
+                        </div>
+                        <h3 className="text-xl font-bold text-[rgb(var(--text-primary))] transition-colors group-hover:text-[rgb(var(--primary))] md:text-2xl">
+                          {project.title}
+                        </h3>
+                        {project.summary && (
+                          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[rgb(var(--text-muted))] md:text-base">
+                            {project.summary}
+                          </p>
+                        )}
+                        {project.url && (
+                          <span className="mt-4 inline-block text-sm font-medium text-[rgb(var(--text-subtle))]">
+                            {project.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+                          </span>
+                        )}
+                      </div>
+                      {project.url && (
+                        <span className="inline-flex flex-shrink-0 items-center gap-2 self-start rounded-full bg-[rgb(var(--primary-pale))] px-4 py-2 text-sm font-medium text-[rgb(var(--primary))] transition-colors group-hover:bg-[rgb(var(--primary))] group-hover:text-white">
+                          Visit site
+                          <ExternalLink className="h-4 w-4" />
+                        </span>
+                      )}
+                    </div>
+                  </CardTag>
+                )
+              })}
             </div>
           ) : (
             <div className="mx-auto max-w-2xl rounded-2xl border border-[rgb(var(--border-subtle))] bg-[rgb(var(--surface))] p-10 text-center">
@@ -64,17 +89,10 @@ export default function ResearchProjectsPage() {
               </div>
               <h2 className="mb-2 text-2xl font-bold text-[rgb(var(--text-primary))]">Coming soon</h2>
               <p className="mx-auto max-w-md text-[rgb(var(--text-muted))]">
-                Our research projects are not yet published. This page will list our R&amp;D work as it becomes
-                available. Meet the team behind it or reach out to collaborate.
+                Our research projects will be listed here as they become available.
               </p>
-              <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+              <div className="mt-6 flex justify-center">
                 <Button asChild className="rounded-full bg-[rgb(var(--primary))] hover:bg-[rgb(var(--primary-dark))]">
-                  <Link href="/rnd/team">
-                    Meet the Research Team
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" className="rounded-full">
                   <Link href="/contact">Collaborate with us</Link>
                 </Button>
               </div>

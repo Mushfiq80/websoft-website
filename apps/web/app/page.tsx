@@ -704,7 +704,7 @@ function Hero() {
             words={[
               "ISO 9001:2015 · BASIS · 18 Years",
               "CAMMI Level 3 · QRO · Quality Assured",
-              "World Bank Partner · JICA · Govt Approved"
+              "World Bank Partner · JICA Partner · Govt Approved"
             ]}
             duration={3000}
           />
@@ -744,9 +744,9 @@ function Hero() {
           </Button>
         </div>
 
-        {/* Focus areas — full-width auto-scrolling swiper */}
-        <div className="animate-fade-up relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen" style={{ animationDelay: "0.4s" }}>
-          <Marquee pauseOnHover className="[--duration:45s] [--gap:1.5rem]">
+        {/* Focus areas — static rows */}
+        <div className="animate-fade-up w-full max-w-6xl mx-auto mt-8 px-4" style={{ animationDelay: "0.4s" }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3 text-sm text-white/90">
             {[
               "Agro-Meteorology System Development",
               "Meteorology System Development",
@@ -761,12 +761,12 @@ function Hero() {
               "Web & Mobile Apps",
               "ERP & Server",
             ].map((tag) => (
-              <div key={tag} className="flex items-center gap-2 text-sm text-white/90 whitespace-nowrap">
-                <div className="h-2 w-2 rounded-full bg-[rgb(var(--primary))]" />
-                {tag}
+              <div key={tag} className="flex items-center gap-2">
+                <div className="h-1.5 w-1.5 rounded-full bg-[rgb(var(--primary))] flex-shrink-0" />
+                <span>{tag}</span>
               </div>
             ))}
-          </Marquee>
+          </div>
         </div>
 
       </div>
@@ -1360,8 +1360,43 @@ function ServicesSection() {
         </div>
       </div>
 
-      {/* Services Accordion */}
-      <div className="relative h-[500px] md:h-[600px] flex gap-2 w-full overflow-hidden">
+      {/* Mobile: horizontal swipe cards (next card peeks, no arrows) */}
+      <div className="md:hidden">
+        <div className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4">
+          {SERVICES.map((service) => {
+            const Icon = service.icon
+            return (
+              <div
+                key={service.id}
+                className="relative h-[420px] w-[85%] shrink-0 snap-center overflow-hidden rounded-2xl"
+              >
+                <Image
+                  src={service.image}
+                  alt={service.name}
+                  fill
+                  className="object-cover"
+                  sizes="85vw"
+                />
+                <div className={`absolute inset-0 bg-gradient-to-t ${service.gradient}`} style={{ opacity: 0.55 }} />
+                <div className="absolute inset-0 bg-black/25" />
+                <div className="absolute inset-0 flex flex-col justify-end p-6">
+                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white/20 backdrop-blur-sm">
+                    <Icon size={28} className="text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white">{service.name}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-white/90">{service.description}</p>
+                  <span className="mt-3 inline-block w-fit rounded-full bg-white/20 px-3 py-1 text-xs text-white backdrop-blur-sm">
+                    {service.details}
+                  </span>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* Desktop: expanding accordion */}
+      <div className="relative hidden h-[500px] gap-2 w-full overflow-hidden md:flex md:h-[600px]">
         {SERVICES.map((service, index) => {
           const Icon = service.icon
           const isActive = activeIndex === index
@@ -1544,14 +1579,17 @@ function CTASection() {
           to IoT, AI, and enterprise systems.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button className="bg-[rgb(var(--primary))] hover:bg-[rgb(var(--primary-dark))] text-white rounded-full px-8">
-            Request Consultation
+          <Button asChild className="bg-[rgb(var(--primary))] hover:bg-[rgb(var(--primary-dark))] text-white rounded-full px-8">
+            <Link href="/contact">Request Consultation</Link>
           </Button>
           <Button
+            asChild
             variant="outline"
             className="border-white/30 text-white hover:bg-white/10 rounded-full px-8"
           >
-            Download Brochure
+            <a href="/files/brochure-websoftbd.pdf" download>
+              Download Brochure
+            </a>
           </Button>
         </div>
       </div>

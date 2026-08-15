@@ -6,7 +6,7 @@ import Link from "next/link"
 import { Badge } from "@workspace/ui/components/badge"
 import { Button } from "@workspace/ui/components/button"
 import { SECTORS } from "@/data/sectors"
-import { ArrowRight, CheckCircle2, CloudRain, Wind, Leaf, Droplets, Globe, Brain, Server, Users, Smartphone, Satellite, Cloud, TrendingUp, Plane, Cpu, Waves, Activity, Zap, HardDrive, Wrench, Award, Building2, Radio, BarChart3, Map, Database, Network } from "lucide-react"
+import { ArrowRight, CheckCircle2, CloudRain, Wind, Leaf, Droplets, Globe, Brain, Server, Users, Smartphone, Satellite, Cloud, TrendingUp, Plane, Cpu, Waves, Activity, Zap, HardDrive, Wrench, Award, Building2, Radio, BarChart3, Map, Database, Network, Eye, Target, Rocket } from "lucide-react"
 
 const iconMap: Record<string, React.ElementType> = {
   CloudRain, Wind, Leaf, Droplets, Globe, Brain, Server, Users, Smartphone, Satellite, Sprout: Leaf,
@@ -141,30 +141,47 @@ export default function SectorsPage() {
         </div>
       </section>
 
-      {/* Expertise Areas Summary */}
+      {/* Vision, Mission & Goal */}
       <section className="py-12 md:py-16 bg-[rgb(var(--navy))]">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Core Expertise Areas
+              Our Vision, Mission &amp; Goal
             </h2>
             <p className="text-lg text-white/80 max-w-2xl mx-auto">
-              Our 12 strategic areas of specialization
+              What drives Web Soft BD forward
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {SECTORS.map((sector, index) => {
-              const Icon = iconMap[sector.icon] || Users
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              {
+                icon: Eye,
+                title: "Our Vision",
+                text: "As a leading provider of innovative ICT solutions for agro-meteorology, agriculture and meteorology, our vision is to give our customers access to the latest ICT solutions that help them improve their productivity, profitability and sustainability.",
+              },
+              {
+                icon: Target,
+                title: "Our Mission",
+                text: "To weave innovation into the fabric of meteorology, climate, weather, agriculture, agro-meteorology, water, food, environment and other sectors — with a focus on product quality and customer satisfaction.",
+              },
+              {
+                icon: Rocket,
+                title: "Our Goal",
+                text: "To become a worldwide IT company with branches around the world, serving over 10,000+ clients — delivering innovative, high-quality IT solutions that meet our customers' needs and help them achieve their goals.",
+              },
+            ].map((item) => {
+              const Icon = item.icon
               return (
                 <div
-                  key={sector.id}
-                  className="bg-white/10 backdrop-blur-sm rounded-xl p-4 md:p-6 hover:bg-white/20 transition-colors"
+                  key={item.title}
+                  className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8 backdrop-blur-sm transition-colors hover:bg-white/10"
                 >
-                  <div className="flex flex-col items-center text-center">
-                    <Icon className="w-6 h-6 md:w-8 md:h-8 text-white mb-2" />
-                    <span className="text-xs md:text-sm text-white font-medium">{sector.shortName}</span>
+                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-[rgb(var(--primary))]/20">
+                    <Icon className="h-7 w-7 text-[rgb(var(--primary))]" />
                   </div>
+                  <h3 className="mb-3 text-xl font-semibold text-white">{item.title}</h3>
+                  <p className="leading-relaxed text-white/70">{item.text}</p>
                 </div>
               )
             })}

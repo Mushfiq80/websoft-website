@@ -13,6 +13,7 @@ export const CLIENTS: Client[] = [
   { id: "govt-bd", name: "Government of Bangladesh", logo: "/images/clients/bd.gov.png", abbr: "GoB", tier: "government" },
   { id: "world-bank", name: "The World Bank", logo: "/images/clients/world_bank-logo.png", abbr: "WB", tier: "anchor", url: "https://www.worldbank.org" },
   { id: "jica", name: "JICA", logo: "/images/clients/jica.png", abbr: "JICA", tier: "anchor", url: "https://www.jica.go.jp" },
+  { id: "jmbsc", name: "Japan Meteorological Business Support Center (JMBSC)", logo: "/images/clients/jmbsc.png", abbr: "JMBSC", tier: "anchor", url: "https://www.jmbsc.or.jp/en/" },
   { id: "bmd", name: "Bangladesh Meteorological Department", logo: "/images/clients/bmd-logo.jpg", abbr: "BMD", tier: "government", url: "http://bmd.gov.bd/" },
   { id: "dae", name: "Department of Agricultural Extension", logo: "/images/clients/dae.png", abbr: "DAE", tier: "government" },
   { id: "bwdb", name: "Bangladesh Water Development Board", logo: "/images/clients/bd-water.png", abbr: "BWDB", tier: "government", url: "https://bwdb.gov.bd/" },
@@ -51,7 +52,6 @@ export const CLIENTS: Client[] = [
   { id: "softel", name: "Softel", logo: "/images/clients/softel.jpeg", abbr: "Softel", tier: "private" },
   { id: "poly-cables", name: "Poly Cables Ind. Ltd.", logo: "/images/clients/poly-cables-logo_name.jpg", abbr: "PC", tier: "private" },
   { id: "diu", name: "Daffodil International University", logo: "/images/clients/DaffodilInternationalUni.png", abbr: "DIU", tier: "research" },
-  { id: "mcerc", name: "MCERC", logo: "/images/clients/MCERC-logo.jpg", abbr: "MCERC", tier: "research" },
   { id: "reading", name: "University of Reading", logo: "/images/clients/university_of_Reading_DHDR.png", abbr: "UoR", tier: "research", url: "https://www.reading.ac.uk" },
   { id: "mushroom-market", name: "Online Mushroom Market (DAE)", logo: "/images/clients/mushroom-online-market-dae.png", abbr: "OMM", tier: "government" },
 
@@ -59,7 +59,6 @@ export const CLIENTS: Client[] = [
   { id: "lead-infosys", name: "Lead Infosys", logo: "/images/clients/lead-infosys-logo.png", abbr: "LI", tier: "private" },
   { id: "aesthetic", name: "Aesthetic International", logo: "/images/clients/aesthetic-international-logo.png", abbr: "AI", tier: "private" },
   { id: "lead-interior", name: "Lead Interior & Building Company", logo: "/images/clients/lead-interior-building-company.png", abbr: "LIB", tier: "private" },
-  { id: "green-page", name: "Green Page", logo: "/images/clients/green-page.jpeg", abbr: "GP", tier: "private" },
   { id: "esdo", name: "ESDO", logo: "/images/clients/esdo.png", abbr: "ESDO", tier: "ngo" },
   { id: "karim-karim", name: "Karim & Karim", logo: "/images/clients/karim-karim.png", abbr: "K&K", tier: "private" },
   { id: "prasan", name: "Prasan Automobiles", logo: "/images/clients/prasan-automobiles.jpg", abbr: "PA", tier: "private" },

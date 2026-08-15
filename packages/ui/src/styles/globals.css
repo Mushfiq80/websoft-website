@@ -307,3 +307,11 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+/* Hide scrollbar for horizontal swipe carousels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
