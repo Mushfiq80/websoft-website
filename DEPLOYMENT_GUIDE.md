@@ -54,7 +54,7 @@ ssh root@163.245.217.40
 ### Step 3: Navigate to Project Directory
 
 ```bash
-cd /root/websoft-website
+cd /var/www/websoft-website
 ```
 
 ---
@@ -185,7 +185,7 @@ systemctl restart nginx
 For faster deployments, use this one-liner after SSH:
 
 ```bash
-cd /root/websoft-website && git pull origin main && pnpm install && pnpm build && pm2 restart all
+cd /var/www/websoft-website && git pull origin main && pnpm install && pnpm build && pm2 restart all
 ```
 
 ---
@@ -211,7 +211,7 @@ If you need to add environment variables:
 
 1. Create/Edit `.env` file:
 ```bash
-nano /root/websoft-website/apps/web/.env
+nano /var/www/websoft-website/apps/web/.env
 ```
 
 2. Restart PM2 after changes:
@@ -245,7 +245,7 @@ systemctl reload nginx
 ## Project Structure on VPS
 
 ```
-/root/websoft-website/
+/var/www/websoft-website/
 ├── apps/
 │   └── web/              # Main Next.js application
 │       ├── .next/        # Build output

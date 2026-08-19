@@ -15,6 +15,11 @@ export const metadata = {
   creator: SITE_CONFIG.company.name,
   publisher: SITE_CONFIG.company.name,
   metadataBase: new URL("https://www.websoftbd.net"),
+  icons: {
+    icon: [{ url: "/images/logo/web-soft-logo.png", type: "image/png" }],
+    shortcut: [{ url: "/images/logo/web-soft-logo.png", type: "image/png" }],
+    apple: [{ url: "/images/logo/web-soft-logo.png", type: "image/png" }],
+  },
   openGraph: {
     type: "website",
     locale: "en_US",

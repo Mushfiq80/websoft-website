@@ -224,7 +224,16 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 md:flex-row">
           <p className="text-xs text-white/40">
-            © {currentYear} {SITE_CONFIG.company.name}. All Rights Reserved.
+            © {currentYear}{" "}
+            <Link
+              href="https://www.websoftbd.net"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[rgb(var(--primary))] hover:text-white transition-colors"
+            >
+              {SITE_CONFIG.company.name}
+            </Link>
+            . All Rights Reserved.
           </p>
           <div className="flex flex-wrap justify-center gap-4 md:gap-6">
             {["Privacy Policy", "Terms of Service"].map((link) => (
