@@ -17,7 +17,7 @@ export default function ClientsPage() {
             </h1>
             <p className="text-lg leading-relaxed text-[rgb(var(--text-muted))] md:text-xl">
               From multilateral organizations like the World Bank and JICA to government agencies and private
-              enterprises, we&apos;ve had the privilege of serving 950+ clients across Bangladesh and beyond.
+              enterprises, we&apos;ve had the privilege of serving clients across Bangladesh and beyond.
             </p>
           </div>
         </div>

@@ -22,7 +22,7 @@ export const SITE_CONFIG = {
   stats: [
     { value: "18+", label: "Years operating", description: "Since 2008" },
     { value: "2000+", label: "Projects delivered", description: "Across govt & private sector" },
-    { value: "956", label: "Satisfied clients", description: "Nationally and internationally" },
+    { value: "64", label: "Districts covered", description: "Nationwide BAMIS coverage" },
     { value: "ISO", label: "9001:2015 certified", description: "Quality management standard" },
   ],
   seo: {

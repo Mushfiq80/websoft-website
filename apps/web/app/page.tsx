@@ -599,7 +599,7 @@ const TESTIMONIALS = [
 const STATS = [
   { num: "18+", label: "Years operating" },
   { num: "2000+", label: "Projects delivered" },
-  { num: "956", label: "Satisfied clients" },
+  { num: "64", label: "Districts covered" },
   { num: "ISO", label: "9001:2015 certified" },
 ]
 
