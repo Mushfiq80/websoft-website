@@ -1582,15 +1582,26 @@ function CTASection() {
           <Button asChild className="bg-[rgb(var(--primary))] hover:bg-[rgb(var(--primary-dark))] text-white rounded-full px-8">
             <Link href="/contact">Request Consultation</Link>
           </Button>
-          <Button
-            asChild
-            variant="outline"
-            className="border-white/30 text-white hover:bg-white/10 rounded-full px-8"
-          >
-            <a href="/files/brochure-websoftbd.pdf" download>
-              Download Brochure
-            </a>
-          </Button>
+          <div className="flex flex-row gap-4 justify-center">
+            <Button
+              asChild
+              variant="outline"
+              className="border-white/30 text-white hover:bg-white/10 rounded-full px-6 sm:px-8"
+            >
+              <a href="/files/brochure-websoftbd.pdf" download>
+                Download Brochure
+              </a>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              className="border-white/30 text-white hover:bg-white/10 rounded-full px-6 sm:px-8"
+            >
+              <a href="/files/websoftbd_profile.pdf" download>
+                Download Profile
+              </a>
+            </Button>
+          </div>
         </div>
       </div>
     </section>
