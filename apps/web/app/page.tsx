@@ -703,8 +703,8 @@ function Hero() {
             className="text-sm font-semibold text-white"
             words={[
               "ISO 9001:2015 · BASIS · 18 Years",
-              "CAMMI Level 3 · QRO · Quality Assured",
-              "World Bank Partner · JICA Partner · Govt Approved"
+              "CMMI Level 3 · BACO · Quality Assured",
+              "World Bank Partner · JICA Partner · Govt Partner"
             ]}
             duration={3000}
           />
